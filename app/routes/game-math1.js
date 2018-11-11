@@ -16,4 +16,16 @@ router.get('/',authCheck, (req, res) => {
     // res.send('you log into game-math1')
 })
 
+
+router.get('/targil/:cal_type', authCheck, (req, res, next) => {
+    //console.log(req.params.cal_type);
+    res.send({
+        a: 1,
+        b: 3
+    })
+})
+
+
+
+
 module.exports = router;

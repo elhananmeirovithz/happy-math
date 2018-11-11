@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" /> -->
     <!-- <script src="main.js"></script> -->
 </head>
@@ -19,7 +20,29 @@
         <h1>This is the game!!!</h1>
     </header>   
     <main>
-         this is the game information of <%= user.username%>
+        <button id="plus" value="plus">PLUS</button>
+        <button id="minus" value="minus">MINUS</button>
+        <p id="json"></p>
     </main>
 </body>
+
+<script>
+    $('#plus').on('click',function(){
+        $.ajax({
+            type: "GET",
+            dataType: 'json',
+            url: "./game-math1/targil/plus",
+            // data: { 
+            //     id: "somedata"
+            // },
+            success: function(result) {
+                $('#json').html( '<pre>' + JSON.stringify(result,null,2) + '</pre>');
+            },
+            error: function(result) {
+                alert('error');
+            }
+        }); 
+    });
+</script>
+
 </html>
