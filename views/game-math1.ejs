@@ -32,14 +32,33 @@
             type: "GET",
             dataType: 'json',
             url: "./game-math1/targil/plus",
-            // data: { 
-            //     id: "somedata"
-            // },
+            data: { 
+                id: "somedata"
+            },
             success: function(result) {
                 $('#json').html( '<pre>' + JSON.stringify(result,null,2) + '</pre>');
             },
             error: function(result) {
                 alert('error');
+            }
+        }); 
+    });
+</script>
+
+<script>
+    $('#minus').on('click',function(){
+        $.ajax({
+            type: "GET",
+            dataType: 'json',
+            url: "./game-math1/targil/minus",
+            data: { 
+                id: "somedata"
+            },
+            success: function(result) {
+                $('#json').html( '<pre>' + JSON.stringify(result,null,2) + '</pre>');
+            },
+            error: function(result) {
+                $('#json').html( '<pre>' + JSON.stringify(result,null,2) + '</pre>');
             }
         }); 
     });

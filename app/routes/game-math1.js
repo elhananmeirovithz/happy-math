@@ -1,5 +1,8 @@
 const express = require('express');
 const router = express.Router();
+const math = require('mathjs');
+
+const calculationsControllers = require('../controllers/calculations.js');
 
 const authCheck = (req,res,next) => {
     if(!req.user){
@@ -18,12 +21,30 @@ router.get('/',authCheck, (req, res) => {
 
 
 router.get('/targil/:cal_type', authCheck, (req, res, next) => {
-    //console.log(req.params.cal_type);
-    res.send({
-        a: 1,
-        b: 3
-    })
-})
+    if (req.params.cal_type=="plus") {
+         res.send(calculationsControllers.plus())
+
+    } else if (req.params.cal_type=="minus") {
+        const num = new(Array);
+        num.push(math.randomInt(10, 1000));
+        num.push(math.randomInt(0, num[0]));
+        res.send({
+            type: "minus",
+            num0: num[0],
+            num1: num[1]
+        })
+
+
+
+
+    } else {
+        //console.log(req.params.cal_type);
+        res.send({
+            a: 1,
+            b: 3
+        })
+    }
+});
 
 
 
