@@ -22,6 +22,8 @@
     <main>
         <button id="plus" value="plus">PLUS</button>
         <button id="minus" value="minus">MINUS</button>
+        <button id="multiply" value="multiply">MULTIPLY</button>
+        <button id="division" value="division">DIVISION</button>
         <p id="json"></p>
     </main>
 </body>
@@ -46,6 +48,25 @@
 </script>
 
 <script>
+    $('#division').on('click',function(){
+        $.ajax({
+            type: "GET",
+            dataType: 'json',
+            url: "./game-math1/targil/division",
+            data: { 
+                id: "somedata"
+            },
+            success: function(result) {
+                $('#json').html( '<pre>' + JSON.stringify(result,null,2) + '</pre>');
+            },
+            error: function(result) {
+                $('#json').html( '<pre>' + JSON.stringify(result,null,2) + '</pre>');
+            }
+        }); 
+    });
+</script>
+
+<script>
     $('#minus').on('click',function(){
         $.ajax({
             type: "GET",
@@ -63,5 +84,27 @@
         }); 
     });
 </script>
+
+<script>
+    $('#multiply').on('click',function(){
+        $.ajax({
+            type: "GET",
+            dataType: 'json',
+            url: "./game-math1/targil/multiply",
+            data: { 
+                id: "somedata"
+            },
+            success: function(result) {
+                $('#json').html( '<pre>' + JSON.stringify(result,null,2) + '</pre>');
+            },
+            error: function(result) {
+                $('#json').html( '<pre>' + JSON.stringify(result,null,2) + '</pre>');
+            }
+        }); 
+    });
+</script>
+
+
+
 
 </html>
