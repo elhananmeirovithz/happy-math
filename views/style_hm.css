@@ -1,0 +1,144 @@
+/*General*/
+html{
+    font-family: 'Indie Flower', cursive;
+}
+
+body{
+    margin:0; 
+}
+
+/*TOP NAVIGATION PANEL*/
+#nav_top{   /*Parent element*/
+    /*setting flex container properties*/
+    display: flex;
+    flex-flow: row wrap; 
+    justify-content: space-around;
+    border: 1px solid cornflowerblue;
+    position: relative; 
+    width: 100%; 
+    border-radius: 5px; 
+}
+
+#nav_top div{
+    border: 1px solid yellow;
+    border-radius: 5px; 
+    color: rgb(26, 29, 34);
+    margin: 5px; 
+}
+
+/*mouse over button */
+#nav_top div:hover{
+    cursor: pointer;
+    color: #FF00FF;
+}
+
+
+
+/*HEADER AND TITLE*/
+header{
+    position: sticky; 
+    top:0; 
+    left:0;
+    display: block; 
+    width: 100%; 
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); /*effect that creates paper-like cards*/
+}
+
+#title1{
+    text-align: left;
+    color: cornflowerblue; 
+    font-size: 2em; 
+    margin:0 0 0 10px;
+    text-shadow: 2px 2px rgb(228, 228, 228);
+    border-radius: 5px; 
+    letter-spacing: 2px;
+}
+
+#title1:hover{
+    text-shadow: 2px 2px yellow;
+}
+
+
+/*SIGNIN WINDOW*/
+#parent_window{   /*Parent element*/
+    /*setting flex container properties*/
+    display: flex; 
+    flex-direction: column;
+    justify-content: space-around; /*distributes items eventually within the flex container*/
+    align-items: stretch;  /*items occupy the entire space of the container*/
+
+    position: fixed;
+    top:35%; 
+    left: 18%; 
+    right: 18%;
+    text-align: center;
+    border: 1px solid rgb(220, 220, 220);
+    min-width: 200px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 200px 0 rgba(0, 0, 0, 0.19); /*effect that creates paper-like cards*/
+}
+
+.buttons_signup{
+    border: 1px solid cornflowerblue; 
+    color: rgb(26, 29, 34);
+    margin: 5px; 
+    min-width: 150px;
+    min-height: 40px; 
+    font-size: 1.2em; 
+    border-radius: 10px; 
+    box-shadow: 4px 4px 8px rgb(190, 190, 190);
+}
+
+/*mouse over buttons */
+.buttons_signup:hover{
+    cursor: pointer;
+    color: #FF00FF;
+    box-shadow: none; 
+}
+
+
+
+
+/*EXERCISE WINDOW -- not presented yet*/
+#main-task-window{
+    display: none; /*or flex*/
+    justify-content: center; 
+    align-items: center; 
+}
+
+/*TASK SUMMARY -- not presented yet*/
+#summary-task{
+    display: none; 
+}
+
+
+ /*FOOTER*/
+nav{    /*Parent element*/
+    /*setting flex container properties*/
+    display: flex; 
+    flex-flow: row wrap;
+    justify-content: space-around; 
+    border: 1px solid cornflowerblue;
+    background-color: white;
+    position: fixed; 
+    left: 0;
+    right: 0;
+    bottom: 0; 
+    border-radius: 5px; 
+}
+
+#nav_bottom div{    /*Child element*/
+    border: 1px solid yellow;
+    border-radius: 5px; 
+    color: rgb(26, 29, 34);
+    margin:5px; 
+    padding:0;
+}
+
+/*mouse over button */
+#nav_bottom div:hover{
+    cursor: pointer;
+    color: #FF00FF;
+}
+

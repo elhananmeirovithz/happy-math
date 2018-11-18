@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <!--I added:-->
+    <title>Happy Math</title>
+    <!--font family-->
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+    <link rel="stylesheet" href="style_hm.css">
+</head>
+
+<body>
+    <nav id="nav_top">
+        <div>
+            Home
+        </div>
+
+        <div>
+            About
+        </div>
+
+        <div>
+            Profile
+        </div>
+    </nav>
+
+    <header>
+        <h1 id="title1">
+            Happy Math
+        </h1>
+    </header>
+
+    <div id="parent_window">
+        <div class="buttons_signup" onmousedown="func_buttondown(this)" onmouseup="func_buttonup(this)">
+            SIGN UP WITH FACEBOOK
+        </div>
+
+        <div class="buttons_signup" onmousedown="func_buttondown(this)" onmouseup="func_buttonup(this)">
+            SIGN UP WITH GOOGLE
+        </div>
+
+        <div class="buttons_signup" onmousedown="func_buttondown(this)" onmouseup="func_buttonup(this)">
+            BE OUR GUEST
+        </div>
+    </div>
+
+    <div id="main-task-window">
+        Task
+    </div>
+
+    <div id="summary-task">
+        Task Summary
+    </div>
+
+    <p>ffdfgdfg</p>
+    <p>ffdfgdfg</p>
+    <p>ffdfgdfg</p>
+    <p>ffdfgdfg</p>
+    <p>ffdfgdfg</p>
+    <p>ffdfgdfg</p>
+    <p>ffdfgdfg</p>
+    <p>ffdfgdfg</p>
+    <p>ffdfgdfg</p>
+    <p>ffdfgdfg</p>
+    <p>ffdfgdfg</p>
+    <p>ffdfgdfg</p>
+    <p>ffdfgdfg</p>
+    <p>ffdfgdfg</p>
+    <p>ffdfgdfg</p>
+    <p>ffdfgdfg</p>
+    <p>ffdfgdfg</p>
+    <p>ffdfgdfg</p>
+    <p>ffdfgdfg</p>
+    <p>ffdfgdfg</p>
+    <p>ffdfgdfg</p>
+    <p>ffdfgdfg</p>
+
+
+   
+    <footer>
+        <nav id="nav_bottom">
+            <div class="nav_home">
+                Home
+            </div>
+
+            <div class="nav_about">
+                About
+            </div>
+
+            <div class="nav_profile">
+                Profile
+            </div>
+        </nav>
+    </footer>
+</body>
+
+<!--JS-->
+<noscript>None: JS is turned off in the Browser. For proper use of the page please turn JS on.</noscript>
+
+<script>
+    function func_buttondown(id) {
+        id.style.boxShadow = "none";
+        id.style.fontWeight = "bold"; 
+    }
+
+    function func_buttonup(id) {
+        id.style.boxShadow = "4px 4px 8px rgb(190, 190, 190)";
+        id.style.fontWeight = "normal"; 
+    }
+
+    function changeText(id) {
+        id.innerHTML = 'PRESS ME';
+    }
+</script>
+
+
+</html>
