@@ -28,94 +28,64 @@ router.get('/targil/:cal_type', authCheck, (req, res, next) => {
         res.send(calculationsControllers.minus())
 
     } else if (req.params.cal_type=="multiply") {
-        const num = new(Array);
-        num.push(math.randomInt(10, 1000));
-        num.push(math.randomInt(0, num[0]));
-        var steps_string = new(Array);
-        var steps_results = new(Array);
-        var row_results = new(Array);
-        var row_number = new(Array);
-        var nExtra = "";var n0 = "";var n1 = "";var tmp = "";
-        num_string = math.string(num);
-        for (var i = 0; i < (num_string[1].length); i++){
-            n1 = num_string[1].substr(-1*(i+1),1);
-            row_results.push( (math.number(n1) * num[0]) * Math.pow(10,(i)) );
-            nExtra = "";
-            for (var ii = 0; ii < (num_string[0].length); ii++){
-                n0 = num_string[0].substr(-1*(ii+1),1);
-                if (nExtra == "") {
-                    tmp = n1 + "*" + n0;
-                    nExtra = math.floor(math.eval(tmp)/10); // to make the extra number
-                } else {
-                    tmp =  n1 + "*" + n0 + "+" + nExtra;
-                    nExtra = math.floor(math.eval(tmp)/10); // to make the extra number
-                }
-                steps_string.push(tmp);
-                steps_results.push(math.eval(tmp));
-                row_number.push("row" + i);
-            }
-        }     
-        plus_json = calculationsControllers.multiplus(row_results);   // need to work more!!!!
-
-        var res_json = ({
-            game_type: "multiply",
-            game_number0: num[0],
-            game_number1: num[1],
-            game_result: num[0] * num[1],
-            row_results: row_results,
-            row_number: row_number,
-            steps_string: steps_string,
-            steps_results: steps_results
-        });
-        res.send(res_json)
+        res.send(calculationsControllers.multiply())
 
     } else if (req.params.cal_type=="division") {
-        var num = [125,1515,1215,154989];
+        const num = new(Array);
+        num.push(math.randomInt(10, 1000));
+        num.push(math.randomInt(1, 9));
+        var num_string = new(Array);
+        num.forEach(function(value){
+            var m = math.string(math.format(value, {notation: 'fixed'}));
+            num_string.push(m);
+        });
+        tmp = "";
         var steps_string = new(Array);
         var steps_results = new(Array);
-        var nExtra = "";var n0 = "";var n1 = "";var tmp = "";
-        num_string = math.string(num);
-
-        var i = 0;
-        num_string.forEach(function(value){
-            n = value.substr(-1*(i+1),1);
-            console.log(value);
-        });
-        // while (condition) {
-            
-        // }
-
-
         for (var i = 0; i < (num_string[0].length); i++){
-            n0 = num_string[0].substr(-1*(i+1),1);
-            if (i < num_string[1].length & nExtra != "") {
-                n1 = num_string[1].substr(-1*(i+1),1);
-                tmp = nExtra + "+" + n0 + "+" + n1;
-                nExtra = math.floor(math.eval(tmp)/10); // to make the extra number
-            } else if (i < num_string[1].length) {
-                n1 = num_string[1].substr(-1*(i+1),1);
-                tmp = n0 + "+" + n1;
-                nExtra = math.floor(math.eval(tmp)/10); // to make the extra number
-            } else if (i >= num_string[1].length  & nExtra != "") {
-                n1="";
-                tmp = nExtra + "+" + n0;
-                nExtra = math.floor(math.eval(tmp)/10); // to make the extra number
-            } else {
-                n1="";
-                tmp = n0;
-                nExtra = "";
-            }
+            n0 = num_string[0].substr(i,1);
+            tmp = n0 + "/" + num_string[1];
             steps_string.push(tmp);
             steps_results.push(math.eval(tmp));
-        }
+            console.log(n0)
+        }   
+
+
+        // var steps_string = new(Array);
+        // var steps_results = new(Array);
+        // var row_results = new(Array);
+        // var row_number = new(Array);
+        // var nExtra = "";var n0 = "";var n1 = "";var tmp = "";
+        // num_string = math.string(num);
+        // for (var i = 0; i < (num_string[1].length); i++){
+        //     n1 = num_string[1].substr(-1*(i+1),1);
+        //     row_results.push( (math.number(n1) * num[0]) * Math.pow(10,(i)) );
+        //     nExtra = "";
+        //     for (var ii = 0; ii < (num_string[0].length); ii++){
+        //         n0 = num_string[0].substr(-1*(ii+1),1);
+        //         if (nExtra == "") {
+        //             tmp = n1 + "*" + n0;
+        //             nExtra = math.floor(math.eval(tmp)/10); // to make the extra number
+        //         } else {
+        //             tmp =  n1 + "*" + n0 + "+" + nExtra;
+        //             nExtra = math.floor(math.eval(tmp)/10); // to make the extra number
+        //         }
+        //         steps_string.push(tmp);
+        //         steps_results.push(math.eval(tmp));
+        //         row_number.push("row" + i);
+        //     }
+        // }     
+        // plus_json = calculationsControllers.multiplus(row_results);   // need to work more!!!!
+
         var res_json = ({
-            game_type: "plus",
+            game_type: "Long_division",
             game_number0: num[0],
             game_number1: num[1],
-            game_result: num[0] + num[1],
+            game_result: math.floor(num[0] / num[1]),
+            game_result_residual: num[0] - (math.floor(num[0] / num[1]) * num[1]),
             steps_string: steps_string,
-            steps_results: steps_results
-        })
+            steps_results: steps_results,
+        });
         res.send(res_json)
 
     } else {
@@ -126,8 +96,6 @@ router.get('/targil/:cal_type', authCheck, (req, res, next) => {
         })
     }
 });
-
-
 
 
 module.exports = router;
