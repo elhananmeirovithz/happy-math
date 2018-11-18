@@ -54,7 +54,7 @@ app.use('/api/user',api_userRoutes);//handling the name of the rout
 
 // create home route
 app.get('/',(req, res) => {
- 	res.render('home', {user: req.user});
+ 	res.render('home-hm', {user: req.user});
  })
 
 
