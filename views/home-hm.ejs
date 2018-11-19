@@ -13,16 +13,16 @@
 </head>
 
 <body>
-    <nav id="nav_top">
-        <div class="nav_home">
+    <nav id="nav-top">
+        <div class="nav-home">
             Home
         </div>
 
-        <div class="nav_logout">
+        <div class="nav-logout">
             <a href="/auth/logout">Logout</a>
         </div>
 
-        <div class="nav_profile">
+        <div class="nav-profile">
             Profile
         </div>
     </nav>
@@ -33,44 +33,39 @@
         </h1>
     </header>
 
-    <div id="main-task-window">
+    <div id="signup-container">
         <% if (user) {%>
-        <div class="buttons_signup" onmousedown="func_buttondown(this)" onmouseup="func_buttonup(this)">
+        <div class="button-signup" onmousedown="func_buttondown(this)" onmouseup="func_buttonup(this)">
             <a href="/game-math1">Start New Game</a>
         </div>
         
         <% } else  { %>
-        <div class="buttons_signup" onmousedown="func_buttondown(this)" onmouseup="func_buttonup(this)">
+        <div class="button-signup" onmousedown="func_buttondown(this)" onmouseup="func_buttonup(this)">
             <a class="facebook-btn" href="/auth/facebook">SIGN UP WITH FACEBOOK</a>
         </div>
         
-        <div class="buttons_signup" onmousedown="func_buttondown(this)" onmouseup="func_buttonup(this)">
+        <div class="button-signup" onmousedown="func_buttondown(this)" onmouseup="func_buttonup(this)">
             <a class="google-btn" href="/auth/google">SIGN UP WITH GOOGLE+</a>
         </div>
         
-        <div class="buttons_signup" onmousedown="func_buttondown(this)" onmouseup="func_buttonup(this)">
+        <div class="button-signup" onmousedown="func_buttondown(this)" onmouseup="func_buttonup(this)">
             BE OUR GUEST
         </div>
         
         <% } %>
     </div>
-
-    <div id="summary-task">
-        Task Summary
-    </div>
-
    
     <footer>
-        <nav id="nav_bottom">
-            <div class="nav_home">
+        <nav id="nav-bottom">
+            <div class="nav-home">
                 Home
             </div>
 
-            <div class="nav_logout">
+            <div class="nav-logout">
                 <a href="/auth/logout">Logout</a>
             </div>
 
-            <div class="nav_profile">
+            <div class="nav-profile">
                 Profile
             </div>
         </nav>

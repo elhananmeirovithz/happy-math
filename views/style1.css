@@ -1,4 +1,4 @@
-/*General*/
+/*GENERAL*/
 html{
     font-family: 'Indie Flower', cursive;
 }
@@ -7,8 +7,13 @@ body{
     margin:0; 
 }
 
-/*TOP NAVIGATION PANEL*/
-#nav_top{   /*Parent element*/
+/*no underline for links*/
+a{
+    text-decoration: none; 
+}
+
+/*-------------TOP NAVIGATION AND THE HEADER PANELS--------------*/
+#nav-top{   /*Parent element*/
     /*setting flex container properties*/
     display: flex;
     flex-flow: row wrap; 
@@ -19,7 +24,7 @@ body{
     border-radius: 5px; 
 }
 
-#nav_top div{
+#nav-top div{
     border: 1px solid yellow;
     border-radius: 5px; 
     color: rgb(26, 29, 34);
@@ -27,7 +32,7 @@ body{
 }
 
 /*mouse over button */
-#nav_top div a:hover{
+#nav-top div a:hover{
     cursor: pointer;
     color: #FF00FF;
 }
@@ -61,12 +66,13 @@ h1:hover{
 #dynamic-title{
     text-align: center; 
 }
+/*--------------------------------------------------------------------*/
 
 
+/*--------------SIGHNUP WINDOW AND ITS BUTTONS------------------------*/
 /*SIGNIN WINDOW*/
-#parent_window{   /*Parent element*/
-    /*setting flex container properties*/
-    display: none;  /*or flex*/
+#signup-container{
+    display: flex; /*or none*/
     flex-direction: column;
     justify-content: space-around; /*distributes items eventually within the flex container*/
     align-items: stretch;  /*items occupy the entire space of the container*/
@@ -79,67 +85,10 @@ h1:hover{
     border: 1px solid rgb(220, 220, 220);
     min-width: 200px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 200px 0 rgba(0, 0, 0, 0.19); /*effect that creates paper-like cards*/
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 200px 0 rgba(0, 0, 0, 0.19); /*effect that creates paper-like cards*/ 
 }
 
-/*ASSIGNMENT WINDOW*/
-#task-container{
-    display: flex;  /* flex or none*/
-    flex-direction: column;  /*column or row*/
-    justify-content: space-around; /*distributes items eventually within the flex container*/
-    align-items: stretch;  /*items occupy the entire space of the container*/
-
-    position: fixed;
-    top:40%; 
-    left: 40%; 
-    right: 40%;
-    text-align: center;
-    border: 1px solid rgb(220, 220, 220);
-    min-width: 200px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 200px 0 rgba(0, 0, 0, 0.19); /*effect that creates paper-like cards*/
-
-    font-size: 1.2em; 
-}
-
-.number{
-    border: 0.5px solid red;
-    margin: 1px; 
-}
-
-#step-container{
-    display: flex;  /*or none*/
-    flex-direction: row;
-    justify-content: space-around; /*distributes items eventually within the flex container*/
-    align-items: stretch;  /*items occupy the entire space of the container*/
-
-    position: fixed;
-    top:62%; 
-    left: 40%; 
-    right: 40%;
-    text-align: center;
-    border: 1px solid rgb(220, 220, 220);
-    min-width: 200px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 200px 0 rgba(0, 0, 0, 0.19); /*effect that creates paper-like cards*/
-
-    font-size: 2em;
-}
-
-.digit{
-    border: 1px solid red;
-    margin: 0.5px;
-}
-
-#user-answer{}
-
-#json-temp{
-    top: 40%; 
-    left: 5px; 
-}
-
-
-.buttons_signup{
+.button-signup{
     border: 1px solid cornflowerblue; 
     color: rgb(26, 29, 34);
     margin: 5px; 
@@ -151,20 +100,22 @@ h1:hover{
 }
 
 /*mouse over buttons */
-.buttons_signup:hover{
+.button-signup:hover{
     cursor: pointer;
     color: #FF00FF;
     box-shadow: none; 
 }
 
 /*mouse over buttons */
-.buttons_signup a:hover{
+.button-signup a:hover{
     cursor: pointer;
     color: #FF00FF;
     box-shadow: none; 
 }
+/*---------------------------------------------------------*/
 
-/*WINDOW FOR CHOOSING AN ASSIGNMENT TYPE*/
+
+/*---------WINDOW FOR CHOOSING AN ASSIGNMENT TYPE---------*/
 #choose-task{
     display: flex;
     flex-flow: row wrap; 
@@ -200,32 +151,71 @@ h1:hover{
     color: #FF00FF;
     box-shadow: none; 
 }
+/*---------------------------------------------------------*/
 
-/*EXERCISE WINDOW -- not presented yet*/
-#main-task-window{
-    display: flex; /*or none*/
-    flex-direction: column;
+
+/*----------------- AN ASSIGNMENT WINDOW-------------------*/
+#task-container{
+    display: flex;  /* flex or none*/
+    flex-direction: column;  /*column or row*/
     justify-content: space-around; /*distributes items eventually within the flex container*/
     align-items: stretch;  /*items occupy the entire space of the container*/
 
     position: fixed;
-    top:35%; 
-    left: 18%; 
-    right: 18%;
+    top:40%; 
+    left: 40%; 
+    right: 40%;
     text-align: center;
     border: 1px solid rgb(220, 220, 220);
     min-width: 200px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 200px 0 rgba(0, 0, 0, 0.19); /*effect that creates paper-like cards*/ 
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 200px 0 rgba(0, 0, 0, 0.19); /*effect that creates paper-like cards*/
+
+    font-size: 1.2em; 
 }
 
-/*TASK SUMMARY -- not presented yet*/
-#summary-task{
-    display: none; 
+.number{
+    border: 0.5px solid red;
+    margin: 1px; 
+}
+/*---------------------------------------------------------*/
+
+
+/*---------- WINDOW OF STEPS - INTERACTION WITH A USER -------------*/
+#step-container{
+    display: flex;  /*or none*/
+    flex-direction: row;
+    justify-content: space-around; /*distributes items eventually within the flex container*/
+    align-items: stretch;  /*items occupy the entire space of the container*/
+
+    position: fixed;
+    top:62%; 
+    left: 40%; 
+    right: 40%;
+    text-align: center;
+    border: 1px solid rgb(220, 220, 220);
+    min-width: 200px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 200px 0 rgba(0, 0, 0, 0.19); /*effect that creates paper-like cards*/
+
+    font-size: 2em;
 }
 
+.digit{
+    border: 1px solid red;
+    margin: 0.5px;
+}
 
- /*FOOTER*/
+#user-answer{}
+
+#json-temp{
+    top: 40%; 
+    left: 5px; 
+}
+/*--------------------------------------------------------------*/
+
+
+ /*---------------------------FOOTER----------------------------*/
 nav{    /*Parent element*/
     /*setting flex container properties*/
     display: flex; 
@@ -240,7 +230,7 @@ nav{    /*Parent element*/
     border-radius: 5px; 
 }
 
-#nav_bottom div{    /*Child element*/
+#nav-bottom div{    /*Child element*/
     border: 1px solid yellow;
     border-radius: 5px; 
     color: rgb(26, 29, 34);
@@ -249,13 +239,8 @@ nav{    /*Parent element*/
 }
 
 /*mouse over button */
-#nav_bottom div a:hover{
+#nav-bottom div a:hover{
     cursor: pointer;
     color: #FF00FF;
 }
 
-
-/*no underline for links*/
-a{
-    text-decoration: none; 
-}
