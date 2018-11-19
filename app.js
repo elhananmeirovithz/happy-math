@@ -51,7 +51,7 @@ app.use('/auth',authRoutes);//handling the name of the rout
 app.use('/game-math1',gameMath1Routes);//handling the name of the rout
 app.use('/api/user',api_userRoutes);//handling the name of the rout
 
-
+app.use(express.static(__dirname + '/views'));
 // create home route
 app.get('/',(req, res) => {
  	res.render('home-hm', {user: req.user});
