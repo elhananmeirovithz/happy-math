@@ -13,23 +13,51 @@
     <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
     <link rel="stylesheet" href="style1.css">
 </head>
+
+
 <body>
-    <nav>
-        <ul>
-            <li><a href="/">Homepage</a></li>
-            <li><a href="/auth/logout">Logout</a></li>
-        </ul>
-    </nav> 
+    <nav id="nav_top">
+        <div class="nav_home">
+            <a href="/">Home</a>
+        </div>
+
+        <div class="nav_logout">
+            <a href="/auth/logout">Logout</a>
+        </div>
+
+        <div class="nav_profile">
+          Profile
+        </div>
+    </nav>
+
+    
     <header>
-        <h1>This is the game!!!</h1>
-    </header>   
-    <main>
+        <h1 id="title1">Happy Math</h1>
+    </header>
+
+    <div id="main-task-window">
         <button id="plus" value="plus">PLUS</button>
         <button id="minus" value="minus">MINUS</button>
         <button id="multiply" value="multiply">MULTIPLY</button>
         <button id="division" value="division">DIVISION</button>
         <p id="json"></p>
-    </main>
+    </div>
+
+    <footer>
+        <nav id="nav_bottom">
+            <div class="nav_home">
+                <a href="/">Home</a>
+            </div>
+    
+            <div class="nav_logout">
+                <a href="/auth/logout">Logout</a>
+            </div>
+    
+            <div class="nav_profile">
+                Profile
+            </div>
+        </nav>
+    </footer>
 </body>
 
 <script>
