@@ -83,9 +83,9 @@ h1:hover{
 }
 
 /*ASSIGNMENT WINDOW*/
-#task-win{
-    display: flex;  /*or none*/
-    flex-direction: column;
+#task-container{
+    display: flex;  /* flex or none*/
+    flex-direction: column;  /*column or row*/
     justify-content: space-around; /*distributes items eventually within the flex container*/
     align-items: stretch;  /*items occupy the entire space of the container*/
 
@@ -99,17 +99,22 @@ h1:hover{
     border-radius: 10px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 200px 0 rgba(0, 0, 0, 0.19); /*effect that creates paper-like cards*/
 
-    font-size: 1em; 
+    font-size: 1.2em; 
 }
 
-#step-win{
+.number{
+    border: 0.5px solid red;
+    margin: 1px; 
+}
+
+#step-container{
     display: flex;  /*or none*/
     flex-direction: row;
     justify-content: space-around; /*distributes items eventually within the flex container*/
     align-items: stretch;  /*items occupy the entire space of the container*/
 
     position: fixed;
-    top:60%; 
+    top:62%; 
     left: 40%; 
     right: 40%;
     text-align: center;
@@ -121,6 +126,12 @@ h1:hover{
     font-size: 2em;
 }
 
+.digit{
+    border: 1px solid red;
+    margin: 0.5px;
+}
+
+#user-answer{}
 
 #json-temp{
     top: 40%; 
@@ -170,6 +181,24 @@ h1:hover{
 
     text-align: center;
     
+}
+
+.button-choose{
+    border: 1px solid cornflowerblue; 
+    color: rgb(26, 29, 34);
+    margin: 5px; 
+    min-width: 150px;
+    min-height: 40px; 
+    font-size: 1.2em; 
+    border-radius: 10px; 
+    box-shadow: 4px 4px 8px rgb(190, 190, 190);
+}
+
+/*mouse over buttons */
+.button-choose:hover{
+    cursor: pointer;
+    color: #FF00FF;
+    box-shadow: none; 
 }
 
 /*EXERCISE WINDOW -- not presented yet*/
