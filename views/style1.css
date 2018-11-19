@@ -27,11 +27,10 @@ body{
 }
 
 /*mouse over button */
-#nav_top div:hover{
+#nav_top div a:hover{
     cursor: pointer;
     color: #FF00FF;
 }
-
 
 
 /*HEADER AND TITLE*/
@@ -63,7 +62,7 @@ header{
 /*SIGNIN WINDOW*/
 #parent_window{   /*Parent element*/
     /*setting flex container properties*/
-    display: flex; 
+    display: none;  /*of flex*/
     flex-direction: column;
     justify-content: space-around; /*distributes items eventually within the flex container*/
     align-items: stretch;  /*items occupy the entire space of the container*/
@@ -97,14 +96,31 @@ header{
     box-shadow: none; 
 }
 
+/*mouse over buttons */
+.buttons_signup a:hover{
+    cursor: pointer;
+    color: #FF00FF;
+    box-shadow: none; 
+}
 
 
 
 /*EXERCISE WINDOW -- not presented yet*/
 #main-task-window{
-    display: none; /*or flex*/
-    justify-content: center; 
-    align-items: center; 
+    display: flex; /*or none*/
+    flex-direction: column;
+    justify-content: space-around; /*distributes items eventually within the flex container*/
+    align-items: stretch;  /*items occupy the entire space of the container*/
+
+    position: fixed;
+    top:35%; 
+    left: 18%; 
+    right: 18%;
+    text-align: center;
+    border: 1px solid rgb(220, 220, 220);
+    min-width: 200px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 200px 0 rgba(0, 0, 0, 0.19); /*effect that creates paper-like cards*/ 
 }
 
 /*TASK SUMMARY -- not presented yet*/
@@ -137,8 +153,13 @@ nav{    /*Parent element*/
 }
 
 /*mouse over button */
-#nav_bottom div:hover{
+#nav_bottom div a:hover{
     cursor: pointer;
     color: #FF00FF;
 }
 
+
+/*no underline for links*/
+a{
+    text-decoration: none; 
+}
