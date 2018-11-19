@@ -62,13 +62,31 @@ header{
 /*SIGNIN WINDOW*/
 #parent_window{   /*Parent element*/
     /*setting flex container properties*/
-    display: none;  /*of flex*/
+    display: none;  /*or flex*/
     flex-direction: column;
     justify-content: space-around; /*distributes items eventually within the flex container*/
     align-items: stretch;  /*items occupy the entire space of the container*/
 
     position: fixed;
     top:35%; 
+    left: 18%; 
+    right: 18%;
+    text-align: center;
+    border: 1px solid rgb(220, 220, 220);
+    min-width: 200px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 200px 0 rgba(0, 0, 0, 0.19); /*effect that creates paper-like cards*/
+}
+
+/*ASSIGNMENT WINDOW*/
+#task-win{
+    display: flex;  /*or none*/
+    flex-direction: column;
+    justify-content: space-around; /*distributes items eventually within the flex container*/
+    align-items: stretch;  /*items occupy the entire space of the container*/
+
+    position: fixed;
+    top:40%; 
     left: 18%; 
     right: 18%;
     text-align: center;
@@ -103,7 +121,24 @@ header{
     box-shadow: none; 
 }
 
+/*WINDOW FOR CHOOSING AN ASSIGNMENT TYPE*/
+#choose-task{
+    display: flex;
+    flex-flow: row wrap; 
+    justify-content: space-around; /*distributes items eventually within the flex container*/
+    align-items: stretch;  /*items occupy the entire space of the container*/
 
+    position: fixed;
+    top:10%; 
+    left: 40%;
+
+    transform: translate(-50%, -50%);
+    
+    margin: 10%; 
+
+    text-align: center;
+    
+}
 
 /*EXERCISE WINDOW -- not presented yet*/
 #main-task-window{
