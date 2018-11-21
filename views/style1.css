@@ -11,6 +11,8 @@ body{
 a{
     text-decoration: none; 
 }
+/*---------------------------------------------------------------*/
+
 
 /*-------------TOP NAVIGATION AND THE HEADER PANELS--------------*/
 #nav-top{   /*Parent element*/
@@ -116,6 +118,8 @@ h1:hover{
 
 
 /*---------WINDOW FOR CHOOSING AN ASSIGNMENT TYPE---------*/
+
+/*---------CHOOSE-TASK---------*/
 #choose-task{
     display: flex;
     flex-flow: row wrap; 
@@ -125,7 +129,6 @@ h1:hover{
     position: fixed;
     top:10%; 
     left: 40%;
-
     transform: translate(-50%, -50%);
     
     margin: 10%; 
@@ -155,28 +158,36 @@ h1:hover{
 
 
 /*----------------- AN ASSIGNMENT WINDOW-------------------*/
+
+/*---------TASK-CONTAINER---------*/
 #task-container{
     display: flex;  /* flex or none*/
-    flex-direction: column;  /*column or row*/
+    flex-direction: row;  /*column or row*/
     justify-content: space-around; /*distributes items eventually within the flex container*/
     align-items: stretch;  /*items occupy the entire space of the container*/
 
     position: fixed;
-    top:40%; 
-    left: 40%; 
-    right: 40%;
+    top:45%; 
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%); 
     text-align: center;
     border: 1px solid rgb(220, 220, 220);
     min-width: 200px;
     border-radius: 10px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 200px 0 rgba(0, 0, 0, 0.19); /*effect that creates paper-like cards*/
 
-    font-size: 1.2em; 
+    font-size: 2em; 
 }
 
 .number{
     border: 0.5px solid red;
     margin: 1px; 
+}
+
+#results{
+    font-size: 1.5em; 
+    color: red; 
 }
 /*---------------------------------------------------------*/
 
@@ -189,9 +200,10 @@ h1:hover{
     align-items: stretch;  /*items occupy the entire space of the container*/
 
     position: fixed;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%); 
     top:62%; 
-    left: 40%; 
-    right: 40%;
     text-align: center;
     border: 1px solid rgb(220, 220, 220);
     min-width: 200px;
@@ -205,8 +217,6 @@ h1:hover{
     border: 1px solid red;
     margin: 0.5px;
 }
-
-#user-answer{}
 
 #json-temp{
     top: 40%; 
