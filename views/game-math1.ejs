@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" /> -->
     <!-- <script src="main.js"></script> -->
@@ -12,7 +12,7 @@
     <!--font family-->
     <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
     <link rel="stylesheet" href="style1.css">
-    <script src="addition-task.js" async></script>
+    <script src="choosingTask.js" async></script>
 </head>
 
 
@@ -37,19 +37,40 @@
     </header>
 
     <div id='choose-task'>
-        <div class="button-choose" id="plus" value="plus" onmousedown="loadTaskPlus(this)" onmousedown="func_button_new_game_on(this)">
+        <div class="button-choose" id="plus" value="plus" onmousedown="loadTaskPlus(this)">
             ADDITION
         </div>
-        <div class="button-choose" id="minus" value="minus">SUBTRACTION</div>
-        <div class="button-choose" id="multiply" value="multiply">MULTIPLICATION</div>
-        <div class="button-choose" id="division" value="division">DIVISION</div>
-        <div class="button-choose" id="new-game" onmousedown="func_choose_task_type_on(this)">
+        <div class="button-choose" id="minus" value="minus" onmousedown="loadTaskMinus(this)">
+            SUBTRACTION</div>
+        <div class="button-choose" id="multiply" value="multiply" onmousedown="loadTaskMulty(this)">
+            MULTIPLICATION</div>
+        <div class="button-choose" id="division" value="division" onmousedown="loadTaskDiv(this)">
+            DIVISION</div>
+        <div class="button-choose" id="new-game" onmousedown="orderNewGame(this)">
             NEW GAME
         </div>
     </div>
 
-    <div id="json-temp">
-        <p id="json"></p>
+    <div id="step-container">
+        <div class="digit" id="digit1">
+            5
+        </div>
+    
+        <div class="digit" id="sign-step">
+            +
+        </div>
+    
+        <div class="digit" id="digit2">
+            4
+        </div>
+    
+        <div class="digit" id="sign-equal">
+            =
+        </div>
+    
+        <input class="digit" id="user-answer" type="number" pattern="[0-9]*">
+    
+        </input>
     </div>
 
     <div id="task-container">
@@ -75,27 +96,6 @@
         </div>
     </div>
 
-    <div id="step-container">
-        <div class="digit" id="digit1">
-            5
-        </div>
-        
-        <div class="digit" id="sign-step">
-            +
-        </div>
-        
-        <div class="digit" id="digit2">
-            4
-        </div>
-
-        <div class="digit" id="sign-equal">
-            =
-        </div>
-
-        <input class="digit" id="user-answer" type="number" pattern="[0-9]*">
-            
-        </input>
-    </div>
 
     <footer>
         <nav id="nav-bottom">
@@ -132,7 +132,7 @@
             }
         }); 
     });
-</script> -->
+</script>
 
 <script>
     $('#division').on('click',function(){
@@ -201,26 +201,6 @@
     function func_changeText(id) {
         id.innerHTML = 'NEW GAME';
     }
-</script>
-
-<script>
-    function func_button_new_game_on(id) {
-        document.getElementById("minus").style.display = "none";
-        document.getElementById("multiply").style.display = "none";
-        document.getElementById("division").style.display = "none";
-        document.getElementById("new-game").style.display = "block";
-    }
-</script>
-
-<script>
-    function func_choose_task_type_on(id) {
-        document.getElementById("plus").style.display = "block";
-        document.getElementById("minus").style.display = "block";
-        document.getElementById("multiply").style.display = "block";
-        document.getElementById("division").style.display = "block";
-        document.getElementById("new-game").style.display = "none";
-    }
-
 </script>
 
 </html>
