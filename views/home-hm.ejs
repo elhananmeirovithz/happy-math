@@ -6,92 +6,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     
-    <!--I added:-->
     <title>Happy Math</title>
     <!--font family-->
     <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
-    <link rel="stylesheet" href="style-hm.css">
+    <link rel="stylesheet" href="style1.css">
 </head>
 
 <body>
-    <nav id="nav_top">
-        <div>
+    <nav id="nav-top">
+        <div class="nav-home">
             Home
         </div>
 
-        <div>
-            About
+        <div class="nav-logout">
+            <a href="/auth/logout">Logout</a>
         </div>
 
-        <div>
+        <div class="nav-profile">
             Profile
         </div>
     </nav>
 
     <header>
-        <h1 id="title1">
+        <h1 id="main-title">
             Happy Math
         </h1>
     </header>
 
-    <div id="parent_window">
-        <div class="buttons_signup" onmousedown="func_buttondown(this)" onmouseup="func_buttonup(this)">
-            SIGN UP WITH FACEBOOK
+    <div id="signup-container">
+        <% if (user) {%>
+        <div class="button-signup" onmousedown="func_buttondown(this)" onmouseup="func_buttonup(this)">
+            <a href="/game-math1">Start New Game</a>
         </div>
-
-        <div class="buttons_signup" onmousedown="func_buttondown(this)" onmouseup="func_buttonup(this)">
-            SIGN UP WITH GOOGLE
+        
+        <% } else  { %>
+        <div class="button-signup" onmousedown="func_buttondown(this)" onmouseup="func_buttonup(this)">
+            <a class="facebook-btn" href="/auth/facebook">SIGN UP WITH FACEBOOK</a>
         </div>
-
-        <div class="buttons_signup" onmousedown="func_buttondown(this)" onmouseup="func_buttonup(this)">
+        
+        <div class="button-signup" onmousedown="func_buttondown(this)" onmouseup="func_buttonup(this)">
+            <a class="google-btn" href="/auth/google">SIGN UP WITH GOOGLE+</a>
+        </div>
+        
+        <div class="button-signup" onmousedown="func_buttondown(this)" onmouseup="func_buttonup(this)">
             BE OUR GUEST
         </div>
+        
+        <% } %>
     </div>
-
-    <div id="main-task-window">
-        Task
-    </div>
-
-    <div id="summary-task">
-        Task Summary
-    </div>
-
-    <p>ffdfgdfg</p>
-    <p>ffdfgdfg</p>
-    <p>ffdfgdfg</p>
-    <p>ffdfgdfg</p>
-    <p>ffdfgdfg</p>
-    <p>ffdfgdfg</p>
-    <p>ffdfgdfg</p>
-    <p>ffdfgdfg</p>
-    <p>ffdfgdfg</p>
-    <p>ffdfgdfg</p>
-    <p>ffdfgdfg</p>
-    <p>ffdfgdfg</p>
-    <p>ffdfgdfg</p>
-    <p>ffdfgdfg</p>
-    <p>ffdfgdfg</p>
-    <p>ffdfgdfg</p>
-    <p>ffdfgdfg</p>
-    <p>ffdfgdfg</p>
-    <p>ffdfgdfg</p>
-    <p>ffdfgdfg</p>
-    <p>ffdfgdfg</p>
-    <p>ffdfgdfg</p>
-
-
    
     <footer>
-        <nav id="nav_bottom">
-            <div class="nav_home">
+        <nav id="nav-bottom">
+            <div class="nav-home">
                 Home
             </div>
 
-            <div class="nav_about">
-                About
+            <div class="nav-logout">
+                <a href="/auth/logout">Logout</a>
             </div>
 
-            <div class="nav_profile">
+            <div class="nav-profile">
                 Profile
             </div>
         </nav>

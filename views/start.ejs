@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Happy Math</title>
+    <!--font family-->
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+    <link rel="stylesheet" href="style1.css">
+</head>
+
+<body>
+    <nav id="nav_top">
+        <div>
+            Home
+        </div>
+
+        <div>
+            About
+        </div>
+
+        <div>
+            Profile
+        </div>
+    </nav>
+
+    <header>
+        <h1 id="title1">
+            Happy Math
+        </h1>
+    </header>
+
+    <div id="main-task-window">
+        Start New Game
+    </div>
+
+    <div id="summary-task">
+        Task Summary
+    </div>
+
+
+    <footer>
+        <nav id="nav_bottom">
+            <div class="nav_home">
+                Home
+            </div>
+
+            <div class="nav_about">
+                About
+            </div>
+
+            <div class="nav_profile">
+                Profile
+            </div>
+        </nav>
+    </footer>
+</body>
+
+<!--JS-->
+<noscript>None: JS is turned off in the Browser. For proper use of the page please turn JS on.</noscript>
+
+<script>
+    function func_buttondown(id) {
+        id.style.boxShadow = "none";
+        id.style.fontWeight = "bold";
+    }
+
+    function func_buttonup(id) {
+        id.style.boxShadow = "4px 4px 8px rgb(190, 190, 190)";
+        id.style.fontWeight = "normal";
+    }
+
+    function changeText(id) {
+        id.innerHTML = 'PRESS ME';
+    }
+</script>
+
+
+</html>

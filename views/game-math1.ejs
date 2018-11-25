@@ -3,29 +3,115 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" /> -->
     <!-- <script src="main.js"></script> -->
+
+    <title>Happy Math</title>
+    <!--font family-->
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+    <link rel="stylesheet" href="style1.css">
+    <script src="addition-task.js" async></script>
 </head>
+
+
 <body>
-    <nav>
-        <ul>
-            <li><a href="/">Homepage</a></li>
-            <li><a href="/auth/logout">Logout</a></li>
-        </ul>
-    </nav> 
+    <nav id="nav-top">
+        <div class="nav-home">
+            <a href="/">Home</a>
+        </div>
+
+        <div class="nav-logout">
+            <a href="/auth/logout">Logout</a>
+        </div>
+
+        <div class="nav_profile">
+          Profile
+        </div>
+    </nav>
+
+    
     <header>
-        <h1>This is the game!!!</h1>
-    </header>   
-    <main>
-        <button id="plus" value="plus">PLUS</button>
-        <button id="minus" value="minus">MINUS</button>
-        <button id="multiply" value="multiply">MULTIPLY</button>
-        <button id="division" value="division">DIVISION</button>
+        <h1 id="dynamic-title">Choose Your Task Type</h1>
+    </header>
+
+    <div id='choose-task'>
+        <div class="button-choose" id="plus" value="plus" onmousedown="func_button_new_game_on(this)">
+            ADDITION
+        </div>
+        <div class="button-choose" id="minus" value="minus">SUBTRACTION</div>
+        <div class="button-choose" id="multiply" value="multiply">MULTIPLICATION</div>
+        <div class="button-choose" id="division" value="division">DIVISION</div>
+        <div class="button-choose" id="new-game" onmousedown="func_choose_task_type_on(this)">
+            NEW GAME
+        </div>
+    </div>
+
+    <div id="json-temp">
         <p id="json"></p>
-    </main>
+    </div>
+
+    <div id="task-container">
+        
+        <div class="number" id="number1">
+            5
+        </div>
+
+        <div class="number" id="sign1">
+            +
+        </div>
+
+        <div class="number" id="number2">
+            4
+        </div>
+
+        <div class="number" id="line">
+            =
+        </div>
+
+        <div class="number" id="results">
+            ?
+        </div>
+    </div>
+
+    <div id="step-container">
+        <div class="digit" id="digit1">
+            5
+        </div>
+        
+        <div class="digit" id="sign-step">
+            +
+        </div>
+        
+        <div class="digit" id="digit2">
+            4
+        </div>
+
+        <div class="digit" id="sign-equal">
+            =
+        </div>
+
+        <input class="digit" id="user-answer" type="number" pattern="[0-9]*">
+            
+        </input>
+    </div>
+
+    <footer>
+        <nav id="nav-bottom">
+            <div class="nav-home">
+                <a href="/">Home</a>
+            </div>
+    
+            <div class="nav-logout">
+                <a href="/auth/logout">Logout</a>
+            </div>
+    
+            <div class="nav-profile">
+                Profile
+            </div>
+        </nav>
+    </footer>
 </body>
 
 <script>
@@ -106,5 +192,31 @@
 
 
 
+
+<script>
+    function func_changeText(id) {
+        id.innerHTML = 'NEW GAME';
+    }
+</script>
+
+<script>
+    function func_button_new_game_on(id) {
+        document.getElementById("minus").style.display = "none";
+        document.getElementById("multiply").style.display = "none";
+        document.getElementById("division").style.display = "none";
+        document.getElementById("new-game").style.display = "block";
+    }
+</script>
+
+<script>
+    function func_choose_task_type_on(id) {
+        document.getElementById("plus").style.display = "block";
+        document.getElementById("minus").style.display = "block";
+        document.getElementById("multiply").style.display = "block";
+        document.getElementById("division").style.display = "block";
+        document.getElementById("new-game").style.display = "none";
+    }
+
+</script>
 
 </html>
