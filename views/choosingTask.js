@@ -18,14 +18,32 @@ function loadTaskPlus(id) {
 
             // presenting the JSON in the console: 
             console.log(Obj)
+
+            document.getElementById("task-container").style.display = "flex";
+            // document.getElementById("step-container").style.display = "flex";
             
             // presenting the numbers in the task-container: 
             document.getElementById("number1").innerHTML = Obj.game_number[0];
             document.getElementById("number2").innerHTML = Obj.game_number[1];
             
             // creating varibles from the JSON data: 
-            var correctAnswer = Obj.game_result
+            var correctAnswer = Obj.game_result; 
+            
+            // reading steps and presenting them on the step-container 
+            // a second after the presentation of the whole task: 
+            setTimeout(timing_step_present, 1000)
 
+            function timing_step_present() {
+                var step_number = 1;
+                var digit1 = 3;
+                var digit2 = 5;
+
+                // presenting the step: 
+                document.getElementById("digit1").innerHTML = digit1;
+                document.getElementById("digit2").innerHTML = digit2;
+                document.getElementById("sign-step").innerHTML = sign;
+            }
+             
             // printing the results in the console:
             console.log("correct answer is" +  " " + correctAnswer)
 
@@ -39,6 +57,19 @@ function loadTaskPlus(id) {
     document.getElementById("multiply").style.display = "none";
     document.getElementById("division").style.display = "none";
     document.getElementById("new-game").style.display = "block";
+
+    // change color after the sec: 
+    setTimeout(digit_color_change, 1000)
+
+    function digit_color_change() {
+        document.getElementById("step-container").style.display = "flex";
+
+        document.getElementById("digit1").style.color = "#FF00FF";
+        document.getElementById("digit2").style.color = "#FF00FF";
+        document.getElementById("sign-step").style.color = "#FF00FF";
+        document.getElementById("sign-equal").style.color = "#FF00FF";
+    }
+
 }
 
 
@@ -135,4 +166,7 @@ function orderNewGame(id) {
     document.getElementById("multiply").style.display = "block";
     document.getElementById("division").style.display = "block";
     document.getElementById("new-game").style.display = "none";
+
+    document.getElementById("task-container").style.display = "none";
+    document.getElementById("step-container").style.display = "none";
 }
