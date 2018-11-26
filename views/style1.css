@@ -163,52 +163,26 @@ h1:hover{
 
 #new-game{
     display: none; 
-    font-size: 1.5em; 
+    font-size: 1.5em;
+    border-radius: 50px; 
+    position: fixed;
+    top: 16%; 
+    right: 8%;
+    font-size: 1em; 
 }
 /*---------------------------------------------------------*/
-
-/*---------- WINDOW OF STEPS - INTERACTION WITH A USER -------------*/
-#step-container{
-    display: flex;  /*or none*/
-    flex-direction: row;
-    justify-content: space-around; /*distributes items eventually within the flex container*/
-    align-items: stretch;  /*items occupy the entire space of the container*/
-
-    position: fixed;
-    top:40%; 
-    left: 50%;
-    /* bring your own prefixes */
-    transform: translate(-50%, -50%); 
-    text-align: center;
-    border: 1px solid rgb(220, 220, 220);
-    min-width: 200px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 200px 0 rgba(0, 0, 0, 0.19); /*effect that creates paper-like cards*/
-
-    font-size: 2em;
-}
-
-.digit{
-    margin: 0.5px;
-}
-
-input{
-    border-radius: 5px;    
-}
-/*--------------------------------------------------------------*/
-
 
 
 /*----------------- AN ASSIGNMENT WINDOW-------------------*/
 /*---------TASK-CONTAINER---------*/
 #task-container{
-    display: flex;  /* flex or none*/
+    display: none;  /* flex or none*/
     flex-direction: row;  /*column or row*/
     justify-content: space-around; /*distributes items eventually within the flex container*/
     align-items: center;  /*items occupy the entire space of the container*/
 
     position: fixed;
-    top:75%; 
+    top:40%; 
     left: 50%;
     /* bring your own prefixes */
     transform: translate(-50%, -50%); 
@@ -230,6 +204,69 @@ input{
     font-size: 1.5em; 
 }
 /*---------------------------------------------------------*/
+
+
+
+/*---------- WINDOW OF STEPS - INTERACTION WITH A USER -------------*/
+#step-container{
+    display: none;  /*or none*/
+    flex-direction: row;
+    justify-content: space-around; /*distributes items eventually within the flex container*/
+    align-items: stretch;  /*items occupy the entire space of the container*/
+
+    position: fixed;
+    top:75%; 
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%); 
+    text-align: center;
+    border: 1px solid rgb(220, 220, 220);
+    min-width: 200px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 200px 0 rgba(0, 0, 0, 0.19); /*effect that creates paper-like cards*/
+
+    font-size: 2em;
+}
+
+.digit{
+    margin: 0.5px;
+}
+
+input{
+    border-radius: 5px;    
+}
+
+#submit-answer {
+    font-size: 1em; 
+    border-radius: 50px; 
+}
+/*--------------------------------------------------------------*/
+
+
+/*---------------------------FORM------------------------------*/
+#form-container{
+    display: none;  /*or none*/
+    flex-direction: row;
+    justify-content: space-around; /*distributes items eventually within the flex container*/
+    align-items: stretch;  /*items occupy the entire space of the container*/
+
+    position: fixed;
+    top:40%; 
+    left: 40%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%); 
+    text-align: center;
+    border: 1px solid rgb(220, 220, 220);
+    min-width: 200px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 200px 0 rgba(0, 0, 0, 0.19); /*effect that creates paper-like cards*/
+
+    font-size: 1em;
+}
+
+
+
+
 
 
 
@@ -263,7 +300,7 @@ nav{    /*Parent element*/
     color: #FF00FF;
 }
 
-/*-----------MEDIA QUERY-----------*/
+/*--------------------MEDIA QUERY--------------------*/
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
      .button-choose{
@@ -279,12 +316,12 @@ nav{    /*Parent element*/
         flex-direction: column;
     }
 
-    #step-container{
-        top: 50%; 
+    #task-container{
+        top: 35%;
     }
 
-    #task-container{
-        top: 75%;
+    #step-container{
+        top: 65%; 
     }
 }
 
