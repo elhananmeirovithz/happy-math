@@ -1,7 +1,3 @@
-// console.log('Hello!')
-
-// console.log(window.screen)  // The window.screen object contains information about the user's screen
-
 function taskPlus(id) {
 
     // buttons of task choice disappear: 
@@ -70,28 +66,9 @@ function taskPlus(id) {
             }
         }
     };
+    
     xhttp.open("GET", "./game-math1/targil/plus", true);  // specifies the request
     xhttp.send();  // sends the request to the server
-
-    
-    // document.getElementById("new-game").style.
-
-
-    // change the color after the 1.5 sec: 
-    //setTimeout(step_appears, 1500)
-
-   // function step_appears() {
-        // the task and the first steps appear when a user chooses a game type
-        //document.getElementById("task-container").style.display = "flex";
-        //document.getElementById("step-container").style.display = "flex";
-
-        //document.getElementById("digit1").style.color = "#FF00FF";
-        //document.getElementById("digit2").style.color = "#FF00FF";
-        //document.getElementById("sign-step").style.color = "#FF00FF";
-        //document.getElementById("sign-equal").style.color = "#FF00FF";
-    //}
-
-    // new-game button appears
 
 }
 
