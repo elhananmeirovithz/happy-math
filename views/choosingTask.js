@@ -15,8 +15,20 @@ function loadTaskPlus(id) {
             console.log('Yes!')
 
             var Obj = JSON.parse(this.responseText);
+
+            // presenting the JSON in the console: 
             console.log(Obj)
-            //document.getElementById('dynamic-title').innerHTML = this.responseText;
+            
+            // presenting the numbers in the task-container: 
+            document.getElementById("number1").innerHTML = Obj.game_number[0];
+            document.getElementById("number2").innerHTML = Obj.game_number[1];
+            
+            // creating varibles from the JSON data: 
+            var correctAnswer = Obj.game_result
+
+            // printing the results in the console:
+            console.log("correct answer is" +  " " + correctAnswer)
+
         }
     };
     xhttp.open("GET", "./game-math1/targil/plus", true);  // specifies the request

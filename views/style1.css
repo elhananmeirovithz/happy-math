@@ -104,6 +104,7 @@ h1:hover{
     font-size: 1.2em; 
     border-radius: 10px; 
     box-shadow: 4px 4px 8px rgb(190, 190, 190);
+    align-content: center;  /*This aligns a flex container's lines within when there is extra space in the cross-axis*/
 }
 
 /*mouse over buttons */
@@ -162,6 +163,7 @@ h1:hover{
 
 #new-game{
     display: none; 
+    font-size: 1.5em; 
 }
 /*---------------------------------------------------------*/
 
