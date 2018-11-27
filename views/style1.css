@@ -10,6 +10,7 @@ body{
 /*no underline for links*/
 a{
     text-decoration: none; 
+    font-size: 1.5em;
 }
 /*---------------------------------------------------------------*/
 
@@ -39,6 +40,10 @@ a{
     color: #FF00FF;
 }
 
+.nav_profile{
+    display: none; 
+}
+
 
 /*HEADER AND TITLE*/
 header{
@@ -54,7 +59,7 @@ header{
 h1{
     text-align: left;
     color: cornflowerblue; 
-    font-size: 1.5em; 
+    font-size: 2em; 
     margin:0 0 0 10px;
     text-shadow: 2px 2px rgb(228, 228, 228);
     border-radius: 5px; 
@@ -99,6 +104,7 @@ h1:hover{
     font-size: 1.2em; 
     border-radius: 10px; 
     box-shadow: 4px 4px 8px rgb(190, 190, 190);
+        align-content: center;  /*This aligns a flex container's lines within when there is extra space in the cross-axis*/
 }
 
 /*mouse over buttons */
@@ -118,13 +124,13 @@ h1:hover{
 
 
 /*---------WINDOW FOR CHOOSING AN ASSIGNMENT TYPE---------*/
-
 /*---------CHOOSE-TASK---------*/
 #choose-task{
     display: flex;
-    flex-flow: row wrap; 
-    justify-content: space-around; /*distributes items eventually within the flex container*/
-    align-items: stretch;  /*items occupy the entire space of the container*/
+    flex-flow: row unwrap; 
+    justify-content: space-evenly; /*distributes items eventually within the flex container*/
+    align-items: flex-end;  /*items occupy the entire space of the container*/
+    align-content: center;  /*This aligns a flex container's lines within when there is extra space in the cross-axis*/
 
     position: fixed;
     top:20%; 
@@ -142,7 +148,7 @@ h1:hover{
     margin: 5px; 
     min-width: 100px;
     min-height: 20px; 
-    font-size: 1em; 
+    font-size: 1.2em; 
     border-radius: 10px; 
     box-shadow: 4px 4px 8px rgb(190, 190, 190);
     text-align: center; 
@@ -157,21 +163,26 @@ h1:hover{
 
 #new-game{
     display: none; 
+    font-size: 1.5em;
+    border-radius: 80px; 
+    position: fixed;
+    top: 16%; 
+    right: 8%;
+    font-size: 1.2em; 
 }
 /*---------------------------------------------------------*/
 
 
 /*----------------- AN ASSIGNMENT WINDOW-------------------*/
-
 /*---------TASK-CONTAINER---------*/
 #task-container{
-    display: flex;  /* flex or none*/
+    display: none;  /* flex or none*/
     flex-direction: row;  /*column or row*/
     justify-content: space-around; /*distributes items eventually within the flex container*/
-    align-items: stretch;  /*items occupy the entire space of the container*/
+    align-items: center;  /*items occupy the entire space of the container*/
 
     position: fixed;
-    top:45%; 
+    top:40%; 
     left: 50%;
     /* bring your own prefixes */
     transform: translate(-50%, -50%); 
@@ -182,32 +193,32 @@ h1:hover{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 200px 0 rgba(0, 0, 0, 0.19); /*effect that creates paper-like cards*/
 
     font-size: 2em; 
+    color: cornflowerblue;
 }
 
 .number{
-    border: 0.5px solid red;
     margin: 1px; 
 }
 
 #results{
     font-size: 1.5em; 
-    color: red; 
 }
 /*---------------------------------------------------------*/
 
 
+
 /*---------- WINDOW OF STEPS - INTERACTION WITH A USER -------------*/
 #step-container{
-    display: flex;  /*or none*/
+    display: none;  /*or none*/
     flex-direction: row;
     justify-content: space-around; /*distributes items eventually within the flex container*/
     align-items: stretch;  /*items occupy the entire space of the container*/
 
     position: fixed;
+    top:75%; 
     left: 50%;
     /* bring your own prefixes */
     transform: translate(-50%, -50%); 
-    top:60%; 
     text-align: center;
     border: 1px solid rgb(220, 220, 220);
     min-width: 200px;
@@ -218,21 +229,52 @@ h1:hover{
 }
 
 .digit{
-    border: 1px solid red;
     margin: 0.5px;
 }
 
-#json-temp{
-    top: 40%; 
-    left: 5px; 
+input{
+    border-radius: 5px;    
+}
+
+#submit-answer {
+    font-size: 1em; 
+    border-radius: 50px; 
 }
 /*--------------------------------------------------------------*/
+
+
+/*---------------------------FORM------------------------------*/
+#form-container{
+    display: none;  /*or none*/
+    flex-direction: row;
+    justify-content: space-around; /*distributes items eventually within the flex container*/
+    align-items: stretch;  /*items occupy the entire space of the container*/
+
+    position: fixed;
+    top:40%; 
+    left: 40%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%); 
+    text-align: center;
+    border: 1px solid rgb(220, 220, 220);
+    min-width: 200px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 200px 0 rgba(0, 0, 0, 0.19); /*effect that creates paper-like cards*/
+
+    font-size: 1em;
+}
+
+
+
+
+
+
 
 
  /*---------------------------FOOTER----------------------------*/
 nav{    /*Parent element*/
     /*setting flex container properties*/
-    display: flex; 
+    display: none; 
     flex-flow: row wrap;
     justify-content: space-around; 
     border: 1px solid cornflowerblue;
@@ -258,3 +300,56 @@ nav{    /*Parent element*/
     color: #FF00FF;
 }
 
+/*--------------------MEDIA QUERY--------------------*/
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+     .button-choose{
+        font-size: 1em; 
+    }
+
+    h1{
+        font-size: 1.5em; 
+    }
+
+    #choose-task{
+        top: 20%; 
+        flex-direction: column;
+    }
+
+    #task-container{
+        top: 35%;
+    }
+
+    #step-container{
+        top: 65%; 
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+
+} 
+
+
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .button-choose{
+        font-size: 2em; 
+    }
+
+    h1{
+        font-size: 2.5em; 
+
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+
+} 
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    
+}
