@@ -15,6 +15,7 @@ module.exports = {
         //var num = [125,1515,1215,1568767];
         var steps_string = new(Array);
         var steps_results = new(Array);
+        var steps_list = new(Array);
 
         var num_string = new(Array);
         var num_string_length = new(Array);
@@ -34,21 +35,40 @@ module.exports = {
         while (i < num_string_length_max) {
             // get the numbers for calculation //
             tmp = "";
+            var json_digits = {};
+            json_digits["step_number"] = i + 1;
+            json_digits["sign"] = "+";
+            
             if (nExtra != 0){
                 tmp = nExtra;
+                json_digits["digit0"] =  math.string(nExtra);
             }
+            var n = 0
+            
             num_string.forEach(function(value){
                 if (i < value.length) {
                     if (tmp != ""){
                         tmp = tmp + "+";
                     }
                     tmp = tmp + value.substr(-1*(i+1),1);
+                    json_digits["digit" + (n + 1)] = value.substr(-1*(i+1),1);
+                    n = n+1;
                 } else {
                 }
             });
             steps_string.push(tmp);
             steps_results.push(math.eval(tmp));
             nExtra = math.floor(math.eval(tmp)/10); // to make the extra number
+
+            json_digits["results"] = math.eval(tmp);
+            steps_list.push(json_digits)
+
+            // steps_list.push({
+            //     step_number: i + 1,
+            //     json_digits,
+            //     sign: "+",
+            //     results: math.eval(tmp)
+            // })
             i = i + 1;
         }
         var res_json = ({
@@ -56,7 +76,8 @@ module.exports = {
             game_number: num,
             game_result: steps_results_total,
             steps_string: steps_string,
-            steps_results: steps_results
+            steps_results: steps_results,
+            steps: steps_list
         })
         return res_json
 
