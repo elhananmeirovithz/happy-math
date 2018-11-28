@@ -14,14 +14,17 @@ function evaluateInput() {
 
     if (userInput == correctStepAnswer) {
         console.log("Correct!")
+        document.getElementById("dynamic-title").innerHTML = "Correct!";
+
         presentDigit = String(userInput%10); 
         console.log(presentDigit)
         console.log(typeof presentDigit)
         document.getElementById("results4").value = "5";  // doesn't work
-        
+
     } else {
         console.log("Try again!")
         document.getElementById("user-answer").value = ""; // clear the value
+        document.getElementById("dynamic-title").innerHTML = "Try again";
     } 
 }
 
@@ -29,6 +32,8 @@ function evaluateInput() {
 // The task container appears and the numbers in the container appear as well according to JSON: 
 function task_appears(Obj) {
     document.getElementById("task-container").style.display = "flex";  // task container appears
+    document.getElementById("dynamic-title").innerHTML = "Let's Play";
+
 
     // presenting the numbers in the task-container: 
     document.getElementById("number1").innerHTML = Obj.game_number[0];
@@ -339,4 +344,6 @@ function orderNewGame(id) {
 
     document.getElementById("task-container").style.display = "none";
     document.getElementById("step-container").style.display = "none";
+
+    document.getElementById("dynamic-title").innerHTML = "Choose Your Task Type!";
 }
