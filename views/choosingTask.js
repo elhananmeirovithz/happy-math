@@ -1,6 +1,28 @@
+//var Obj;
+
 function evaluateInput() {
     userInput = document.getElementById("user-answer").value;
     console.log("user input is " + userInput)
+    console.log(Obj)
+
+    var digit1 = Number(document.getElementById("digit1").textContent);
+    var digit2 = Number(document.getElementById("digit2").textContent);
+    console.log(digit1 + "+" + digit2)
+    //console.log(typeof digit1)
+
+    var correctStepAnswer = digit1 + digit2; 
+
+    if (userInput == correctStepAnswer) {
+        console.log("Correct!")
+        presentDigit = String(userInput%10); 
+        console.log(presentDigit)
+        console.log(typeof presentDigit)
+        document.getElementById("results4").value = "5";  // doesn't work
+        
+    } else {
+        console.log("Try again!")
+        document.getElementById("user-answer").value = ""; // clear the value
+    } 
 }
 
 
@@ -11,8 +33,25 @@ function task_appears(Obj) {
     // presenting the numbers in the task-container: 
     document.getElementById("number1").innerHTML = Obj.game_number[0];
     document.getElementById("number2").innerHTML = Obj.game_number[1];
-}
 
+    numberOfDigits = Obj.game_result.toString().length;
+    console.log("number of digits in the results is " + numberOfDigits)
+
+    string_to_present = "?"; 
+
+    for (var i = 0; i < numberOfDigits; i++) {
+        // string_to_present = string_to_present + "?";
+
+        elementName = "results" + String(i+1);
+        // console.log(elementName)
+        document.getElementById(elementName).style.display = "inline"; 
+        // document.getElementById(elementName).innerHTML = "?";
+    }
+    
+    document.getElementById(elementName).innerHTML = "?";
+
+    //document.getElementById("results1").innerHTML = string_to_present; 
+}
 
 
 function step_appears(Obj) {
@@ -27,6 +66,7 @@ function step_appears(Obj) {
     document.getElementById("digit1").innerHTML = digit1;
     document.getElementById("digit2").innerHTML = digit2;
     document.getElementById("sign-step").innerHTML = sign;
+    document.getElementById("user-answer").value = ""; // clear the value
 }
 
 
@@ -54,7 +94,7 @@ function taskPlus(id) {
         //console.log(this.status)
 
         if (this.readyState == 4 && this.status == 200) {  // when the response is ready, parse the JSON to object Obj
-            var Obj = JSON.parse(this.responseText);   // object with the task
+            Obj = JSON.parse(this.responseText);   // object with the task. It's a global var since there is no var declaration
 
             // the task appears 300 millisec after pressin the task name
             setTimeout(task_appears, 300, Obj)
@@ -73,7 +113,7 @@ function taskPlus(id) {
 
             // reading steps and presenting them on the step-container 
             // a second after the presentation of the whole task: 
-            setTimeout(step_appears, 1500, Obj)
+            setTimeout(step_appears, 500, Obj)
 
 
             // loop for reading the steps
@@ -87,7 +127,7 @@ function taskPlus(id) {
             //}            
 
 
-            setTimeout(new_game_button_appears, 3000)
+            setTimeout(new_game_button_appears, 1000)
 
             
         }  // closes if for reading the JSON
@@ -97,9 +137,6 @@ function taskPlus(id) {
     xhttp.send();  // sends the request to the server
 
 }
-
-
-
 
 
 

@@ -200,9 +200,26 @@ h1:hover{
     margin: 1px; 
 }
 
-#results{
+#results1{
+    display: none; /*inline*/
     font-size: 1.5em; 
 }
+
+#results2{
+    display: none; 
+    font-size: 1.5em; 
+}
+
+#results3{
+    display: none; 
+    font-size: 1.5em; 
+}
+
+#results4{
+    display: none; 
+    font-size: 1.5em; 
+}
+
 /*---------------------------------------------------------*/
 
 
