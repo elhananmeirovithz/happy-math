@@ -13,7 +13,11 @@
     <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
     <link rel="stylesheet" href="style1.css">
     <script src="choosingTask.js" async></script>
-</head>
+
+    <!-- To deal with notification: Refused to load the font 'data:font/woff…'
+    it violates the following Content Security Policy directive: “default-src 'self'”. Note that 'font-src' 
+    <meta http-equiv="Content-Security-Policy" content="font-src 'self' data:; img-src 'self' data:; default-src 'self' http://121.0.0:3000/">
+</head>-->
 
 
 <body>
@@ -52,42 +56,36 @@
         NEW<br/>GAME
     </div>
 
+    <div id="decimal_num">1</div>
+
 
     <div id="task-container">
         
-        <div class="number" id="number1">
-            55
-        </div>
+        <div class="number" id="number1"></div>
 
         <div class="number" id="sign1">
             +
         </div>
 
-        <div class="number" id="number2">
-            44
-        </div>
+        <div class="number" id="number2"></div>
 
         <div class="number" id="line">
             =
         </div>
 
-        <div class="number" id="results">
-            ?
-        </div>
+        <div class="number" id="results1">?</div>
+        <div class="number" id="results2">?</div>
+        <div class="number" id="results3">?</div>
+        <div class="number" id="results4">?</div>
+
     </div>
 
-    <form id="step-container" action="/my-handling-form-page" method="GET">
-        <div class="digit" id="digit1">
-            5
-        </div>
+    <form id="step-container">
+        <div class="digit" id="digit1"></div>
 
-        <div class="digit" id="sign-step">
-            +
-        </div>
+        <div class="digit" id="sign-step"></div>
 
-        <div class="digit" id="digit2">
-            4
-        </div>
+        <div class="digit" id="digit2"></div>
 
         <div class="digit" id="sign-equal">
             =
@@ -97,7 +95,7 @@
             <input class="digit" name="something" id="user-answer" type="number" pattern="[0-9]*" value="">
         </div>
 
-        <div class="button-choose" id="submit-answer">
+        <div type="submit" class="button-choose" id="submit-answer" onclick="evaluateInput()" >
             SEND
         </div>
     </form>

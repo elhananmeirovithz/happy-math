@@ -125,6 +125,11 @@ h1:hover{
 
 /*---------WINDOW FOR CHOOSING AN ASSIGNMENT TYPE---------*/
 /*---------CHOOSE-TASK---------*/
+#decimal_num{
+    display: none; 
+    font-size: 2em; 
+}
+
 #choose-task{
     display: flex;
     flex-flow: row unwrap; 
@@ -198,11 +203,29 @@ h1:hover{
 
 .number{
     margin: 1px; 
+    font-color: cornflowerblue; 
 }
 
-#results{
+#results1{
+    display: none; /*inline*/
     font-size: 1.5em; 
 }
+
+#results2{
+    display: none; 
+    font-size: 1.5em; 
+}
+
+#results3{
+    display: none; 
+    font-size: 1.5em; 
+}
+
+#results4{
+    display: none; 
+    font-size: 1.5em; 
+}
+
 /*---------------------------------------------------------*/
 
 
