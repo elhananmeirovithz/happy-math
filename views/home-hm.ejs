@@ -49,9 +49,17 @@
         </div>
         
         <div class="button-signup" onmousedown="func_buttondown(this)" onmouseup="func_buttonup(this)">
-            BE OUR GUEST
+            <a class="passport-local-btn" href="/login/">BE OUR GUEST</a>
         </div>
-        
+        <!-- this is a form to make a post -->
+        <form method="POST", action="/auth/passport-local/">  
+            <input type="hidden" name="username" value="guest@guest.com">
+            <input type="hidden" name="password" value="guest">
+            <input type ="submit" value = "BE OUR GUEST" />
+        </form>
+
+
+
         <% } %>
     </div>
    

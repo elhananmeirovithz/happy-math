@@ -2,6 +2,7 @@ const passport = require('passport');
 
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 const facebookStrategy = require('passport-facebook');
+const LocalStrategy = require('passport-local').Strategy;
 
 const keys = require('./keys');
 const request = require('request')
@@ -108,4 +109,36 @@ passport.use(
             }
         })       
     }
-));//fire next
+));
+
+passport.use(
+    new LocalStrategy (
+        function(username, password, done) {
+            User.findOne({email:username})
+            .then(currentUser =>{
+                if(currentUser){
+                    //already have the user
+                    //console.log('user is:', currentUser);
+                    done(null,currentUser);
+                } else {
+                    new User({
+                        _id: new mongoose.Types.ObjectId(),
+                        email: username,
+                        password: password,
+                        username: username
+                    })
+                    .save()
+                    .then(newUser => {
+                        //console.log('new user created:', newUser);
+                        done(null,newUser);
+                    })
+                    .catch(err => {
+                        console.log(err);
+                        res.status(500).json({
+                            error: err
+                        });
+                });
+            }
+        })       
+    }
+));
