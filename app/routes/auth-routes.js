@@ -54,16 +54,5 @@ router.post('/passport-local',
     }));
 
 
-// router.get('/passport-local', passport.authenticate('local',{
-//     scope: ['email', 'user_birthday']
-// }));
-
-// // callback route for redirect to
-// router.get('/passport-local/redirect', 
-//     passport.authenticate('passport-local'),  
-//     (req,res) => {
-//         // res.send(req.user)
-//         res.redirect('/game-math1');
-// });
 
 module.exports = router;
