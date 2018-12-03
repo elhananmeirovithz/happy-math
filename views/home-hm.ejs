@@ -35,20 +35,19 @@
 
     <div id="signup-container">
         <% if (user) {%>
-        <div class="button-signup" onmousedown="func_buttondown(this)" onmouseup="func_buttonup(this)">
-            <a href="/game-math1">Start New Game</a>
-        </div>
+            <!-- If user, automatically redirect to the 'game-math' page: -->
+            <meta http-equiv="refresh" content="0; url='/game-math1'">
         
-        <% } else  { %>
-        <div class="button-signup" onmousedown="func_buttondown(this)" onmouseup="func_buttonup(this)">
+        <% } else  { %> 
+        <div class="button-signup" id="fb" onmousedown="func_buttondown(this)" onmouseup="func_buttonup(this)">
             <a class="facebook-btn" href="/auth/facebook">SIGN UP WITH FACEBOOK</a>
         </div>
         
-        <div class="button-signup" onmousedown="func_buttondown(this)" onmouseup="func_buttonup(this)">
+        <div class="button-signup" id="google" onmousedown="func_buttondown(this)" onmouseup="func_buttonup(this)">
             <a class="google-btn" href="/auth/google">SIGN UP WITH GOOGLE+</a>
         </div>
         
-        <div class="button-signup" onmousedown="func_buttondown(this)" onmouseup="func_buttonup(this)">
+        <div class="button-signup" id="guest" onmousedown="func_buttondown(this)" onmouseup="func_buttonup(this)">
             <a class="passport-local-btn" href="/login/">BE OUR GUEST</a>
         </div>
         <!-- this is a form to make a post -->
@@ -57,8 +56,6 @@
             <input type="hidden" name="password" value="guest">
             <input type ="submit" value = "BE OUR GUEST" />
         </form>
-
-
 
         <% } %>
     </div>
@@ -85,6 +82,7 @@
 
 <script>
     function func_buttondown(id) {
+        // document.getElementById("signup-container").style.display = "flex";
         id.style.boxShadow = "none";
         id.style.fontWeight = "bold"; 
     }
@@ -94,9 +92,6 @@
         id.style.fontWeight = "normal"; 
     }
 
-    function changeText(id) {
-        id.innerHTML = 'PRESS ME';
-    }
 </script>
 
 
