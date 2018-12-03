@@ -17,12 +17,24 @@ function taskPlus(id) {
             Obj = JSON.parse(this.responseText);   // object with the task. It's a global var since there is no var declaration
             num_of_digits = Obj.game_result.toString().length;  // counts number of digits in the task results
             num_of_steps = Obj.steps.length;  // global variable
-            correctTaskAnswer = Obj.game_result;  // global variable
+
+            // Checks the special case where the number of digits in the answer is greater than the number of steps
+            if (num_of_digits != num_of_steps) {
+                specialCase1 = true; 
+            } else {
+                specialCase1 = false; 
+            }
             
+            correctTaskAnswer = Obj.game_result;  // global variable            
             current_step_num = 1;
             decimal = 0;
 
+            // Define the future string 'task_answer' that will represent the number the user composes 
+            // from her correct steps' answers and presents it in the task-container: 
+            task_answer = ''; 
+
             console.log(Obj)
+            console.log('Correct game results are ...' + correctTaskAnswer)
 
             // the task appears 300 millisec after pressing the task name
             setTimeout(task_appears, 300)            
@@ -67,41 +79,42 @@ function task_appears() {
 
 
 
-function step_appears() {    
+function step_appears() {
+    console.log('Starts step num ' + current_step_num)
     if (Obj.game_type == "plus") {
         var sign = "+"; 
     }
     //var sign = Obj.steps[current_step_num - 1].sign;
 
     try {
-        var digit1 = Obj.steps[current_step_num - 1].digit1;
+        step_digit1 = Obj.steps[current_step_num - 1].digit1;
     }
     catch(err) {
         console.log("bug1")
     }
 
     try {
-        var digit2 = Obj.steps[current_step_num - 1].digit2;
-        var correctStepAnswer = Obj.steps[current_step_num - 1].results;
+        step_digit2 = Obj.steps[current_step_num - 1].digit2;
+        correctStepAnswer = Obj.steps[current_step_num - 1].results;
     }
     catch (err) {
         console.log("bug2")
     }
 
-    if (digit1 == undefined) {
-        digit1 = 0;
+    if (step_digit1 == undefined) {
+        step_digit1 = 0;
     }
 
-    if (digit2 == undefined) {
-        digit2 = 0;
+    if (step_digit2 == undefined) {
+        step_digit2 = 0;
     }
 
 
-    // presenting the step: 
+    // presenting digits of the step: 
     document.getElementById("step-container").style.display = "flex";
 
-    document.getElementById("digit1").innerHTML = digit1;
-    document.getElementById("digit2").innerHTML = digit2;
+    document.getElementById("digit1").innerHTML = step_digit1;
+    document.getElementById("digit2").innerHTML = step_digit2;
     document.getElementById("sign-step").innerHTML = sign;
     document.getElementById("user-answer").value = ""; // clear the value
 
@@ -111,25 +124,23 @@ function step_appears() {
         document.getElementById("decimal-step").style.display = "none";
     }
 
-    // CHECK IF IT'S THE FINAL STEP
-    if (current_step_num == num_of_digits) {
-        console.log("--Finished--")
-    }
-
-    // IF IT IS, CHECK IF THE ANSWER IS CORRECT
+    
 
     // presenting the current step's "?" in red:
-    elementName = "results" + String(num_of_digits + 1 - current_step_num);
-    console.log('number of digits in answer = ' + num_of_digits)
-    console.log('current step is ' + current_step_num)
-    document.getElementById(elementName).style.color = "red";
+    
+    //elementName = "results" + String(num_of_digits + 1 - current_step_num);
+    //console.log('number of digits in answer = ' + num_of_digits)
+    //console.log('current step is ' + current_step_num)
+    //document.getElementById(elementName).style.color = "red";
+
+    // COLORS (temporarily disabled): 
 
     // presenting the previous correct answer in blue:
-    previous_elementName = "results" + String(num_of_digits + 2 - current_step_num);
-    console.log('previous step num is ' + previous_elementName)
-    if (current_step_num !== 1) {
-        document.getElementById(previous_elementName).style.color = "cornflowerblue";
-    }
+    // previous_elementName = "results" + String(num_of_digits + 2 - current_step_num);
+    //console.log('previous step num is ' + previous_elementName)
+    //if (current_step_num !== 1) {
+      //  document.getElementById(previous_elementName).style.color = "cornflowerblue";
+    //}
 
 }
 
@@ -139,6 +150,9 @@ function step_appears() {
 
 
 function evaluateInput() {
+    console.log('')
+    console.log('Evaluates input on the step num ' + current_step_num)
+
     
     // printing the object, task results and the total number of steps in the console:
     //console.log(Obj)
@@ -147,28 +161,79 @@ function evaluateInput() {
 
     userInput = document.getElementById("user-answer").value;
 
-    var digit1 = Number(document.getElementById("digit1").textContent);
-    var digit2 = Number(document.getElementById("digit2").textContent);
+    //var digit1 = Number(document.getElementById("digit1").textContent);
+    //var digit2 = Number(document.getElementById("digit2").textContent);
+
     //console.log('current step equatation is ' + digit1 + "+" + digit2)
     //console.log("user input is " + userInput)
 
     //console.log(typeof digit1)
 
-    var correctStepAnswer = digit1 + digit2 + decimal; 
-
     if (userInput == correctStepAnswer) {
         console.log("Correct!")
         document.getElementById("dynamic-title").innerHTML = "Correct!";
 
-        var remainder = userInput%10;
+        remainder = userInput%10;
         decimal = (userInput - remainder)/10; 
-        console.log('decimal  ' + decimal)
+
+        //console.log('decimal  ' + decimal)
 
         // presenting step's results on the task-container: 
         elementName = "results" + String(num_of_digits + 1 - current_step_num);
-        console.log('number of steps = ' + num_of_steps)
-        console.log('current step is ' + current_step_num)
+        //console.log('number of steps = ' + num_of_steps)
+        //console.log('current step is ' + current_step_num)
+
+        // Presenting the correct step's answer on the task-container: 
         document.getElementById(elementName).innerHTML = remainder;
+
+        // Composing the user answer presented in the task container: 
+        task_answer = String(remainder) + task_answer;
+        console.log('composing the answer... ' + task_answer)
+
+
+
+        // SPECIAL CASE 1 - it's a final step and the answer of the step is higher than 9 
+        // in other words, number of digit in the answer is diff from the number of steps: 
+        if (current_step_num == Obj.steps.length) {  // makes sure that is the last step 
+            console.log("--Last step--")
+            //console.log(step_digit1)
+            //console.log(step_digit2)
+            //console.log(decimal)
+
+            if (specialCase1 == true) {
+                console.log('last step & special case 1')
+
+                
+
+                
+                
+                document.getElementById('step-container').style.display = "none"; // clear step-container
+                document.getElementById('results1').innerHTML = '1';
+
+                // updation task_answer
+                task_answer = '1' + task_answer;
+
+                if (task_answer == correctTaskAnswer) {
+                    console.log('Congratulaitons!')
+                    document.getElementById('step-container').style.display = "none"; // clear step-container
+
+                    return;  // stoping the function
+                } else {
+                    console.log('error')
+                }
+
+                 
+            }
+
+           // if (step_digit1 == 0 && step_digit2 == 0 && decimal != 0) {
+              //  console.log('finished')
+                // clear step's presentation
+             //   document.getElementById('results1').innerHTML = decimal;
+             //   document.getElementById('step-container').style.display = "none"; // clear step-container
+
+          //  }
+        }
+
 
         if (decimal !== 0) {
             presentDecimal()
@@ -176,19 +241,41 @@ function evaluateInput() {
             eraseDecimal()
         }
 
-        console.log('current step num is ' + current_step_num)
+        // Composing the user answer presented in the task container: 
+       // task_answer = String(remainder) + task_answer;
+       // console.log('composing the answer... ' + task_answer)
+        
+        // IF THE TASK IS FINISHED, MAKES SURE THE ANSWER IS CORRECT
+        if (task_answer.length == num_of_digits) {
+            console.log('You finished the task!!!')
+
+            if (task_answer == correctTaskAnswer) {
+                console.log('Congratulaitons!')
+                document.getElementById('step-container').style.display = "none"; // clear step-container
+
+                return;  // stoping the function
+            }
+
+        }
+
+        //console.log('current step num is ' + current_step_num)
 
         // when the step's answer is correct, proceed to the next step: 
         current_step_num = current_step_num + 1; 
-
         setTimeout(step_appears, 1000, Obj, current_step_num)
 
-    } else {
+    } else {  // the step's answer is incorrect: 
         console.log("Try again!")
-        console.log(userInput)
+        //console.log(userInput)
         document.getElementById("user-answer").value = ""; // clear the value
         document.getElementById("dynamic-title").innerHTML = "Try again";
     } 
+
+    // IF IT IS, CHECK IF THE ANSWER IS CORRECT
+    //if (digit1 == 0 || digit2 == 0 || decimal || 0) {
+    //    console.log('You finished the task!!!')
+   // }
+
 }
 
 
