@@ -86,7 +86,9 @@ function task_appears() {
 function step_appears() {
     console.log('Starts step num ' + current_step_num)
     if (Obj.game_type == "plus") {
-        var sign = "+"; 
+        sign = "+"; 
+    } else if (Obj.game_type == "minus") {
+        sign = "-"; 
     }
 
     try {
@@ -118,11 +120,12 @@ function step_appears() {
 
     document.getElementById("digit1").innerHTML = step_digit1;
     document.getElementById("digit2").innerHTML = step_digit2;
-    document.getElementById("sign-step").innerHTML = sign;
+    document.getElementById("sign2").innerHTML = sign;
     document.getElementById("user-answer").value = ""; // clear the value
 
     if (decimal == 1) {
         document.getElementById("decimal-step").style.display = "inline";
+        document.getElementById("sign3").innerHTML = sign;
     } else {
         document.getElementById("decimal-step").style.display = "none";
     }
