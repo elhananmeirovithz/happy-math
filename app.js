@@ -11,10 +11,12 @@ const passportSetup = require ('./app/config/passport-setup');// just to make it
 const mongooseSetup = require ('./app/config/db_connect');// just to make it run
 const authRoutes = require('./app/routes/auth-routes'); // this make the product.js have only one / without the foulder
 const gameMath1Routes = require('./app/routes/game-math1'); 
-
+const gameTestRoutes = require('./app/routes/game-math-test'); 
+const gameAdminRoutes = require('./app/routes/game-admin'); 
 
 //api routes
 const api_userRoutes = require('./api/routes/user');
+const api_targilRoutes = require('./api/routes/targil');
 
 // set up view engine
 app.set('view engine', 'ejs')
@@ -30,7 +32,7 @@ app.use(passport.session());
 // set up routes
 app.use(morgan('dev'));
 //Handles post requests
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 
@@ -46,12 +48,22 @@ app.use((req, res, next) => {
 	next();
 });
 
+app.use('/api/user',api_userRoutes);//handling the name of the rout
+app.use('/api/targil',api_targilRoutes);//handling the name of the rout
 
 app.use('/auth',authRoutes);//handling the name of the rout
 app.use('/game-math1',gameMath1Routes);//handling the name of the rout
-app.use('/api/user',api_userRoutes);//handling the name of the rout
 
+app.use('/test',gameTestRoutes);//handling the name of the rout to tset
+app.use('/admin',gameAdminRoutes);//handling the name of the rout to tset
+
+// set public folder
 app.use(express.static(__dirname + '/views'));
+app.use('/admin', express.static(__dirname + '/views/admin'));
+// app.use('/img',express.static(path.join(__dirname, 'views/images')));
+// app.use('/js',express.static(path.join(__dirname, 'views/javascripts')));
+// app.use('/css',express.static(path.join(__dirname, 'views/stylesheets')));
+
 // create home route
 app.get('/',(req, res) => {
  	res.render('home-hm', {user: req.user});

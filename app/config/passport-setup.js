@@ -111,9 +111,12 @@ passport.use(
     }
 ));
 
+
+
 passport.use(
     new LocalStrategy (
         function(username, password, done) {
+            console.log("dfsdfg")
             User.findOne({email:username})
             .then(currentUser =>{
                 if(currentUser){
