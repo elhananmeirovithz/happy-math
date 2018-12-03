@@ -61,16 +61,23 @@ function task_appears() {
     document.getElementById("number1").innerHTML = Obj.game_number[0];
     document.getElementById("number2").innerHTML = Obj.game_number[1];
 
-    string_to_present = "?";
+    // var string_to_present = "?";
+
+    // cleaning the mess of previous tasks:
+    document.getElementById("results1").style.display = "none";
+    document.getElementById("results2").style.display = "none";
+    document.getElementById("results3").style.display = "none";
+    document.getElementById("results4").style.display = "none";
+
 
     // '???' presentation (instead of the answer): 
     for (var i = 0; i < num_of_digits; i++) {
         // string_to_present = string_to_present + "?";
 
-        elementName = "results" + String(i + 1);
+        var elementName = "results" + String(i + 1);
         // console.log(elementName)
         document.getElementById(elementName).style.display = "inline";
-        document.getElementById(elementName).innerHTML = "?";
+        document.getElementById(elementName).innerHTML = "?";  
     }
 }
 
@@ -148,20 +155,20 @@ function evaluateInput() {
     console.log('')
     console.log('Evaluates input on the step num ' + current_step_num)
 
-    userInput = document.getElementById("user-answer").value;
+    var userInput = document.getElementById("user-answer").value;
 
     // Evaluates user's input: 
     if (userInput == correctStepAnswer) {
-        message = 'Correct!'; 
+        var message = 'Correct!'; 
         console.log(message)
         document.getElementById("dynamic-title").innerHTML = message;
 
         // if the step's answer is greater than 9, remember the decimal (1):
-        remainder = userInput%10;
+        var remainder = userInput%10;
         decimal = (userInput - remainder)/10; 
 
         // presenting step's results on the task-container: 
-        elementName = "results" + String(num_of_digits + 1 - current_step_num);
+        var elementName = "results" + String(num_of_digits + 1 - current_step_num);
 
         // Presenting the correct step's answer on the task-container: 
         document.getElementById(elementName).innerHTML = remainder;
@@ -190,7 +197,10 @@ function evaluateInput() {
                 task_answer = '1' + task_answer;
 
                 if (task_answer == correctTaskAnswer) {
-                    console.log('Congratulaitons!')
+                    message = 'Congratulaitons! You finished the task!'; 
+                    console.log(message)
+                    document.getElementById("dynamic-title").innerHTML = message;
+
                     document.getElementById('step-container').style.display = "none"; // clear step-container
 
                     return;  // stoping the function
@@ -207,24 +217,22 @@ function evaluateInput() {
         }  else {
             eraseDecimal()
         }
-
-        // Composing the user answer presented in the task container: 
-       // task_answer = String(remainder) + task_answer;
-       // console.log('composing the answer... ' + task_answer)
         
         // IF THE TASK IS FINISHED, MAKES SURE THE ANSWER IS CORRECT
         if (task_answer.length == num_of_digits) {
             console.log('You finished the task!!!')
 
             if (task_answer == correctTaskAnswer) {
-                console.log('Congratulaitons!')
+                message = 'Congratulaitons! You finished the task!';
+                console.log(message)
+                document.getElementById("dynamic-title").innerHTML = message;
+
                 document.getElementById('step-container').style.display = "none"; // clear step-container
 
                 return;  // stoping the function
             }
 
         }
-
 
         // When the step's answer is correct, but it's not the final step, proceed to the next step: 
         current_step_num = current_step_num + 1; 
