@@ -33,6 +33,12 @@ function taskPlus(id) {
             // from her correct steps' answers and presents it in the task-container: 
             task_answer = ''; 
 
+            if (Obj.game_type == "plus") {
+                sign = "+";
+            } else if (Obj.game_type == "minus") {
+                sign = "-";
+            }
+
             console.log(Obj)
             console.log('Correct game results are ...' + correctTaskAnswer)
 
@@ -49,6 +55,65 @@ function taskPlus(id) {
 
 }
 
+function taskMinus(id) {
+
+    // buttons of task choice disappear: 
+    document.getElementById("plus").style.display = "none";
+    document.getElementById("minus").style.display = "none";
+    document.getElementById("multiply").style.display = "none";
+    document.getElementById("division").style.display = "none";
+
+    // The XMLHttpRequest object is defined (AJAX): 
+    var xhttp = new XMLHttpRequest();
+    // the XMLHttpRequest object can be used to exchange data with a web server behind the scenes
+
+    // when the request is ready, it reads and parse the JSON with the task
+    xhttp.onreadystatechange = function () {  // is called everytime the readyStatus changes
+
+        if (this.readyState == 4 && this.status == 200) {  // when the response is ready, parse the JSON to object Obj
+
+            Obj = JSON.parse(this.responseText);   // object with the task. It's a global var since there is no var declaration
+            console.log(Obj)
+
+            num_of_digits = Obj.game_result.toString().length;  // counts number of digits in the task results
+            num_of_steps = Obj.steps.length;  // global variable
+
+            // Checks the special case where the number of digits in the answer is greater than the number of steps
+            if (num_of_digits != num_of_steps) {
+                specialCase1 = true;
+            } else {
+                specialCase1 = false;
+            }
+
+            correctTaskAnswer = Obj.game_result;  // global variable            
+            current_step_num = 1;
+            decimal = 0;
+
+            // Define the future string 'task_answer' that will represent the number the user composes 
+            // from her correct steps' answers and presents it in the task-container: 
+            task_answer = '';
+
+            if (Obj.game_type == "plus") {
+                sign = "+";
+            } else if (Obj.game_type == "minus") {
+                sign = "-";
+            }
+
+            console.log(Obj)
+            console.log('Correct game results are ...' + correctTaskAnswer)
+
+            // the task appears 300 millisec after pressing the task name
+            setTimeout(task_appears, 300)
+            setTimeout(step_appears, 500)
+            setTimeout(new_game_button_appears, 2000)
+
+        }  // closes if for reading the JSON
+    };
+
+    xhttp.open("GET", "./game-math1/targil/minus", true);  // specifies the request
+    xhttp.send();  // sends the request to the server
+
+}
 
 
 // The task container appears and the numbers in the container appear as well according to JSON: 
@@ -69,6 +134,8 @@ function task_appears() {
     document.getElementById("results3").style.display = "none";
     document.getElementById("results4").style.display = "none";
 
+    document.getElementById("sign3").style.display = "none";
+
 
     // '???' presentation (instead of the answer): 
     for (var i = 0; i < num_of_digits; i++) {
@@ -85,11 +152,6 @@ function task_appears() {
 
 function step_appears() {
     console.log('Starts step num ' + current_step_num)
-    if (Obj.game_type == "plus") {
-        sign = "+"; 
-    } else if (Obj.game_type == "minus") {
-        sign = "-"; 
-    }
 
     try {
         step_digit1 = Obj.steps[current_step_num - 1].digit1;
@@ -125,9 +187,11 @@ function step_appears() {
 
     if (decimal == 1) {
         document.getElementById("decimal-step").style.display = "inline";
+        document.getElementById("sign3").style.display = "inline"; 
         document.getElementById("sign3").innerHTML = sign;
     } else {
         document.getElementById("decimal-step").style.display = "none";
+        document.getElementById("sign3").style.display = "none"; 
     }
 
     
@@ -148,9 +212,6 @@ function step_appears() {
     //}
 
 }
-
-
-
 
 
 
@@ -271,6 +332,17 @@ function presentDecimal() {
 function eraseDecimal() {
     document.getElementById("decimal_num").style.display = "none";
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
