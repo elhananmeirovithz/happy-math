@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" /> -->
+    <!-- <script src="main.js"></script> -->
+
+    <title>Happy Math</title>
+    <!--font family-->
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+    <link rel="stylesheet" href="style2.css">
+    <script src="choosingTask.js" async></script>
+
+    <!-- To deal with notification: Refused to load the font 'data:font/woff…'
+    it violates the following Content Security Policy directive: “default-src 'self'”. Note that 'font-src' 
+    <meta http-equiv="Content-Security-Policy" content="font-src 'self' data:; img-src 'self' data:; default-src 'self' http://121.0.0:3000/">
+</head>-->
+
+
+<body>
+    <nav id="nav-top">
+        <div class="nav-home">
+            <a href="/">Home</a>
+        </div>
+
+        <div class="nav-logout">
+            <a href="/auth/logout">Logout</a>
+        </div>
+
+        <div class="nav_profile">
+          Profile
+        </div>
+    </nav>
+
+    
+    <header>
+        <h1 id="dynamic-title">Choose Your Task Type</h1>
+    </header>
+
+    <div id='choose-task'>
+        <div class="button-choose" id="plus" value="plus" onmousedown="taskPlus(this)">
+            ADDITION
+        </div>
+        <div class="button-choose" id="minus" value="minus" onmousedown="taskMinus(this)">
+            SUBTRACTION</div>
+        <div class="button-choose" id="multiply" value="multiply" onmousedown="loadTaskMulty(this)">
+            MULTIPLICATION</div>
+        <div class="button-choose" id="division" value="division" onmousedown="loadTaskDiv(this)">
+            DIVISION</div>
+    </div>
+
+    <div class="button-choose" id="new-game" onmousedown="orderNewGame(this)">
+        NEW<br/>GAME
+    </div>
+
+    <div id="decimal_num">1</div>
+
+
+    <div id="task-container">
+        
+        <div class="number" id="number1"></div>
+
+        <div class="number" id="sign1">
+            +
+        </div>
+
+        <div class="number" id="number2"></div>
+
+        <div class="number" id="line">
+            =
+        </div>
+
+        <div class="answer" id="results1">?</div>
+        <div class="answer" id="results2">?</div>
+        <div class="answer" id="results3">?</div>
+        <div class="answer" id="results4">?</div>
+
+    </div>
+
+    <form id="step-container">
+        <div class="digit" id="digit1"></div>
+
+        <div class="digit" id="sign2"></div>
+
+        <div class="digit" id="digit2"></div>
+
+        <div class="digit" id="sign3"></div>
+
+        <div class="digit" id="decimal-step">1</div>
+
+        <div class="digit" id="sign-equal">
+            =
+        </div>
+
+        <div>
+            <input class="digit" name="something" id="user-answer" type="number" pattern="[0-9]*" value="">
+        </div>
+
+        <div type="submit" class="button-choose" id="submit-answer" onclick="evaluateInput()" >
+            SEND
+        </div>
+    </form>
+
+<!--<div id="step-container">
+        <div class="digit" id="digit1">
+            5
+        </div>
+    
+        <div class="digit" id="sign-step">
+            +
+        </div>
+    
+        <div class="digit" id="digit2">
+            4
+        </div>
+    
+        <div class="digit" id="sign-equal">
+            =
+        </div>
+    
+        <input class="digit" id="user-answer" type="number" pattern="[0-9]*" value="">
+    
+        </input>
+    </div> -->
+
+
+    <footer>
+        <nav id="nav-bottom">
+            <div class="nav-home">
+                <a href="/">Home</a>
+            </div>
+    
+            <div class="nav-logout">
+                <a href="/auth/logout">Logout</a>
+            </div>
+    
+            <div class="nav-profile">
+                Profile
+            </div>
+        </nav>
+    </footer>
+</body>
+
+<!-- <script>
+    $('#plus').on('click',function(){
+        $.ajax({
+            type: "GET",
+            dataType: 'json',
+            url: "./game-math1/targil/plus",
+            data: { 
+                id: "somedata"
+            },
+            success: function(result) {
+                $('#json').html( '<pre>' + JSON.stringify(result,null,2) + '</pre>');
+                console.log(result)
+            },
+            error: function(result) {
+                alert('error');
+            }
+        }); 
+    });
+</script>
+
+<script>
+    $('#division').on('click',function(){
+        $.ajax({
+            type: "GET",
+            dataType: 'json',
+            url: "./game-math1/targil/division",
+            data: { 
+                id: "somedata"
+            },
+            success: function(result) {
+                $('#json').html( '<pre>' + JSON.stringify(result,null,2) + '</pre>');
+                console.log(result)
+            },
+            error: function(result) {
+                $('#json').html( '<pre>' + JSON.stringify(result,null,2) + '</pre>');
+            }
+        }); 
+    });
+</script>
+
+<script>
+    $('#minus').on('click',function(){
+        $.ajax({
+            type: "GET",
+            dataType: 'json',
+            url: "./game-math1/targil/minus",
+            data: { 
+                id: "somedata"
+            },
+            success: function(result) {
+                $('#json').html( '<pre>' + JSON.stringify(result,null,2) + '</pre>');
+                console.log(result)
+            },
+            error: function(result) {
+                $('#json').html( '<pre>' + JSON.stringify(result,null,2) + '</pre>');
+            }
+        }); 
+    });
+</script>
+
+<script>
+    $('#multiply').on('click',function(){
+        $.ajax({
+            type: "GET",
+            dataType: 'json',
+            url: "./game-math1/targil/multiply",
+            data: { 
+                id: "somedata"
+            },
+            success: function(result) {
+                $('#json').html( '<pre>' + JSON.stringify(result,null,2) + '</pre>');
+                console.log(result)
+            },
+            error: function(result) {
+                $('#json').html( '<pre>' + JSON.stringify(result,null,2) + '</pre>');
+            }
+        }); 
+    });
+</script>
+
+
+
+
+<script>
+    function func_changeText(id) {
+        id.innerHTML = 'NEW GAME';
+    }
+</script>
+
+</html>
