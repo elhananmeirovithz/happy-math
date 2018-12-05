@@ -19,7 +19,8 @@
     <!-- To deal with notification: Refused to load the font 'data:font/woff…'
     it violates the following Content Security Policy directive: “default-src 'self'”. Note that 'font-src' 
     <meta http-equiv="Content-Security-Policy" content="font-src 'self' data:; img-src 'self' data:; default-src 'self' http://121.0.0:3000/">
-</head>-->
+    -->
+</head>
 
 
 <body>
@@ -27,27 +28,29 @@
 
         <!-- ELEMENT 1 - Navigation Panel + The Message Box/ Header -->
         <nav id="nav-top">
-            <!--<div class="nav-home">
+            <!--<div class="nav-button" id="nav-home">
                 <a href="/">Home</a>
             </div>-->
 
-            <div class="nav-logout">
+            <div class="nav-button" id="nav-logout">
                 <a href="/auth/logout">LOG<br/>OUT</a>
             </div>
 
-            <div class="button-choose" id="new-game" onmousedown="orderNewGame(this)">
+            <div class="nav-button" id="new-game" onmousedown="orderNewGame(this)">
                 NEW<br/>GAME
             </div>
         
-            <div class="nav_profile">
+            <div class="nav-button" id="nav-profile">
                 Profile
             </div>
         </nav>
         
-        
-        <header>
-            <h1 id="dynamic-title">Choose Your Task Type</h1>
-        </header>
+        <div id="title">
+            <div id="dynamic-title">
+                Choose Your Task Type
+            </div>
+            
+        </div>
         
         <div id='choose-task'>
             <div class="button-choose" id="plus" value="plus" onmousedown="taskPlus(this)">

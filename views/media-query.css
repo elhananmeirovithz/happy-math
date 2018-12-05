@@ -1,6 +1,14 @@
 /*--------------------MEDIA QUERY--------------------*/
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
+    #nav-top div {
+        font-size: 0.8em; 
+    }
+
+    #dynamic-title {
+        font-size: 1em; 
+    }
+    
      .button-choose{
         font-size: 1em; 
     }
