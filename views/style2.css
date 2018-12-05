@@ -169,11 +169,6 @@ a{
 
 /*---------WINDOW FOR CHOOSING AN ASSIGNMENT TYPE---------*/
 /*---------CHOOSE-TASK---------*/
-#decimal_num{
-    display: none; 
-    font-size: 2em; 
-}
-
 #choose-task{
     display: flex;
     flex-flow: row unwrap; 
@@ -217,15 +212,10 @@ a{
 /*---------TASK-CONTAINER---------*/
 #task-container{
     display: none;  /* flex or none*/
-    flex-direction: row;  /*column or row*/
+    flex-direction: column;  /*column or row*/
     justify-content: space-around; /*distributes items eventually within the flex container*/
     align-items: center;  /*items occupy the entire space of the container*/
 
-    position: fixed;
-    top:40%; 
-    left: 50%;
-    /* bring your own prefixes */
-    transform: translate(-50%, -50%); 
     text-align: center;
     border: 1px solid rgb(220, 220, 220);
     min-width: 200px;
@@ -261,6 +251,10 @@ a{
     font-size: 1.5em; 
 }
 
+#decimal_num{
+    display: none; 
+    font-size: 2em; 
+}
 /*---------------------------------------------------------*/
 
 
