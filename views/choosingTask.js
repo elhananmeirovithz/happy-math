@@ -236,7 +236,6 @@ function step_appears() {
 }
 
 
-
 function evaluateInput() {
     console.log('')
     console.log('Evaluates input on the step num ' + current_step_num)

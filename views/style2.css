@@ -11,6 +11,8 @@ body{
 a{
     text-decoration: none; 
 }
+
+input, select, textarea, button{font-family:inherit;}
 /*---------------------------------------------------------------*/
 
 /*------------- THE MAIN CONTAINER --------------*/
@@ -43,7 +45,7 @@ a{
     position: fixed; 
     top: 0; 
     width: 100%; 
-    height: 8%;
+    height: 10%;
 
     /*setting flex container properties*/
     display: flex;
@@ -57,7 +59,9 @@ a{
     border: 1px solid yellow;
     border-radius: 5px; 
     color: rgb(26, 29, 34);
-    margin: 7px; 
+    background-color: white; 
+    margin: 2px; 
+    padding: 2px; 
 }
 
 /*hover - mouse over button */
@@ -88,7 +92,7 @@ a{
     top: 0; 
     width: 60%; 
 
-    height: 8%;  /* same height as the navigation element */
+    height: 10%;  /* same height as the navigation element */
     border-radius: 5px; 
 
     background-color: white;
@@ -196,6 +200,7 @@ a{
     border-radius: 10px; 
     box-shadow: 4px 4px 8px rgb(190, 190, 190);
     text-align: center; 
+    vertical-align: middle;
 }
 
 /*mouse over buttons */
@@ -291,23 +296,17 @@ a{
 
 /*---------- WINDOW OF STEPS - INTERACTION WITH A USER -------------*/
 #step-container{
-    display: none;  /*or none*/
+    display: none;  /*or flex*/
     flex-direction: row;
     justify-content: space-around; /*distributes items eventually within the flex container*/
     align-items: stretch;  /*items occupy the entire space of the container*/
 
-    position: fixed;
-    top:75%; 
-    left: 50%;
-    /* bring your own prefixes */
-    transform: translate(-50%, -50%); 
     text-align: center;
     border: 1px solid rgb(220, 220, 220);
-    min-width: 200px;
     border-radius: 10px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 200px 0 rgba(0, 0, 0, 0.19); /*effect that creates paper-like cards*/
 
-    font-size: 2em;
+    vertical-align: middle;
 }
 
 .digit{
@@ -315,11 +314,12 @@ a{
 }
 
 #user-answer{
-    border-radius: 5px;    
+    border-radius: 5px; 
+    width: 40px;
+    text-align: center;    
 }
 
 #submit-answer {
-    font-size: 1em; 
     border-radius: 50px; 
 }
 
@@ -354,14 +354,34 @@ a{
 
 
 
- /*---------------------------THE KEYBOARD----------------------------*/
-#keyboard {
+/*------------------------- KEYBOARD ----------------------*/
+#keyboard-container {  
     position: fixed;
-    top: 61%; 
+    top: 60%; 
     width: 100%;
-    height: 39%;
+    height: 40%;
     background-color: rgba(173, 216, 230, 0.39); 
 
     display: flex; /*flex*/
+}
+
+#keyboard-table {
+    width: 100%; 
+    height: 100%;
+    border-spacing: 2px;
+    empty-cells: show; 
+    table-layout: fixed;
+}
+
+#keyboard-table td {
+    border: 1px solid #ddd;
+    border-radius: 5px; 
+    text-align: center; 
+    vertical-align: middle;
+    background-color: white;  
+}
+
+#keyboard-table td:hover {
+    background-color: grey;
 }
 

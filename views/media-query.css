@@ -29,8 +29,16 @@
     }
 
     #step-container{
-        top: 50%; 
+        position: fixed;
+        top: 47%; 
+    }
+
+    .digit {
         font-size: 1.5em;
+    }
+
+    #keyboard-table td {
+        font-size: 2em; 
     }
 }
 

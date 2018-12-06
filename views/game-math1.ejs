@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- TO ADD: <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
     <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" /> -->
     <!-- <script src="main.js"></script> -->
 
@@ -13,6 +14,7 @@
     <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
     <link rel="stylesheet" href="style2.css">    
     <link rel="stylesheet" href="media-query.css">
+
 
     <script src="choosingTask.js" async></script>
 
@@ -37,7 +39,7 @@
             </div>
 
             <div class="nav-button" id="new-game" onmousedown="orderNewGame(this)">
-                NEW<br/>GAME
+                NEW<br/>TASK
             </div>
         
             <div class="nav-button" id="nav-profile">
@@ -121,7 +123,7 @@
             </div>
         
             <div>
-                <input class="digit" name="something" id="user-answer" type="number" pattern="[0-9]*" value="">
+                <input class="digit" id="user-answer" type="number" pattern="[0-9]*" value="" size="2" maxlength="2">
             </div>
         
             <div type="submit" class="button-choose" id="submit-answer" onclick="evaluateInput()">
@@ -153,21 +155,74 @@
 
         
         <!-- ELEMENT 4 - Keyboard with Numbers Only -->
-        <div id="keyboard">
-            <table class="w3-centered">
+        <div id="keyboard-container">
+            <table id="keyboard-table">
                 <tr>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Points</th>
+                    <td id="1" onclick="keyInput(this.id)">1</td>
+                    <td id="2" onclick="keyInput(this.id)">2</td>
+                    <td id="3" onclick="keyInput(this.id)">3</td>
                 </tr>
+
                 <tr>
-                    <td>Jill</td>
-                    <td>Smith</td>
-                    <td>50</td>
+                    <td id="4" onclick="keyInput(this.id)">4</td>
+                    <td id="5" onclick="keyInput(this.id)">5</td>
+                    <td id="6" onclick="keyInput(this.id)">6</td>
                 </tr>
+
+
+                <tr>
+                    <td id="7" onclick="keyInput(this.id)">7</td>
+                    <td id="8" onclick="keyInput(this.id)">8</td>
+                    <td id="9" onclick="keyInput(this.id)">9</td>
+                </tr>
+                
+                <tr>
+                    <td id="empty" onclick="keyInput(this.id)"></td>
+                    <td id="0" onclick="keyInput(this.id)">0</td>
+                    <td id="erase" onclick="keyDelete(this.id)">delete</td>
+                </tr>
+
             </table>
         </div>
     </div>
+
+    <script>
+        function keyInput(id) {
+            var currentContent = document.getElementById("user-answer").value; 
+
+            var userInput = document.getElementById(id).textContent; 
+            
+
+            userInput = currentContent + userInput;
+            console.log(userInput)
+
+            //inputLength = userInput.length;
+            //console.log('current input is ' + inputLength)
+
+            if (userInput.length > 2) {
+                console.log('two digit max')
+            } else {
+                // presenting the key at the input window
+                document.getElementById("user-answer").value = userInput;
+            }
+        }
+
+        function keyDelete(id) {
+            var currentContent = document.getElementById("user-answer").value; 
+            console.log(currentContent)
+
+            // erase only last digit:
+            currentContent = currentContent.slice(0, -1);
+            // presenting the key at the input window
+            document.getElementById("user-answer").value = currentContent;
+        }
+
+        function maxCharNum(id) {
+            var x = document.getElementById("myText").maxLength;
+
+        }
+
+    </script>
 
     
 </body>
