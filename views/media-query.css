@@ -9,7 +9,7 @@
         font-size: 1em; 
     }
     
-     .button-choose{
+    .button-choose{
         font-size: 1em; 
     }
 
@@ -23,11 +23,14 @@
     }
 
     #task-container{
-        top: 15%;
+        position: fixed;
+        top: 12%;
+        font-size: 1.5em;
     }
 
     #step-container{
-        top: 65%; 
+        top: 50%; 
+        font-size: 1.5em;
     }
 }
 

@@ -213,48 +213,78 @@ a{
 #task-container{
     display: none;  /* flex or none*/
     flex-direction: column;  /*column or row*/
-    justify-content: space-around; /*distributes items eventually within the flex container*/
+    justify-content: flex-end; /*distributes items eventually within the flex container*/
     align-items: center;  /*items occupy the entire space of the container*/
 
     text-align: center;
     border: 1px solid rgb(220, 220, 220);
-    min-width: 200px;
     border-radius: 10px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 200px 0 rgba(0, 0, 0, 0.19); /*effect that creates paper-like cards*/
 
-    font-size: 2em; 
+    font-style: italic;
     color: cornflowerblue;
 }
 
 .number{
+    align-self: flex-end; 
     margin: 1px; 
     color: cornflowerblue; 
+    letter-spacing: 5px;
 }
 
-#results1{
+#decimal-line{
+    display: flex; 
+    flex-direction: row;
+
+    justify-content: flex-start;
+    align-items: flex-start; 
+    
+    letter-spacing: 5px;
+    color: rgba(128, 128, 128, 0.678); 
+}
+
+#decimal-line div, #number1 div, #number2 div {
+    border: 1px solid yellow;    
+}
+
+#number1, #number2 { 
+    display: flex; 
+    flex-direction: row; 
+    justify-content: flex-end; 
+    align-items: flex-end; 
+}
+
+#sign1, #num11, #num12, #num13, #num14, #num21, #num22, #num23, #num24 {
+    display: inline; /*inline*/
+    border: 1px solid yellow;    
+}
+
+#sign1 {
+    align-self: flex-end; 
+    font-size: 1em; 
+}
+
+#line {
+    height: 1px; 
+    box-sizing: border-box;
+    width: 100%; 
+    border: 2px solid rgba(128, 128, 128, 0.678); 
+    border-radius: 2px;   
+}
+
+#results {
+    align-self: flex-end; 
+    display: flex; 
+}
+
+#results div {
+    padding: 3px; 
+}
+
+#results1, results2, results3, results4 {
     display: none; /*inline*/
-    font-size: 1.5em; 
 }
 
-#results2{
-    display: none; 
-    font-size: 1.5em; 
-}
-
-#results3{
-    display: none; 
-    font-size: 1.5em; 
-}
-
-#results4{
-    display: none; 
-    font-size: 1.5em; 
-}
-
-#decimal_num{
-    display: none; 
-    font-size: 2em; 
-}
 /*---------------------------------------------------------*/
 
 

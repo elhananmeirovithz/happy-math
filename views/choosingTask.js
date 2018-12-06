@@ -105,7 +105,7 @@ function taskMinus(id) {
             // the task appears 300 millisec after pressing the task name
             setTimeout(task_appears, 300)
             setTimeout(step_appears, 500)
-            setTimeout(new_game_button_appears, 2000)
+            setTimeout(new_game_button_appears, 1000)
 
         }  // closes if for reading the JSON
     };
@@ -123,8 +123,8 @@ function task_appears() {
 
 
     // presenting the numbers in the task-container: 
-    document.getElementById("number1").innerHTML = Obj.game_number[0];
-    document.getElementById("number2").innerHTML = Obj.game_number[1];
+    document.getElementById("num11").innerHTML = Obj.game_number[0];
+    document.getElementById("num21").innerHTML = Obj.game_number[1];
 
     // var string_to_present = "?";
 
@@ -136,6 +136,28 @@ function task_appears() {
 
     document.getElementById("sign3").style.display = "none";
 
+    var num1_digits = Obj.game_number[0].toString().length
+    var num2_digits = Obj.game_number[1].toString().length
+
+    console.log(num1_digits)
+    console.log(num2_digits)
+
+    var num13 = Obj.game_number[0]%10;
+    console.log(num13)
+    //document.getElementById("num13").value = toString(num13); 
+    //document.getElementById("num13").style.color = "red";
+
+
+
+
+    //for (var i = 0; i < num1_digits; i++) {
+
+    //  elementName = "num1_digit" + String(i + 1);
+    // console.log(elementName)
+    //document.getElementById(elementName).style.display = "inline";
+    //document.getElementById(elementName).innerHTML = "?";  
+
+    //}
 
     // '???' presentation (instead of the answer): 
     for (var i = 0; i < num_of_digits; i++) {
@@ -326,11 +348,11 @@ function new_game_button_appears() {
 
 
 function presentDecimal() {
-    document.getElementById("decimal_num").style.display = "inline";
+    document.getElementById("decimal-line").style.display = "flex";
 }
 
 function eraseDecimal() {
-    document.getElementById("decimal_num").style.display = "none";
+    document.getElementById("decimal-line").style.display = "none";
 }
 
 
