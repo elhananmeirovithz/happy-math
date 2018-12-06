@@ -44,13 +44,13 @@ a{
     top: 0; 
     width: 100%; 
     height: 8%;
-    border-radius: 5px; 
 
     /*setting flex container properties*/
     display: flex;
     flex-direction: row-reverse; 
     justify-content: space-between;
-    border: 1px solid cornflowerblue;
+    border: 1px solid yellow;
+    background-color: rgba(173, 216, 230, 0.39); 
 }
 
 #nav-top div{
@@ -354,35 +354,14 @@ a{
 
 
 
+ /*---------------------------THE KEYBOARD----------------------------*/
+#keyboard {
+    position: fixed;
+    top: 61%; 
+    width: 100%;
+    height: 39%;
+    background-color: rgba(173, 216, 230, 0.39); 
 
-
-
- /*---------------------------FOOTER----------------------------*/
-nav{    /*Parent element*/
-    /*setting flex container properties*/
-    display: none; 
-    flex-flow: row wrap;
-    justify-content: space-around; 
-    border: 1px solid cornflowerblue;
-    background-color: white;
-    position: fixed; 
-    left: 0;
-    right: 0;
-    bottom: 0; 
-    border-radius: 5px; 
-}
-
-#nav-bottom div{    /*Child element*/
-    border: 1px solid yellow;
-    border-radius: 5px; 
-    color: rgb(26, 29, 34);
-    margin:5px; 
-    padding:0;
-}
-
-/*mouse over button */
-#nav-bottom div a:hover{
-    cursor: pointer;
-    color: #FF00FF;
+    display: flex; /*flex*/
 }
 
