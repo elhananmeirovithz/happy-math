@@ -56,7 +56,6 @@ input, select, textarea, button{font-family:inherit;}
 }
 
 #nav-top div{
-    border: 1px solid yellow;
     border-radius: 5px; 
     color: rgb(26, 29, 34);
     background-color: white; 
@@ -246,6 +245,10 @@ input, select, textarea, button{font-family:inherit;}
     
     letter-spacing: 5px;
     color: rgba(128, 128, 128, 0.678); 
+}
+
+#decimal1, #decimal2, #decimal3, #decimal4 {
+    visibility: hidden;  /*hidden || visible*/
 }
 
 #decimal-line div, #number1 div, #number2 div {

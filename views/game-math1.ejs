@@ -68,25 +68,25 @@
         
                 
         <!-- ELEMENT 2 - The Task -->
-        <div id="task-container">
+        <div id="task-container" class="grid-container">
 
             <!-- CHILD 1 -->
-            <div id="decimal-line">
+            <div id="decimal-line" class="grid-item">
                 <div id="decimal1">1</div>
-                <div id="decimal2">1</div>
-                <div id="decimal3">1</div>
-                <div id="decimal4"></div>
+                <div id="decimal2">2</div>
+                <div id="decimal3">3</div>
+                <div id="decimal4">4</div>
             </div>
 
             <!-- CHILD 2 -->
-            <div class="number" id="number1">
+            <div class="number grid-item" id="number1">
                 <div class="number" id="num11"></div>
                 <div class="number" id="num12"></div>
                 <div class="number" id="num13"></div>
             </div>
 
             <!-- CHILD 3 -->
-            <div class="number" id="number2">
+            <div class="number grid-item" id="number2">
                 <div class="number" id="sign1">+</div>
                 <div class="number" id="num21"></div>
                 <div class="number" id="num22"></div>
@@ -177,7 +177,7 @@
                 </tr>
                 
                 <tr>
-                    <td id="empty" onclick="keyInput(this.id)"></td>
+                    <td id="help" onclick="keyHelp(this.id)">help</td>
                     <td id="0" onclick="keyInput(this.id)">0</td>
                     <td id="erase" onclick="keyDelete(this.id)">delete</td>
                 </tr>
@@ -217,10 +217,10 @@
             document.getElementById("user-answer").value = currentContent;
         }
 
-        function maxCharNum(id) {
-            var x = document.getElementById("myText").maxLength;
-
+        function keyHelp(id) {
+            console.log('help')
         }
+
 
     </script>
 

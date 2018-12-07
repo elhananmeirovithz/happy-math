@@ -347,11 +347,12 @@ function new_game_button_appears() {
 
 
 function presentDecimal() {
-    document.getElementById("decimal-line").style.display = "flex";
+    document.getElementById("decimal4").style.visibility = "visible";
 }
 
 function eraseDecimal() {
-    document.getElementById("decimal-line").style.display = "none";
+    document.getElementById("decimal4").style.visibility = "hidden";
+    //document.getElementById("decimal1").innerHTML = " ";
 }
 
 

@@ -28,6 +28,10 @@
         font-size: 1.5em;
     }
 
+    #decimal-line {
+        font-size: 0.8em; 
+    }
+
     #step-container{
         position: fixed;
         top: 47%; 
