@@ -214,10 +214,14 @@ input, select, textarea, button{font-family:inherit;}
 
 /*----------------- AN ASSIGNMENT WINDOW-------------------*/
 /*---------TASK-CONTAINER---------*/
+.grid-container {
+    display: inline-grid;
+}
+
 #task-container{
     display: none;  /* flex or none*/
     flex-direction: column;  /*column or row*/
-    justify-content: flex-end; /*distributes items eventually within the flex container*/
+    justify-content: space-evenly; /*distributes items eventually within the flex container || flex-end*/
     align-items: center;  /*items occupy the entire space of the container*/
 
     text-align: center;
@@ -227,10 +231,14 @@ input, select, textarea, button{font-family:inherit;}
 
     font-style: italic;
     color: cornflowerblue;
+
+    z-index: 10;  /*TEMP*/
+    grid-template-columns: auto auto auto auto;
+    grid-template-rows: auto auto auto auto;
 }
 
 .number{
-    align-self: flex-end; 
+    align-self: center; 
     margin: 1px; 
     color: cornflowerblue; 
     letter-spacing: 5px;
@@ -238,6 +246,7 @@ input, select, textarea, button{font-family:inherit;}
 
 #decimal-line{
     display: flex; 
+    align-self: center; 
     flex-direction: row;
 
     justify-content: flex-start;
@@ -249,26 +258,70 @@ input, select, textarea, button{font-family:inherit;}
 
 #decimal1, #decimal2, #decimal3, #decimal4 {
     visibility: hidden;  /*hidden || visible*/
+    align-self: center; 
 }
 
 #decimal-line div, #number1 div, #number2 div {
     border: 1px solid yellow;    
 }
 
+#decimal1 { grid-column-start: 1; grid-column-end: 2; visibility: hidden; align-self: center; }
+
+#decimal2 { grid-column-start: 2; grid-column-end: 3; align-self: center; }
+
+#decimal3 { grid-column-start: 3; grid-column-end: 4; align-self: center; }
+
+#decimal4 { grid-column-start: 4; grid-column-end: 4; align-self: center; }
+
+#num11 { grid-column-start: 2; grid-column-end: 3; align-self: center; }
+
+#num12 { grid-column-start: 3; grid-column-end: 4; align-self: center; }
+
+#num13 { grid-column-start: 4; grid-column-end: 4; align-self: center; }
+
+#sign1 {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 2;
+    grid-row-end: 4;
+    align-self: center; 
+}
+
+#num21 { grid-column-start: 2; grid-column-end: 3; align-self: center; }
+
+#num22 { grid-column-start: 3; grid-column-end: 4; align-self: center; }
+
+#num23 { grid-column-start: 4; grid-column-end: 5; align-self: center; }
+
+#line { grid-column-start: 1; grid-column-end: 5; align-self: center; }
+
+#results1 { grid-column-start: 1; grid-column-end: 2; align-self: center; }
+
+#results2 { grid-column-start: 2; grid-column-end: 3; align-self: center; }
+
+#results3 { grid-column-start: 3; grid-column-end: 4;align-self: center; }
+
+#results4 { grid-column-start: 4; grid-column-end: 5; align-self: center; }
+
+
+
+
 #number1, #number2 { 
     display: flex; 
     flex-direction: row; 
-    justify-content: flex-end; 
-    align-items: flex-end; 
+    justify-content: center; /* flex-end; */
+    /* align-items: flex-end; */
 }
 
-#sign1, #num11, #num12, #num13, #num14, #num21, #num22, #num23, #num24 {
+#sign1, #num11, #num12, #num13, #num14, #num21, #num22, #num23, #num24, #results1, #results2, #results3, #results4 {
     display: inline; /*inline*/
     border: 1px solid yellow;    
 }
 
+
+
 #sign1 {
-    align-self: flex-end; 
+    align-self: center; /* flex-end; */
     font-size: 1em; 
 }
 
@@ -281,8 +334,8 @@ input, select, textarea, button{font-family:inherit;}
 }
 
 #results {
-    align-self: flex-end; 
-    display: flex; 
+    align-self: center; /* flex-end; */
+    /* display: flex; */
 }
 
 #results div {

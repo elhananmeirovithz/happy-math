@@ -118,13 +118,39 @@ function taskMinus(id) {
 
 // The task container appears and the numbers in the container appear as well according to JSON: 
 function task_appears() {
-    document.getElementById("task-container").style.display = "flex";  // task container appears
+    document.getElementById("task-container").style.display = "inline-grid";  // (or flex) - task container appears 
     document.getElementById("dynamic-title").innerHTML = "Let's Play";
 
+    var num13 = Obj.game_number[0] % 10;
+    var num12 = (Obj.game_number[0] - num13) / 10 % 10 ; 
+    var num11 = (Obj.game_number[0] - num13) / 100 ;
+
+    num11 = Math.floor(num11); 
+    
+    console.log('num13 ' + num13)
+    console.log('num12 ' + num12)
+    console.log('num11 ' + num11) 
+
+    var num23 = Obj.game_number[1] % 10;
+    var num22 = (Obj.game_number[1] - num23) / 10 % 10;
+    var num21 = (Obj.game_number[1] - num23) / 100;
+
+    num21 = Math.floor(num21);
+
+    console.log('num23 ' + num23)
+    console.log('num22 ' + num22)
+    console.log('num21 ' + num21) 
 
     // presenting the numbers in the task-container: 
-    document.getElementById("num11").innerHTML = Obj.game_number[0];
-    document.getElementById("num21").innerHTML = Obj.game_number[1];
+    document.getElementById("num11").innerHTML = num11;
+    document.getElementById("num12").innerHTML = num12;
+    document.getElementById("num13").innerHTML = num13;
+    
+    document.getElementById("num21").innerHTML = num21;
+    document.getElementById("num22").innerHTML = num22;
+    document.getElementById("num23").innerHTML = num23;
+
+    // document.getElementById("num23").innerHTML = Obj.game_number[1];
 
     // var string_to_present = "?";
 
@@ -142,8 +168,6 @@ function task_appears() {
     console.log(num1_digits)
     console.log(num2_digits)
 
-    var num13 = Obj.game_number[0]%10;
-    console.log(num13)
     //document.getElementById("num13").value = toString(num13); 
     //document.getElementById("num13").style.color = "red";
 
@@ -160,10 +184,10 @@ function task_appears() {
     //}
 
     // '???' presentation (instead of the answer): 
-    for (var i = 0; i < num_of_digits; i++) {
+    for (var i = 1; i < num_of_digits + 1; i++) {
         // string_to_present = string_to_present + "?";
 
-        var elementName = "results" + String(i + 1);
+        var elementName = "results" + String(i);
         // console.log(elementName)
         document.getElementById(elementName).style.display = "inline";
         document.getElementById(elementName).innerHTML = "?";  
@@ -254,6 +278,9 @@ function evaluateInput() {
 
         // presenting step's results on the task-container: 
         var elementName = "results" + String(num_of_digits + 1 - current_step_num);
+
+        console.log('element name ' + elementName)
+        console.log('current_step_num ' + current_step_num)
 
         // Presenting the correct step's answer on the task-container: 
         document.getElementById(elementName).innerHTML = remainder;
