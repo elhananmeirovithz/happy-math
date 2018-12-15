@@ -273,35 +273,26 @@ input, select, textarea, button{font-family:inherit;}
 
 #decimal4 { grid-column-start: 4; grid-column-end: 4; align-self: center; }
 
-#num11 { grid-column-start: 2; grid-column-end: 3; align-self: center; }
+#num11 { grid-area: 2 / 2 / 3 / 3; 
+    align-self: center; }
 
-#num12 { grid-column-start: 3; grid-column-end: 4; align-self: center; }
+#num12 { grid-area: 2 / 3 / 3 / 4; align-self: center; }
 
-#num13 { grid-column-start: 4; grid-column-end: 4; align-self: center; }
+#num13 { grid-area: 2 / 4 / 3 / 5; align-self: center; }
 
-#sign1 {
-    grid-column-start: 1;
-    grid-column-end: 2;
-    grid-row-start: 2;
-    grid-row-end: 4;
+#sign1 { grid-area: 2 / 1 / 4 / 2;  /* grid-row-start, grid-column-start, grid-row-end and the grid-column-end */
     align-self: center; 
 }
 
-#num21 { grid-column-start: 2; grid-column-end: 3; align-self: center; }
+#num21 { grid-area: 3 / 2 / 4 / 3; align-self: center; }
+#num22 { grid-area: 3 / 3 / 4 / 4; align-self: center; }
+#num23 { grid-area: 3 / 4 / 4 / 5; align-self: center; }
+#line { grid-area: 4 / 1 / 5 / 5; align-self: center; }
 
-#num22 { grid-column-start: 3; grid-column-end: 4; align-self: center; }
-
-#num23 { grid-column-start: 4; grid-column-end: 5; align-self: center; }
-
-#line { grid-column-start: 1; grid-column-end: 5; align-self: center; }
-
-#results1 { grid-column-start: 1; grid-column-end: 2; align-self: center; }
-
-#results2 { grid-column-start: 2; grid-column-end: 3; align-self: center; }
-
-#results3 { grid-column-start: 3; grid-column-end: 4;align-self: center; }
-
-#results4 { grid-column-start: 4; grid-column-end: 5; align-self: center; }
+#results1 { grid-area: 5 / 4 / 6 / 5; }  /* grid-row-start, grid-column-start, grid-row-end and the grid-column-end */
+#results2 { grid-area: 5 / 3 / 6 / 4; }
+#results3 { grid-area: 5 / 2 / 6 / 3; }
+#results4 { grid-area: 5 / 1 / 6 / 2; }
 
 
 
@@ -342,9 +333,6 @@ input, select, textarea, button{font-family:inherit;}
     padding: 3px; 
 }
 
-#results1, results2, results3, results4 {
-    display: none; /*inline*/
-}
 
 /*---------------------------------------------------------*/
 

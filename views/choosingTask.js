@@ -277,7 +277,7 @@ function evaluateInput() {
         decimal = (userInput - remainder)/10; 
 
         // presenting step's results on the task-container: 
-        var elementName = "results" + String(num_of_digits + 1 - current_step_num);
+        var elementName = "results" + String(current_step_num);  // previous: (num_of_digits + 1 - current_step_num)
 
         console.log('element name ' + elementName)
         console.log('current_step_num ' + current_step_num)
@@ -302,8 +302,13 @@ function evaluateInput() {
             if (specialCase1 == true) {
                 console.log('last step of special case 1')
 
+                console.log(num_of_digits)
+
+                element_next = 'results' + num_of_digits
+                console.log(element_next)
+
                 document.getElementById('step-container').style.display = "none"; // clear step-container
-                document.getElementById('results1').innerHTML = '1';
+                document.getElementById(element_next).innerHTML = '1';
 
                 // updation task_answer
                 task_answer = '1' + task_answer;
