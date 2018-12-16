@@ -133,7 +133,7 @@ function task_appears() {
     document.getElementById("num11").innerHTML = "";
     document.getElementById("num12").innerHTML = "";
     document.getElementById("num13").innerHTML = "";
-    document.getElementById("sign1").innerHTML = "";
+    // document.getElementById("sign1").innerHTML = "";
     document.getElementById("num21").innerHTML = "";
     document.getElementById("num22").innerHTML = "";
     document.getElementById("num23").innerHTML = "";
@@ -397,9 +397,12 @@ function new_game_button_appears() {
 
 function presentDecimal() {
     var element_next = "decimal" + (current_step_num + 1); 
+    var element_current = "decimal" + current_step_num; 
     console.log(current_step_num)
     console.log(element_next)
+
     document.getElementById(element_next).style.visibility = "visible";
+    document.getElementById(element_current).style.visibility = "hidden";
 }
 
 function eraseDecimal() {
