@@ -121,6 +121,26 @@ function task_appears() {
     document.getElementById("task-container").style.display = "inline-grid";  // (or flex) - task container appears 
     document.getElementById("dynamic-title").innerHTML = "Let's Play";
 
+    // cleaning the mess of previous tasks:
+    document.getElementById("results1").style.display = "none";
+    document.getElementById("results2").style.display = "none";
+    document.getElementById("results3").style.display = "none";
+    document.getElementById("results4").style.display = "none";
+
+    document.getElementById("sign3").style.display = "none";
+
+    document.getElementById("num11").innerHTML = "";
+    document.getElementById("num12").innerHTML = "";
+    document.getElementById("num13").innerHTML = "";
+    document.getElementById("sign1").innerHTML = "";
+    document.getElementById("num21").innerHTML = "";
+    document.getElementById("num22").innerHTML = "";
+    document.getElementById("num23").innerHTML = "";
+
+
+
+
+    // Calculating digits of the numbers: 
     var num13 = Obj.game_number[0] % 10;
     var num12 = (Obj.game_number[0] - num13) / 10 % 10 ; 
     var num11 = (Obj.game_number[0] - num13) / 100 ;
@@ -142,25 +162,37 @@ function task_appears() {
     console.log('num21 ' + num21) 
 
     // presenting the numbers in the task-container: 
-    document.getElementById("num11").innerHTML = num11;
-    document.getElementById("num12").innerHTML = num12;
+    // The first number: 
+    if (num11 != 0) {  // present the first digit only if it's not equal to 0, then present the second digit
+        document.getElementById("num11").innerHTML = num11;
+        document.getElementById("num12").innerHTML = num12;
+    } else {
+        if (num12 != 0) {  // if the first digit is equal to zero then check if the second digit is equal to zero, 
+            // In this case present the second digit only if it's not 0
+            document.getElementById("num12").innerHTML = num12;
+        }
+    } 
+    // present the third digit in any case: 
     document.getElementById("num13").innerHTML = num13;
-    
-    document.getElementById("num21").innerHTML = num21;
-    document.getElementById("num22").innerHTML = num22;
-    document.getElementById("num23").innerHTML = num23;
 
+    // The second number: 
+    if (num21 != 0) {  // present the first digit only if it's not equal to 0, then present the second digit
+        document.getElementById("num21").innerHTML = num21;
+        document.getElementById("num22").innerHTML = num22;
+    } else {
+        if (num22 != 0) {  // if the first digit is equal to zero then check if the second digit is equal to zero, 
+            // In this case present the second digit only if it's not 0
+            document.getElementById("num22").innerHTML = num22;
+        }
+    }
+    // present the third digit in any case: 
+    document.getElementById("num23").innerHTML = num23;
+    
     // document.getElementById("num23").innerHTML = Obj.game_number[1];
 
     // var string_to_present = "?";
 
-    // cleaning the mess of previous tasks:
-    document.getElementById("results1").style.display = "none";
-    document.getElementById("results2").style.display = "none";
-    document.getElementById("results3").style.display = "none";
-    document.getElementById("results4").style.display = "none";
-
-    document.getElementById("sign3").style.display = "none";
+    
 
     var num1_digits = Obj.game_number[0].toString().length
     var num2_digits = Obj.game_number[1].toString().length
