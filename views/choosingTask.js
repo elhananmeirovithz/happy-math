@@ -336,6 +336,9 @@ function evaluateInput() {
                     document.getElementById("dynamic-title").innerHTML = message;
 
                     document.getElementById('step-container').style.display = "none"; // clear step-container
+                    document.getElementById('decimal4').style.visibility = "hidden"; // clear decimal
+                    document.getElementById('decimal3').style.visibility = "hidden"; // clear decimal
+
 
                     return;  // stoping the function
                 } else {
