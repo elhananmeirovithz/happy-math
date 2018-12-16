@@ -119,9 +119,10 @@ function taskMinus(id) {
 // The task container appears and the numbers in the container appear as well according to JSON: 
 function task_appears() {
     document.getElementById("task-container").style.display = "inline-grid";  // (or flex) - task container appears 
-    document.getElementById("dynamic-title").innerHTML = "Let's Play";
+    var message = "Let's Play"; 
+    document.getElementById("dynamic-title").innerHTML = message;
 
-    // cleaning the mess of previous tasks:
+    // Cleaning the mess of previous tasks:
     document.getElementById("results1").style.display = "none";
     document.getElementById("results2").style.display = "none";
     document.getElementById("results3").style.display = "none";
@@ -136,9 +137,6 @@ function task_appears() {
     document.getElementById("num21").innerHTML = "";
     document.getElementById("num22").innerHTML = "";
     document.getElementById("num23").innerHTML = "";
-
-
-
 
     // Calculating digits of the numbers: 
     var num13 = Obj.game_number[0] % 10;
@@ -200,21 +198,6 @@ function task_appears() {
     console.log(num1_digits)
     console.log(num2_digits)
 
-    //document.getElementById("num13").value = toString(num13); 
-    //document.getElementById("num13").style.color = "red";
-
-
-
-
-    //for (var i = 0; i < num1_digits; i++) {
-
-    //  elementName = "num1_digit" + String(i + 1);
-    // console.log(elementName)
-    //document.getElementById(elementName).style.display = "inline";
-    //document.getElementById(elementName).innerHTML = "?";  
-
-    //}
-
     // '???' presentation (instead of the answer): 
     for (var i = 1; i < num_of_digits + 1; i++) {
         // string_to_present = string_to_present + "?";
@@ -225,6 +208,8 @@ function task_appears() {
         document.getElementById(elementName).innerHTML = "?";  
     }
 }
+
+
 
 
 
@@ -411,11 +396,17 @@ function new_game_button_appears() {
 
 
 function presentDecimal() {
-    document.getElementById("decimal4").style.visibility = "visible";
+    var element_next = "decimal" + (current_step_num + 1); 
+    console.log(current_step_num)
+    console.log(element_next)
+    document.getElementById(element_next).style.visibility = "visible";
 }
 
 function eraseDecimal() {
-    document.getElementById("decimal4").style.visibility = "hidden";
+    var element_current = "decimal" + current_step_num; 
+    console.log(current_step_num)
+    console.log(element_current)
+    document.getElementById(element_current).style.visibility = "hidden";
     //document.getElementById("decimal1").innerHTML = " ";
 }
 

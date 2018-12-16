@@ -265,13 +265,17 @@ input, select, textarea, button{font-family:inherit;}
     border: 1px solid yellow;    
 }
 
-#decimal1 { grid-column-start: 1; grid-column-end: 2; visibility: hidden; align-self: center; }
+#decimal1 { grid-area: 1 / 4 / 2 / 5;    /* grid-row-start, grid-column-start, grid-row-end and the grid-column-end */
+    }
 
-#decimal2 { grid-column-start: 2; grid-column-end: 3; align-self: center; }
+#decimal2 { grid-area: 1 / 3 / 2 / 4;
+    }
 
-#decimal3 { grid-column-start: 3; grid-column-end: 4; align-self: center; }
+#decimal3 { grid-area: 1 / 2 / 2 / 3;
+    }
 
-#decimal4 { grid-column-start: 4; grid-column-end: 4; align-self: center; }
+#decimal4 { grid-area: 1 / 1 / 2 / 2;
+    }
 
 #num11 { grid-area: 2 / 2 / 3 / 3; 
     align-self: center; }
