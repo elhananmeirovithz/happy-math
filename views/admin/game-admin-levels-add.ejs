@@ -1,0 +1,331 @@
+<%- include('game-admin-header') -%>
+<!-- form to add the information to the list -->
+
+<div class="container">  
+  <form id="contact"  method="POST" action="../api/targilLevel/targilLevel-list-add">  
+    <h3>Add "ADD" level</h3>
+    <fieldset>
+      <span>Level
+      <select placeholder="level" type="text" name="level" tabindex="1" required autofocus>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+      </select></span>
+    </fieldset>
+    <fieldset>
+      <span>First number length
+      <select placeholder="First number length" name="numberLength1" type="text" tabindex="1" required autofocus>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+      </select></span>
+    </fieldset>
+    <fieldset>
+        <span>Second number length
+      <select placeholder="Second number length"  name="numberLength2" type="text" tabindex="1" required autofocus>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+      </select></span>
+    </fieldset>
+    <input type="hidden" name="type" value="add">
+    <fieldset>
+      <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+    </fieldset>
+  </form>
+</div>
+
+
+
+<!-- present the list of information -->
+<script>
+  // Create a request variable and assign a new XMLHttpRequest object to it.
+  var request = new XMLHttpRequest();
+
+  // Open a new connection, using the GET request on the URL endpoint
+  request.open('GET', '../../api/targilLevel/targilLevel-list/', true);
+  
+  request.onload = function () {
+    // Begin accessing JSON data here
+    var data = JSON.parse(this.response);
+    console.log(data);
+    if (request.status >= 200 && request.status < 400) {
+        data.forEach(targilLevel => {
+          console.log(targilLevel.type);
+          console.log(targilLevel.level);
+          console.log(targilLevel.numberLength1);
+          console.log(targilLevel.numberLength2);
+          const card = document.createElement('div');
+          card.setAttribute('class', 'divTableRow');
+          /*https://www.taniarascia.com/how-to-connect-to-an-api-with-javascript/*/
+          divTableBody.appendChild(card);
+
+        });
+    }
+  };
+
+  request.send();
+
+
+</script>
+
+<div class="divTable blueTable">
+<div class="divTableHeading">
+<div class="divTableRow">
+    <div class="divTableHead">Type</div>
+    <div class="divTableHead">Level</div>
+    <div class="divTableHead">First number length</div>
+    <div class="divTableHead">Second number length</div>
+    </div>
+    </div>
+    <div class="divTableBody">
+    <div class="divTableRow">
+    <div class="divTableCell">cell1_1</div>
+    <div class="divTableCell">cell2_1</div>
+    <div class="divTableCell">cell3_1</div>
+    <div class="divTableCell">cell4_1</div>
+    </div>
+    <div class="divTableRow">
+    <div class="divTableCell">cell1_2</div>
+    <div class="divTableCell">cell2_2</div>
+    <div class="divTableCell">cell3_2</div>
+    <div class="divTableCell">cell4_2</div>
+    </div>
+    <div class="divTableRow">
+    <div class="divTableCell">cell1_3</div>
+    <div class="divTableCell">cell2_3</div>
+    <div class="divTableCell">cell3_3</div>
+    <div class="divTableCell">cell4_3</div>
+    </div>
+    <div class="divTableRow">
+    <div class="divTableCell">cell1_4</div>
+    <div class="divTableCell">cell2_4</div>
+    <div class="divTableCell">cell3_4</div>
+    <div class="divTableCell">cell4_4</div>
+</div>
+</div>
+</div>
+
+
+
+<style>
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,600,400italic);
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  -o-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* body {
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  font-weight: 100;
+  font-size: 12px;
+  line-height: 30px;
+  color: #777;
+  background: #4CAF50;
+} */
+
+.container {
+  max-width: 400px;
+  width: 100%;
+  margin: 0 25px;/* 0 auto */
+  position: relative;
+}
+
+#contact input[type="text"],
+#contact input[type="email"],
+#contact input[type="tel"],
+#contact input[type="url"],
+#contact textarea,
+#contact button[type="submit"] {
+  font: 400 12px/16px "Roboto", Helvetica, Arial, sans-serif;
+}
+
+#contact {
+  background: #F9F9F9;
+  padding: 25px;
+  margin: 25px 0;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+#contact h3 {
+  display: block;
+  font-size: 30px;
+  font-weight: 300;
+  margin-bottom: 10px;
+}
+
+#contact h4 {
+  margin: 5px 0 15px;
+  display: block;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+fieldset {
+  border: medium none !important;
+  margin: 0 0 10px;
+  min-width: 100%;
+  padding: 0;
+  width: 100%;
+}
+
+#contact input[type="text"],
+#contact input[type="email"],
+#contact input[type="tel"],
+#contact input[type="url"],
+#contact textarea {
+  width: 100%;
+  border: 1px solid #ccc;
+  background: #FFF;
+  margin: 0 0 5px;
+  padding: 10px;
+}
+
+#contact input[type="text"]:hover,
+#contact input[type="email"]:hover,
+#contact input[type="tel"]:hover,
+#contact input[type="url"]:hover,
+#contact textarea:hover {
+  -webkit-transition: border-color 0.3s ease-in-out;
+  -moz-transition: border-color 0.3s ease-in-out;
+  transition: border-color 0.3s ease-in-out;
+  border: 1px solid #aaa;
+}
+
+#contact textarea {
+  height: 100px;
+  max-width: 100%;
+  resize: none;
+}
+
+#contact button[type="submit"] {
+  cursor: pointer;
+  width: 100%;
+  border: none;
+  background: #4CAF50;
+  color: #FFF;
+  margin: 0 0 5px;
+  padding: 10px;
+  font-size: 15px;
+}
+
+#contact button[type="submit"]:hover {
+  background: #43A047;
+  -webkit-transition: background 0.3s ease-in-out;
+  -moz-transition: background 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out;
+}
+
+#contact button[type="submit"]:active {
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.copyright {
+  text-align: center;
+}
+
+#contact input:focus,
+#contact textarea:focus {
+  outline: 0;
+  border: 1px solid #aaa;
+}
+
+::-webkit-input-placeholder {
+  color: #888;
+}
+
+:-moz-placeholder {
+  color: #888;
+}
+
+::-moz-placeholder {
+  color: #888;
+}
+
+:-ms-input-placeholder {
+  color: #888;
+}
+
+
+/*the table*/
+div.blueTable {
+  max-width: 600px;
+  border: 1px solid #1C6EA4;
+  background-color: #EEEEEE;
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+}
+.divTable.blueTable .divTableCell, .divTable.blueTable .divTableHead {
+  border: 1px solid #AAAAAA;
+  padding: 3px 2px;
+}
+.divTable.blueTable .divTableBody .divTableCell {
+  font-size: 13px;
+}
+.divTable.blueTable .divTableRow:nth-child(even) {
+  background: #D0E4F5;
+}
+.divTable.blueTable .divTableHeading {
+  background: #1C6EA4;
+  background: -moz-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+  background: -webkit-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+  background: linear-gradient(to bottom, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+  border-bottom: 2px solid #444444;
+}
+.divTable.blueTable .divTableHeading .divTableHead {
+  font-size: 15px;
+  font-weight: bold;
+  color: #FFFFFF;
+  border-left: 2px solid #D0E4F5;
+}
+.divTable.blueTable .divTableHeading .divTableHead:first-child {
+  border-left: none;
+}
+
+.blueTable .tableFootStyle {
+  font-size: 14px;
+}
+.blueTable .tableFootStyle .links {
+	 text-align: right;
+}
+.blueTable .tableFootStyle .links a{
+  display: inline-block;
+  background: #1C6EA4;
+  color: #FFFFFF;
+  padding: 2px 8px;
+  border-radius: 5px;
+}
+.blueTable.outerTableFooter {
+  border-top: none;
+}
+.blueTable.outerTableFooter .tableFootStyle {
+  padding: 3px 5px; 
+}
+/* DivTable.com */
+.divTable{ display: table; }
+.divTableRow { display: table-row; }
+.divTableHeading { display: table-header-group;}
+.divTableCell, .divTableHead { display: table-cell;}
+.divTableHeading { display: table-header-group;}
+.divTableFoot { display: table-footer-group;}
+.divTableBody { display: table-row-group;}
+
+</style>
+
+<%- include('game-admin-footer') -%>

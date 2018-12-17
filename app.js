@@ -17,6 +17,7 @@ const gameAdminRoutes = require('./app/routes/game-admin');
 //api routes
 const api_userRoutes = require('./api/routes/user');
 const api_targilRoutes = require('./api/routes/targil');
+const api_targilLevelRoutes = require('./api/routes/targil-level');
 
 // set up view engine
 app.set('view engine', 'ejs')
@@ -50,6 +51,7 @@ app.use((req, res, next) => {
 
 app.use('/api/user',api_userRoutes);//handling the name of the rout
 app.use('/api/targil',api_targilRoutes);//handling the name of the rout
+app.use('/api/targilLevel',api_targilLevelRoutes);//handling the name of the rout
 
 app.use('/auth',authRoutes);//handling the name of the rout
 app.use('/game-math1',gameMath1Routes);//handling the name of the rout

@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
+const keys = require('../../app/config/keys');
 
 ////////////
 //log out //
@@ -56,7 +57,9 @@ router.post('/passport-local',
 router.post('/passport-local-admin',  function(req, res, next) {
     var username = req.body.username;
     var password = req.body.password;
-    if (username == "admin@gmail.com" && password == "avigdor2") {
+
+
+    if (username == keys.admin.username && password == keys.admin.password) {
         passport.authenticate( 'local' ,{ 
                 failureRedirect: '/admin',
                 successRedirect: '/admin/game-admin'

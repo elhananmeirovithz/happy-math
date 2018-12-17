@@ -24,4 +24,20 @@ router.get('/game-admin',authCheck, (req, res) => {
     res.render('admin/game-admin') // send the view with the same name after autentication
 })
 
+/* for Levels  */
+router.get('/game-admin-levels',authCheck, (req, res) => {
+    res.render('admin/game-admin-levels')
+})
+
+/* for Levels  */
+router.get('/game-admin-levels-add',authCheck, (req, res) => {
+    res.render('admin/game-admin-levels-add')
+})
+
+/* for tests  */
+router.get('/game-admin-test',authCheck, (req, res) => {
+    res.render('admin/game-admin-test')
+})
+
+
 module.exports = router;
