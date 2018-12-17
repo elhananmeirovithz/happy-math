@@ -51,21 +51,63 @@
 
   // Open a new connection, using the GET request on the URL endpoint
   request.open('GET', '../../api/targilLevel/targilLevel-list/', true);
-  
   request.onload = function () {
     // Begin accessing JSON data here
     var data = JSON.parse(this.response);
-    console.log(data);
+    //console.log(data);
     if (request.status >= 200 && request.status < 400) {
         data.forEach(targilLevel => {
-          console.log(targilLevel.type);
-          console.log(targilLevel.level);
-          console.log(targilLevel.numberLength1);
-          console.log(targilLevel.numberLength2);
-          const card = document.createElement('div');
-          card.setAttribute('class', 'divTableRow');
-          /*https://www.taniarascia.com/how-to-connect-to-an-api-with-javascript/*/
-          divTableBody.appendChild(card);
+          console.log("type:" + targilLevel.type);
+          console.log("level:" + targilLevel.level);
+          console.log("numberLength1:" + targilLevel.numberLength1);
+          console.log("numberLength2:" + targilLevel.numberLength2);
+
+          var para = document.createElement('div');
+          para.setAttribute('class', 'divTableRow');
+          
+          var t = document.createElement('div');
+          t.setAttribute('class', 'divTableCell');
+          var tt = document.createTextNode(targilLevel.type);
+          t.appendChild(tt);
+          para.appendChild(t);
+          
+          var t = document.createElement('div');
+          t.setAttribute('class', 'divTableCell');
+          var tt = document.createTextNode(targilLevel.level);
+          t.appendChild(tt);
+          para.appendChild(t);
+          
+          var t = document.createElement('div');
+          t.setAttribute('class', 'divTableCell');
+          var tt = document.createTextNode(targilLevel.numberLength1);
+          t.appendChild(tt);
+          para.appendChild(t);
+          
+          var t = document.createElement('div');
+          t.setAttribute('class', 'divTableCell');
+          var tt = document.createTextNode(targilLevel.numberLength2);
+          t.appendChild(tt);
+          para.appendChild(t);
+
+          var t = document.createElement('div');
+          t.setAttribute('class', 'divTableCell');
+          var a = document.createElement('a');
+          a.setAttribute('data-confirm', 'Are you sure?');
+          a.setAttribute('data-method', 'delete');
+          a.setAttribute('href', '../../api/targilLevel/delete/' + targilLevel._id);
+          a.setAttribute('rel', 'nofollow');
+          var span = document.createElement("SPAN");
+          span.setAttribute('style', 'color: Tomato;');
+          var i = document.createElement("i");
+          i.setAttribute('class', 'fas fa-times-circle');// the x of awsomefont
+          span.appendChild(i);
+          a.appendChild(span);
+          t.appendChild(a);
+          para.appendChild(t);
+          
+          document.getElementById("tablebody").appendChild(para);
+          
+          
 
         });
     }
@@ -77,40 +119,17 @@
 </script>
 
 <div class="divTable blueTable">
-<div class="divTableHeading">
-<div class="divTableRow">
-    <div class="divTableHead">Type</div>
-    <div class="divTableHead">Level</div>
-    <div class="divTableHead">First number length</div>
-    <div class="divTableHead">Second number length</div>
+    <div class="divTableHeading">
+      <div class="divTableRow">
+          <div class="divTableHead">Type</div>
+          <div class="divTableHead">Level</div>
+          <div class="divTableHead">First number length</div>
+          <div class="divTableHead">Second number length</div>
+          <div class="divTableHead"></div>
+      </div>
     </div>
+    <div id=tablebody class="divTableBody">
     </div>
-    <div class="divTableBody">
-    <div class="divTableRow">
-    <div class="divTableCell">cell1_1</div>
-    <div class="divTableCell">cell2_1</div>
-    <div class="divTableCell">cell3_1</div>
-    <div class="divTableCell">cell4_1</div>
-    </div>
-    <div class="divTableRow">
-    <div class="divTableCell">cell1_2</div>
-    <div class="divTableCell">cell2_2</div>
-    <div class="divTableCell">cell3_2</div>
-    <div class="divTableCell">cell4_2</div>
-    </div>
-    <div class="divTableRow">
-    <div class="divTableCell">cell1_3</div>
-    <div class="divTableCell">cell2_3</div>
-    <div class="divTableCell">cell3_3</div>
-    <div class="divTableCell">cell4_3</div>
-    </div>
-    <div class="divTableRow">
-    <div class="divTableCell">cell1_4</div>
-    <div class="divTableCell">cell2_4</div>
-    <div class="divTableCell">cell3_4</div>
-    <div class="divTableCell">cell4_4</div>
-</div>
-</div>
 </div>
 
 
