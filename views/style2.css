@@ -119,59 +119,10 @@ input, select, textarea, button{font-family:inherit;}
 /*--------------------------------------------------------------------*/
 
 
-/*--------------SIGHNUP WINDOW AND ITS BUTTONS------------------------*/
-/*SIGNIN WINDOW*/
-#signup-container{
-    display: flex; /*or none*/
-    flex-direction: column;
-    justify-content: space-around; /*distributes items eventually within the flex container*/
-    align-items: stretch;  /*items occupy the entire space of the container*/
-
-    position: fixed;
-    top:35%; 
-    left: 18%; 
-    right: 18%;
-    text-align: center;
-    border: 1px solid rgb(220, 220, 220);
-    min-width: 200px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 200px 0 rgba(0, 0, 0, 0.19); /*effect that creates paper-like cards*/ 
-}
-
-.button-signup{
-    border: 1px solid cornflowerblue; 
-    color: rgb(26, 29, 34);
-    margin: 5px; 
-    min-width: 150px;
-    min-height: 40px; 
-    font-size: 1.2em; 
-    border-radius: 10px; 
-    box-shadow: 4px 4px 8px rgb(190, 190, 190);
-        align-content: center;  /*This aligns a flex container's lines within when there is extra space in the cross-axis*/
-}
-
-/*mouse over buttons */
-.button-signup:hover{
-    cursor: pointer;
-    color: #FF00FF;
-    box-shadow: none; 
-}
-
-/*mouse over buttons */
-.button-signup a:hover{
-    cursor: pointer;
-    color: #FF00FF;
-    box-shadow: none; 
-}
-
-#fb {
-    display: none; 
-}
-/*---------------------------------------------------------*/
-
-
 /*---------WINDOW FOR CHOOSING AN ASSIGNMENT TYPE---------*/
 /*---------CHOOSE-TASK---------*/
+#minus, #multiply, #division {display: none;}
+
 #choose-task{
     display: flex;
     flex-flow: row unwrap; 
@@ -399,7 +350,7 @@ input, select, textarea, button{font-family:inherit;}
     height: 40%;
     background-color: rgba(173, 216, 230, 0.39); 
 
-    display: flex; /*flex*/
+    display: none; /*flex*/
 }
 
 #keyboard-table {

@@ -1,0 +1,386 @@
+/*GENERAL*/
+html{
+    font-family: 'Indie Flower', cursive;
+}
+
+body{
+    margin:0; 
+}
+
+/*no underline for links*/
+a{
+    text-decoration: none; 
+    font-size: 1.5em;
+}
+/*---------------------------------------------------------------*/
+
+
+/*-------------TOP NAVIGATION AND THE HEADER PANELS--------------*/
+#nav-top{   /*Parent element*/
+    /*setting flex container properties*/
+    display: flex;
+    flex-flow: row wrap; 
+    justify-content: space-around;
+    border: 1px solid cornflowerblue;
+    position: relative; 
+    width: 100%; 
+    border-radius: 5px; 
+}
+
+#nav-top div{
+    border: 1px solid yellow;
+    border-radius: 5px; 
+    color: rgb(26, 29, 34);
+    margin: 5px; 
+}
+
+/*mouse over button */
+#nav-top div a:hover{
+    cursor: pointer;
+    color: #FF00FF;
+}
+
+#nav-profile{
+    display: none; 
+}
+
+
+/*HEADER AND TITLE*/
+header{
+    position: sticky; 
+    top:0; 
+    left:0;
+    display: block; 
+    width: 100%; 
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); /*effect that creates paper-like cards*/
+}
+
+h1{
+    text-align: left;
+    color: cornflowerblue; 
+    font-size: 2em; 
+    margin:0 0 0 10px;
+    text-shadow: 2px 2px rgb(228, 228, 228);
+    border-radius: 5px; 
+    letter-spacing: 2px;
+}
+
+h1:hover{
+    text-shadow: 2px 2px yellow;
+}
+
+#dynamic-title{
+    text-align: center; 
+}
+/*--------------------------------------------------------------------*/
+
+
+/*--------------SIGHNUP WINDOW AND ITS BUTTONS------------------------*/
+/*SIGNIN WINDOW*/
+#signup-container{
+    display: flex; /*or none*/
+    flex-direction: column;
+    justify-content: space-around; /*distributes items eventually within the flex container*/
+    align-items: stretch;  /*items occupy the entire space of the container*/
+
+    position: fixed;
+    top:35%; 
+    left: 18%; 
+    right: 18%;
+    text-align: center;
+    border: 1px solid rgb(220, 220, 220);
+    min-width: 200px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 200px 0 rgba(0, 0, 0, 0.19); /*effect that creates paper-like cards*/ 
+}
+
+.button-signup{
+    border: 1px solid cornflowerblue; 
+    color: rgb(26, 29, 34);
+    margin: 5px; 
+    min-width: 150px;
+    min-height: 40px; 
+    font-size: 1.2em; 
+    border-radius: 10px; 
+    box-shadow: 4px 4px 8px rgb(190, 190, 190);
+        align-content: center;  /*This aligns a flex container's lines within when there is extra space in the cross-axis*/
+}
+
+/*mouse over buttons */
+.button-signup:hover{
+    cursor: pointer;
+    color: #FF00FF;
+    box-shadow: none; 
+}
+
+/*mouse over buttons */
+.button-signup a:hover{
+    cursor: pointer;
+    color: #FF00FF;
+    box-shadow: none; 
+}
+
+#fb {
+    display: none; 
+}
+/*---------------------------------------------------------*/
+
+
+/*---------WINDOW FOR CHOOSING AN ASSIGNMENT TYPE---------*/
+/*---------CHOOSE-TASK---------*/
+#decimal_num{
+    display: none; 
+    font-size: 2em; 
+}
+
+#choose-task{
+    display: flex;
+    flex-flow: row unwrap; 
+    justify-content: space-evenly; /*distributes items eventually within the flex container*/
+    align-items: flex-end;  /*items occupy the entire space of the container*/
+    align-content: center;  /*This aligns a flex container's lines within when there is extra space in the cross-axis*/
+
+    position: fixed;
+    top:20%; 
+    left: 40%;
+    transform: translate(-50%, -50%);
+    
+    margin: 10%; 
+
+    text-align: center; 
+}
+
+.button-choose{
+    border: 1px solid cornflowerblue; 
+    color: rgb(26, 29, 34);
+    margin: 5px; 
+    min-width: 100px;
+    min-height: 20px; 
+    font-size: 1.2em; 
+    border-radius: 10px; 
+    box-shadow: 4px 4px 8px rgb(190, 190, 190);
+    text-align: center; 
+}
+
+/*mouse over buttons */
+.button-choose:hover{
+    cursor: pointer;
+    color: #FF00FF;
+    box-shadow: none; 
+}
+
+#new-game{
+    display: none; 
+    font-size: 1.5em;
+    border-radius: 80px; 
+    position: fixed;
+    top: 16%; 
+    right: 8%;
+    font-size: 1.2em; 
+}
+/*---------------------------------------------------------*/
+
+
+/*----------------- AN ASSIGNMENT WINDOW-------------------*/
+/*---------TASK-CONTAINER---------*/
+#task-container{
+    display: none;  /* flex or none*/
+    flex-direction: row;  /*column or row*/
+    justify-content: space-around; /*distributes items eventually within the flex container*/
+    align-items: center;  /*items occupy the entire space of the container*/
+
+    position: fixed;
+    top:40%; 
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%); 
+    text-align: center;
+    border: 1px solid rgb(220, 220, 220);
+    min-width: 200px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 200px 0 rgba(0, 0, 0, 0.19); /*effect that creates paper-like cards*/
+
+    font-size: 2em; 
+    color: cornflowerblue;
+}
+
+.number{
+    margin: 1px; 
+    color: cornflowerblue; 
+}
+
+#results1{
+    display: none; /*inline*/
+    font-size: 1.5em; 
+}
+
+#results2{
+    display: none; 
+    font-size: 1.5em; 
+}
+
+#results3{
+    display: none; 
+    font-size: 1.5em; 
+}
+
+#results4{
+    display: none; 
+    font-size: 1.5em; 
+}
+
+/*---------------------------------------------------------*/
+
+
+
+/*---------- WINDOW OF STEPS - INTERACTION WITH A USER -------------*/
+#step-container{
+    display: none;  /*or none*/
+    flex-direction: row;
+    justify-content: space-around; /*distributes items eventually within the flex container*/
+    align-items: stretch;  /*items occupy the entire space of the container*/
+
+    position: fixed;
+    top:75%; 
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%); 
+    text-align: center;
+    border: 1px solid rgb(220, 220, 220);
+    min-width: 200px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 200px 0 rgba(0, 0, 0, 0.19); /*effect that creates paper-like cards*/
+
+    font-size: 2em;
+}
+
+.digit{
+    margin: 3px;
+}
+
+#user-answer{
+    border-radius: 5px;    
+}
+
+#submit-answer {
+    font-size: 1em; 
+    border-radius: 50px; 
+}
+
+#decimal-step {
+    display: none; 
+}
+/*--------------------------------------------------------------*/
+
+
+/*---------------------------FORM------------------------------*/
+#form-container{
+    display: none;  /*or none*/
+    flex-direction: row;
+    justify-content: space-around; /*distributes items eventually within the flex container*/
+    align-items: stretch;  /*items occupy the entire space of the container*/
+
+    position: fixed;
+    top:40%; 
+    left: 40%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%); 
+    text-align: center;
+    border: 1px solid rgb(220, 220, 220);
+    min-width: 200px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 200px 0 rgba(0, 0, 0, 0.19); /*effect that creates paper-like cards*/
+
+    font-size: 1em;
+}
+
+
+
+
+
+
+
+
+ /*---------------------------FOOTER----------------------------*/
+nav{    /*Parent element*/
+    /*setting flex container properties*/
+    display: none; 
+    flex-flow: row wrap;
+    justify-content: space-around; 
+    border: 1px solid cornflowerblue;
+    background-color: white;
+    position: fixed; 
+    left: 0;
+    right: 0;
+    bottom: 0; 
+    border-radius: 5px; 
+}
+
+#nav-bottom div{    /*Child element*/
+    border: 1px solid yellow;
+    border-radius: 5px; 
+    color: rgb(26, 29, 34);
+    margin:5px; 
+    padding:0;
+}
+
+/*mouse over button */
+#nav-bottom div a:hover{
+    cursor: pointer;
+    color: #FF00FF;
+}
+
+/*--------------------MEDIA QUERY--------------------*/
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+     .button-choose{
+        font-size: 1em; 
+    }
+
+    h1{
+        font-size: 1.5em; 
+    }
+
+    #choose-task{
+        top: 20%; 
+        flex-direction: column;
+    }
+
+    #task-container{
+        top: 35%;
+    }
+
+    #step-container{
+        top: 65%; 
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+
+} 
+
+
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .button-choose{
+        font-size: 2em; 
+    }
+
+    h1{
+        font-size: 2.5em; 
+
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+
+} 
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    
+}

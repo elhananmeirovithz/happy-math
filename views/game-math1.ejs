@@ -38,7 +38,7 @@
                 <a href="/auth/logout">LOG<br/>OUT</a>
             </div>
 
-            <div class="nav-button" id="new-game" onmousedown="orderNewGame(this)">
+            <div class="nav-button" id="new-game" onmousedown="taskPlus(this)">  <!-- LATER CHANE TO THE FUNCTION orderNewGame -->
                 NEW<br/>TASK
             </div>
         
@@ -56,7 +56,7 @@
         
         <div id='choose-task'>
             <div class="button-choose" id="plus" value="plus" onmousedown="taskPlus(this)">
-                ADDITION
+                NEW<br/>TASK
             </div>
             <div class="button-choose" id="minus" value="minus" onmousedown="taskMinus(this)">
                 SUBTRACTION</div>
@@ -130,30 +130,18 @@
                 SEND
             </div>
         </form>
-        
-        <!--<div id="step-container">
-                <div class="digit" id="digit1">
-                    5
-                </div>
-            
-                <div class="digit" id="sign-step">
-                    +
-                </div>
-            
-                <div class="digit" id="digit2">
-                    4
-                </div>
-            
-                <div class="digit" id="sign-equal">
-                    =
-                </div>
-            
-                <input class="digit" id="user-answer" type="number" pattern="[0-9]*" value="">
-            
-                </input>
-            </div> -->
 
-        
+        <!-- Press 'submit-answer' when ENTER is pressed - DOESN'T WORK -->
+        <script>  // DOESN'T WORK
+            var input = document.getElementById("user-answer");
+            input.addEventListener("keyup", function (event) {
+                event.preventDefault();
+                if (event.keyCode === 13) {
+                    document.getElementById("submit-answer").click();
+                }
+            });
+        </script>
+               
         <!-- ELEMENT 4 - Keyboard with Numbers Only -->
         <div id="keyboard-container">
             <table id="keyboard-table">

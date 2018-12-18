@@ -14,55 +14,29 @@
 </head>
 
 <body>
-    <nav id="nav-top">
-        <div class="nav-home">
-            Home
-        </div>
+    <div id="main-container">
 
-        <div class="nav-logout">
-            <a href="/auth/logout">Logout</a>
-        </div>
-
-        <div class="nav-profile">
-            Profile
-        </div>
-    </nav>
-
-    <header>
-        <h1 id="main-title">
-            Happy Math
-        </h1>
-    </header>
-
-    <div id="signup-container">
-        <% if (user) {%>
-            <!-- If user, automatically redirect to the 'game-math' page: -->
-            <meta http-equiv="refresh" content="0; url='/game-math1'">
+        <!-- ELEMENT 1 - Navigation Panel + The Message Box/ Header -->
+        <nav id="nav-top">
+            <!--<div class="nav-button" id="nav-home">
+                        <a href="/">Home</a>
+                    </div>-->
         
-        <% } else  { %> 
-        <div class="button-signup" id="fb" onmousedown="func_buttondown(this)" onmouseup="func_buttonup(this)">
-            <a class="facebook-btn" href="/auth/facebook">SIGN UP WITH FACEBOOK</a>
-        </div>
+            <!-- <div class="nav-button" id="nav-logout">
+                <a href="/auth/logout">LOG<br />OUT</a>
+            </div> -->
         
-        <div class="button-signup" id="google" onmousedown="func_buttondown(this)" onmouseup="func_buttonup(this)">
-            <a class="google-btn" href="/auth/google">SIGN UP WITH GOOGLE+</a>
-        </div>
+            <div class="nav-button" id="new-game" onmousedown="orderNewGame(this)">
+                NEW<br />TASK
+            </div>
         
-        <div class="button-signup" id="guest" onmousedown="func_buttondown(this)" onmouseup="func_buttonup(this)">
-            <a class="passport-local-btn" href="/login/">BE OUR GUEST</a>
-        </div>
-        <!-- this is a form to make a post -->
-        <form class="button-signup"  method="POST", action="/auth/passport-local/">  
-            <input type="hidden" name="username" value="guest@guest.com">
-            <input type="hidden" name="password" value="guest">
-            <input type ="submit" value = "BE OUR GUEST" />
-        </form>
-
-        <% } %>
-    </div>
-   
-    <footer>
-        <nav id="nav-bottom">
+            <div class="nav-button" id="nav-profile">
+                Profile
+            </div>
+        </nav>
+    
+            <!-- NAVIGATION PANEL
+        <nav id="nav-top">
             <div class="nav-home">
                 Home
             </div>
@@ -74,8 +48,60 @@
             <div class="nav-profile">
                 Profile
             </div>
-        </nav>
-    </footer>
+        </nav> -->
+
+        <div id="title">
+            <div id="dynamic-title">
+                Happy Math
+            </div>
+        </div>
+
+        <div id="signup-container">
+            <% if (user) {%>
+                <!-- If user, automatically redirect to the 'game-math' page: -->
+                <meta http-equiv="refresh" content="0; url='/game-math1'">
+        
+            <% } else  { %> 
+                <div class="button-signup" id="fb" onmousedown="func_buttondown(this)" onmouseup="func_buttonup(this)">
+                <a class="facebook-btn" href="/auth/facebook">SIGN UP WITH FACEBOOK</a>
+            </div>
+        
+            <div class="button-signup" id="google" onmousedown="func_buttondown(this)" onmouseup="func_buttonup(this)">
+                <a class="google-btn" href="/auth/google">SIGN UP WITH GOOGLE+</a>
+            </div>
+        
+            <div class="button-signup" id="guest" onmousedown="func_buttondown(this)" onmouseup="func_buttonup(this)">
+                <a class="passport-local-btn" href="/login/">BE OUR GUEST</a>
+            </div>
+            
+            <!-- this is a form to make a post -->
+            <form class="button-signup"  method="POST", action="/auth/passport-local/">  
+                <input type="hidden" name="username" value="guest@guest.com">
+                <input type="hidden" name="password" value="guest">
+                <input type ="submit" value = "BE OUR GUEST" />
+            </form>
+
+            <% } %>
+        </div>
+
+        <!--   
+        <footer>
+            <nav id="nav-bottom">
+                <div class="nav-home">
+                    Home
+                </div>
+
+                <div class="nav-logout">
+                    <a href="/auth/logout">Logout</a>
+                </div>
+
+                <div class="nav-profile">
+                    Profile
+                </div>
+            </nav> 
+        </footer> -->
+
+    </div>
 </body>
 
 <!--JS-->
