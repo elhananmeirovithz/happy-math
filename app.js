@@ -62,7 +62,7 @@ app.use('/admin',gameAdminRoutes);//handling the name of the rout to tset
 // set public folder
 app.use(express.static(__dirname + '/views'));
 app.use('/admin', express.static(__dirname + '/views/admin'));
-// app.use('/img',express.static(path.join(__dirname, 'views/images')));
+app.use('/images',express.static(__dirname + 'views/images'));
 // app.use('/js',express.static(path.join(__dirname, 'views/javascripts')));
 // app.use('/css',express.static(path.join(__dirname, 'views/stylesheets')));
 

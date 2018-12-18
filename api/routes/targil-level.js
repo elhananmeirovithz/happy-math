@@ -47,39 +47,18 @@ router.post('/targilLevel-list-add', (req, res, next) => {
 });
 
 
-// router.post('/targil-add',  (req, res, next) => {
-//     var ip = (req.headers['x-forwarded-for'] || '').split(',').pop() || 
-//             req.connection.remoteAddress || 
-//             req.socket.remoteAddress || 
-//             req.connection.socket.remoteAddress;
-//         ip = ip.split(',')[0];
-//         // ip = ip.split(':').slice(-1); //in case the ip returned in a format: "::ffff:146.xxx.xxx.xxx"     
-//     User.findById(req.body.user)
-//     .then(user => {
-//         const targil = new Targil({
-//             _id: mongoose.Types.ObjectId(),
-//             user: req.body.user,
-//             targil: req.body.targil,
-//             targil_duration_msec: req.body.targil_duration_msec,
-//             targil_number_of_errors: req.body.targil_number_of_errors,
-//             targil_flag_finish: req.body.targil_flag_finish,
-//             ip: ip
-//         });
-//         return targil.save();
-//     })
-//     .then(result => {
-//         res.status(201).json({
-//             massage: 'success'
-//         })
-//     })
-//     .catch(err => { 
-//         console.log(err);
-//         res.status(500).json({
-//             message: "User not found",
-//             error: err
-//         });	
-//     });
-// });
+router.get('/delete/:targilLevelID', (req, res, next) => {
+	const id=req.params.targilLevelID;
+	console.log(id);
+	TargilLevel.deleteOne({ _id: id })
+	.exec()
+	.then(
+		res.redirect("../../../admin/game-admin-levels-add")
+		)
+	.catch(err => {
+		res.redirect("../../../admin/game-admin-levels-add")
+	});
+}); 
 
 
 
