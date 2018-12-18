@@ -34,21 +34,6 @@
                 Profile
             </div>
         </nav>
-    
-            <!-- NAVIGATION PANEL
-        <nav id="nav-top">
-            <div class="nav-home">
-                Home
-            </div>
-
-            <div class="nav-logout">
-                <a href="/auth/logout">Logout</a>
-            </div>
-
-            <div class="nav-profile">
-                Profile
-            </div>
-        </nav> -->
 
         <div id="title">
             <div id="dynamic-title">
@@ -69,17 +54,20 @@
             <div class="button-signup" id="google" onmousedown="func_buttondown(this)" onmouseup="func_buttonup(this)">
                 <a class="google-btn" href="/auth/google">SIGN UP WITH GOOGLE+</a>
             </div>
-        
-            <div class="button-signup" id="guest" onmousedown="func_buttondown(this)" onmouseup="func_buttonup(this)">
-                <a class="passport-local-btn" href="/login/">BE OUR GUEST</a>
-            </div>
-            
+
             <!-- this is a form to make a post -->
-            <form class="button-signup"  method="POST", action="/auth/passport-local/">  
+            <form id="guest-container" method="POST" , action="/auth/passport-local/">
                 <input type="hidden" name="username" value="guest@guest.com">
                 <input type="hidden" name="password" value="guest">
-                <input type ="submit" value = "BE OUR GUEST" />
+                <input type="submit" class="button-signup" id="guest-button" value="BE OUR GUEST" />
             </form>
+        
+            <!-- 
+            <div class="button-signup" id="guest" onmousedown="func_buttondown(this)" onmouseup="func_buttonup(this)">
+                <a class="passport-local-btn" href="/login/">BE OUR GUEST</a>
+            </div> -->
+            
+            
 
             <% } %>
         </div>
