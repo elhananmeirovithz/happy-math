@@ -34,22 +34,28 @@
                 <a href="/">Home</a>
             </div>-->
 
-            <div class="nav-button" id="nav-logout">
-                <a href="/auth/logout">LOG<br/>OUT</a>
+            <div class="button-choose" id="nav-logout">
+                <h2 class="txt">
+                    <a href="/auth/logout">
+                        LOG<br/>OUT
+                    </a>
+                </h2>
             </div>
 
-            <div class="nav-button" id="new-game" onmousedown="taskPlus(this)">  <!-- LATER CHANE TO THE FUNCTION orderNewGame -->
-                NEW<br/>TASK
+            <div class="button-choose" id="new-game" onmousedown="taskPlus(this)"> <!-- LATER CHANGE TO THE FUNCTION orderNewGame -->
+                <h2 class="txt">
+                    NEW<br />TASK
+                </h2>  
             </div>
         
-            <div class="nav-button" id="nav-profile">
+            <div class="button-choose txt" id="nav-profile">
                 Profile
             </div>
         </nav>
         
         <div id="title">
             <div id="dynamic-title">
-                Choose Your Task Type
+                Let's Play
             </div>
             
         </div>
@@ -127,7 +133,9 @@
             </div>
         
             <div type="submit" class="button-choose" id="submit-answer" onclick="evaluateInput()">
-                SEND
+                <h2 class="txt">
+                    SEND
+                </h2>
             </div>
         </form>
 

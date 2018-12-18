@@ -27,8 +27,6 @@ input, select, textarea, button{font-family:inherit;}
     height: 100%; 
 
     margin: 0; 
-    border: red 5px; /* WHY DOESN'T IT WORK???*/
-
 
     display: flex;
     flex-direction: column; 
@@ -51,8 +49,8 @@ input, select, textarea, button{font-family:inherit;}
     display: flex;
     flex-direction: row-reverse; 
     justify-content: space-between;
-    border: 1px solid yellow;
-    background-color: rgba(173, 216, 230, 0.39); 
+    background-color: white; 
+    /* rgba(173, 216, 230, 0.39); */
 }
 
 #nav-top div{
@@ -96,13 +94,12 @@ input, select, textarea, button{font-family:inherit;}
 
     background-color: white;
     /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); /*effect that creates paper-like cards*/ 
-    border: 1px solid yellow;
 
     display: flex; 
     justify-content: center; 
     align-items: center; 
 
-    z-index: 5;
+    z-index: 1;
 }
 
 #dynamic-title{
@@ -111,6 +108,7 @@ input, select, textarea, button{font-family:inherit;}
     letter-spacing: 2px;
     color: cornflowerblue;
     font-weight: bold; 
+    opacity: 0;
 }
 
 #dynamic-title:hover{
