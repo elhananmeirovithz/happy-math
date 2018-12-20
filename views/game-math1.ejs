@@ -34,29 +34,35 @@
                 <a href="/">Home</a>
             </div>-->
 
-            <div class="nav-button" id="nav-logout">
-                <a href="/auth/logout">LOG<br/>OUT</a>
+            <div class="button-choose" id="nav-logout">
+                <h2 class="txt">
+                    <a href="/auth/logout">
+                        LOG<br/>OUT
+                    </a>
+                </h2>
             </div>
 
-            <div class="nav-button" id="new-game" onmousedown="orderNewGame(this)">
-                NEW<br/>TASK
+            <div class="button-choose" id="new-game" onmousedown="taskPlus(this)"> <!-- LATER CHANGE TO THE FUNCTION orderNewGame -->
+                <h2 class="txt">
+                    NEW<br />TASK
+                </h2>  
             </div>
         
-            <div class="nav-button" id="nav-profile">
+            <div class="button-choose txt" id="nav-profile">
                 Profile
             </div>
         </nav>
         
         <div id="title">
             <div id="dynamic-title">
-                Choose Your Task Type
+                Let's Play
             </div>
             
         </div>
         
         <div id='choose-task'>
             <div class="button-choose" id="plus" value="plus" onmousedown="taskPlus(this)">
-                ADDITION
+                NEW<br/>TASK
             </div>
             <div class="button-choose" id="minus" value="minus" onmousedown="taskMinus(this)">
                 SUBTRACTION</div>
@@ -127,33 +133,23 @@
             </div>
         
             <div type="submit" class="button-choose" id="submit-answer" onclick="evaluateInput()">
-                SEND
+                <h2 class="txt">
+                    SEND
+                </h2>
             </div>
         </form>
-        
-        <!--<div id="step-container">
-                <div class="digit" id="digit1">
-                    5
-                </div>
-            
-                <div class="digit" id="sign-step">
-                    +
-                </div>
-            
-                <div class="digit" id="digit2">
-                    4
-                </div>
-            
-                <div class="digit" id="sign-equal">
-                    =
-                </div>
-            
-                <input class="digit" id="user-answer" type="number" pattern="[0-9]*" value="">
-            
-                </input>
-            </div> -->
 
-        
+        <!-- Press 'submit-answer' when ENTER is pressed - DOESN'T WORK -->
+        <script>  // DOESN'T WORK
+            var input = document.getElementById("user-answer");
+            input.addEventListener("keyup", function (event) {
+                event.preventDefault();
+                if (event.keyCode === 13) {
+                    document.getElementById("submit-answer").click();
+                }
+            });
+        </script>
+               
         <!-- ELEMENT 4 - Keyboard with Numbers Only -->
         <div id="keyboard-container">
             <table id="keyboard-table">
@@ -177,7 +173,7 @@
                 </tr>
                 
                 <tr>
-                    <td id="help" onclick="keyHelp(this.id)">help</td>
+                    <td id="help" onclick="keyHelp(this.id)"></td>
                     <td id="0" onclick="keyInput(this.id)">0</td>
                     <td id="erase" onclick="keyDelete(this.id)">delete</td>
                 </tr>

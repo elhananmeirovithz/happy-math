@@ -1,5 +1,4 @@
 function taskPlus(id) {
-
     // buttons of task choice disappear: 
     document.getElementById("plus").style.display = "none";
     document.getElementById("minus").style.display = "none";
@@ -11,7 +10,7 @@ function taskPlus(id) {
     // the XMLHttpRequest object can be used to exchange data with a web server behind the scenes
 
     // when the request is ready, it reads and parse the JSON with the task
-    xhttp.onreadystatechange = function () {  // is called everytime the readyStatus changes
+    xhttp.onreadystatechange = function() {  // is called everytime the readyStatus changes
         
         if (this.readyState == 4 && this.status == 200) {  // when the response is ready, parse the JSON to object Obj
             Obj = JSON.parse(this.responseText);   // object with the task. It's a global var since there is no var declaration
@@ -43,9 +42,12 @@ function taskPlus(id) {
             console.log('Correct game results are ...' + correctTaskAnswer)
 
             // the task appears 300 millisec after pressing the task name
-            setTimeout(task_appears, 300)            
-            setTimeout(step_appears, 500)
-            setTimeout(new_game_button_appears, 2000)
+            task_appears()
+            step_appears()
+            setTimeout(new_game_button_appears, 1000)
+
+            // keyboard appears 
+            document.getElementById('keyboard-container').style.display = 'flex';
             
         }  // closes if for reading the JSON
     };
@@ -332,6 +334,9 @@ function evaluateInput() {
 
                 if (task_answer == correctTaskAnswer) {
                     message = 'Congratulaitons! You finished the task!'; 
+                    // keyboard disappears
+                    document.getElementById('keyboard-container').style.display = 'none';
+
                     console.log(message)
                     document.getElementById("dynamic-title").innerHTML = message;
 
@@ -361,6 +366,10 @@ function evaluateInput() {
 
             if (task_answer == correctTaskAnswer) {
                 message = 'Congratulaitons! You finished the task!';
+
+                // keyboard disappears
+                document.getElementById('keyboard-container').style.display = 'none';
+                
                 console.log(message)
                 document.getElementById("dynamic-title").innerHTML = message;
 
@@ -524,6 +533,7 @@ function orderNewGame(id) {
     document.getElementById("minus").style.display = "block";
     document.getElementById("multiply").style.display = "block";
     document.getElementById("division").style.display = "block";
+
     document.getElementById("new-game").style.display = "none";
 
     document.getElementsByClassName("number").innerHTML = " ";
