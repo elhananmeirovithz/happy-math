@@ -1,48 +1,6 @@
 <%- include('game-admin-header') -%>
 <!-- form to add the information to the list -->
 
-<div class="container">  
-  <form id="contact"  method="POST" action="../api/targilLevel/targilLevel-list-add">  
-    <h3>Add "PLUS" level</h3>
-    <fieldset>
-      <span>Level
-      <select placeholder="level" type="text" name="level" tabindex="1" required autofocus>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
-      </select></span>
-    </fieldset>
-    <fieldset>
-      <span>First number length
-      <select placeholder="First number length" name="numberLength1" type="text" tabindex="1" required autofocus>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-      </select></span>
-    </fieldset>
-    <fieldset>
-        <span>Second number length
-      <select placeholder="Second number length"  name="numberLength2" type="text" tabindex="1" required autofocus>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-      </select></span>
-    </fieldset>
-    <input type="hidden" name="type" value="add">
-    <fieldset>
-      <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
-    </fieldset>
-  </form>
-</div>
-
-
 
 <!-- present the list of information -->
 <script>
@@ -50,82 +8,114 @@
   var request = new XMLHttpRequest();
 
   // Open a new connection, using the GET request on the URL endpoint
-  request.open('GET', '../../api/targilLevel/targilLevel-list/plus', true);
+  request.open('GET', '../../api/user/user-list', true);
   request.onload = function () {
     // Begin accessing JSON data here
     var data = JSON.parse(this.response);
+    //console.log(data.users)
     // sort by value
-    data.sort(function (a, b) {
-      return b.level - a.level;
-    });
-
-
-
+    // data.sort(function (a, b) {
+    //   return b.level - a.level;
+    // });
     if (request.status >= 200 && request.status < 400) {
-      data.forEach(targilLevel => {
+      data.users.forEach(user => {
 
           var para = document.createElement('div');
           para.setAttribute('class', 'divTableRow');
-          
-          var t = document.createElement('div');
-          t.setAttribute('class', 'divTableCell');
-          var tt = document.createTextNode(targilLevel.type);
-          t.appendChild(tt);
-          para.appendChild(t);
-          
-          var t = document.createElement('div');
-          t.setAttribute('class', 'divTableCell');
-          var tt = document.createTextNode(targilLevel.level);
-          t.appendChild(tt);
-          para.appendChild(t);
-          
-          var t = document.createElement('div');
-          t.setAttribute('class', 'divTableCell');
-          var tt = document.createTextNode(targilLevel.numberLength1);
-          t.appendChild(tt);
-          para.appendChild(t);
-          
-          var t = document.createElement('div');
-          t.setAttribute('class', 'divTableCell');
-          var tt = document.createTextNode(targilLevel.numberLength2);
-          t.appendChild(tt);
-          para.appendChild(t);
+
 
           var t = document.createElement('div');
           t.setAttribute('class', 'divTableCell');
-          var a = document.createElement('a');
-          a.setAttribute('data-confirm', 'Are you sure?');
-          a.setAttribute('data-method', 'delete');
-          a.setAttribute('href', '../../api/targilLevel/delete/' + targilLevel._id);
-          a.setAttribute('rel', 'nofollow');
-          var span = document.createElement("SPAN");
-          span.setAttribute('style', 'color: Tomato;');
-          var i = document.createElement("i");
-          i.setAttribute('class', 'fas fa-times-circle');// the x of awsomefont
-          span.appendChild(i);
-          a.appendChild(span);
-          t.appendChild(a);
+          var tt = document.createTextNode(user.username);
+          t.appendChild(tt);
           para.appendChild(t);
           
+          var t = document.createElement('div');
+          t.setAttribute('class', 'divTableCell');
+          var tt = document.createTextNode(user.email);
+          t.appendChild(tt);
+          para.appendChild(t);
+
+
+
+          /*//////////////////*/
+          /*field set of roles*/
+          /*//////////////////*/
+          var t = document.createElement('div');
+          t.setAttribute('class', 'divTableCell');
+          var form = document.createElement("FORM");
+          form.setAttribute("method", "POST");
+          form.setAttribute("action", "../../api/user/patch/" + user.id);
+
+          var fieldset = document.createElement("FIELDSET");
+          var select = document.createElement("SELECT");
+          select.setAttribute("onchange", "this.form.submit()");
+          select.setAttribute("name", "role");
+          var option = document.createElement("option");
+          option.setAttribute("disabled", "");
+          option.setAttribute("value", "");       
+          // option.setAttribute("hidden", "");              
+          var tt = document.createTextNode("Choose role");
+          option.appendChild(tt);
+          if(user.role == null){
+            option.setAttribute("selected", "");
+          }
+          select.appendChild(option);
+          /*generate the other options*/
+          var roles = ["Admin", "User"];
+          roles.forEach(function(role) {
+            var option = document.createElement("option");
+            option.setAttribute("value", role); 
+            var tt = document.createTextNode(role);
+            option.appendChild(tt);
+            if(user.role == role){
+              option.setAttribute("selected", role);
+            }
+            select.appendChild(option);  
+          });
+          
+          fieldset.appendChild(select);
+          form.appendChild(fieldset);
+          t.appendChild(form);
+          para.appendChild(t);
+
+
+          /*/////////////////////////////*/
+          /*add button for all activities*/
+          /*/////////////////////////////*/
+          var t = document.createElement('div');
+          t.setAttribute('class', 'divTableCell');          
+          var button = document.createElement("BUTTON");   
+          var tt = document.createTextNode('activities');
+          button.setAttribute('onclick', 'funActivity("'+  user.id + '")');   
+          button.appendChild(tt);
+          t.appendChild(button);
+          para.appendChild(t);
+          // <button onclick="myFunction()">Try it</button>
+
+
+
+
           document.getElementById("tablebody").appendChild(para);
-
         });
     }
   };
 
   request.send();
 
-
+function funActivity(id) {
+  //console.log(arguments)
+  window.open('../../admin/game-admin-users-list-activity-disp/' + id);
+}
 </script>
 
 <div class="divTable blueTable">
     <div class="divTableHeading">
       <div class="divTableRow">
-          <div class="divTableHead">Type</div>
-          <div class="divTableHead">Level</div>
-          <div class="divTableHead">First number length</div>
-          <div class="divTableHead">Second number length</div>
-          <div class="divTableHead"></div>
+          <div class="divTableHead">User-name</div>
+          <div class="divTableHead">Email</div>
+          <div class="divTableHead">Role</div>
+          <div class="divTableHead">Activites</div>
       </div>
     </div>
     <div id=tablebody class="divTableBody">

@@ -2,8 +2,8 @@
 <!-- form to add the information to the list -->
 
 <div class="container">  
-  <form id="contact"  method="POST" action="../api/targilLevel/targilLevel-list-add">  
-    <h3>Add "PLUS" level</h3>
+  <form id="contact"  method="POST" action="../api/targilLevel/targilLevel-list-subtract">  
+    <h3>Add "MINUS" level</h3>
     <fieldset>
       <span>Level
       <select placeholder="level" type="text" name="level" tabindex="1" required autofocus>
@@ -35,7 +35,7 @@
         <option value="3">3</option>
       </select></span>
     </fieldset>
-    <input type="hidden" name="type" value="add">
+    <input type="hidden" name="type" value="subtract">
     <fieldset>
       <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
     </fieldset>
@@ -50,7 +50,7 @@
   var request = new XMLHttpRequest();
 
   // Open a new connection, using the GET request on the URL endpoint
-  request.open('GET', '../../api/targilLevel/targilLevel-list/plus', true);
+  request.open('GET', '../../api/targilLevel/targilLevel-list/minus', true);
   request.onload = function () {
     // Begin accessing JSON data here
     var data = JSON.parse(this.response);

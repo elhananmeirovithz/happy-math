@@ -1,137 +1,70 @@
-<%- include('game-admin-header') -%>
-<!-- form to add the information to the list -->
-
-<div class="container">  
-  <form id="contact"  method="POST" action="../api/targilLevel/targilLevel-list-add">  
-    <h3>Add "PLUS" level</h3>
-    <fieldset>
-      <span>Level
-      <select placeholder="level" type="text" name="level" tabindex="1" required autofocus>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
-      </select></span>
-    </fieldset>
-    <fieldset>
-      <span>First number length
-      <select placeholder="First number length" name="numberLength1" type="text" tabindex="1" required autofocus>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-      </select></span>
-    </fieldset>
-    <fieldset>
-        <span>Second number length
-      <select placeholder="Second number length"  name="numberLength2" type="text" tabindex="1" required autofocus>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-      </select></span>
-    </fieldset>
-    <input type="hidden" name="type" value="add">
-    <fieldset>
-      <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
-    </fieldset>
-  </form>
-</div>
-
-
+<!doctype html>
+<html lang=''>
+<head>
+   <meta charset='utf-8'>
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <title>Happy Math Navegation</title>
+   <!-- fontawesome -->
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+</head>
+<body onload="funStart()">
 
 <!-- present the list of information -->
 <script>
-  // Create a request variable and assign a new XMLHttpRequest object to it.
-  var request = new XMLHttpRequest();
+function funStart() {
+  var targil_info = "<%= targil_info %>";
+  console.log(JSON.parse(targil_info))
+}
+// document.onload = function () {
+//   var targil_info = JSON.parse("<%= targil_info %>")
+//   console.log(targil_info)
+    // var data = JSON.parse(targil_info);
+    
+  //   if (request.status >= 200 && request.status < 400) {
+  //     data.users.forEach(user => {
 
-  // Open a new connection, using the GET request on the URL endpoint
-  request.open('GET', '../../api/targilLevel/targilLevel-list/plus', true);
-  request.onload = function () {
-    // Begin accessing JSON data here
-    var data = JSON.parse(this.response);
-    // sort by value
-    data.sort(function (a, b) {
-      return b.level - a.level;
-    });
+  //         var para = document.createElement('div');
+  //         para.setAttribute('class', 'divTableRow');
 
 
-
-    if (request.status >= 200 && request.status < 400) {
-      data.forEach(targilLevel => {
-
-          var para = document.createElement('div');
-          para.setAttribute('class', 'divTableRow');
+  //         var t = document.createElement('div');
+  //         t.setAttribute('class', 'divTableCell');
+  //         var tt = document.createTextNode(user.username);
+  //         t.appendChild(tt);
+  //         para.appendChild(t);
           
-          var t = document.createElement('div');
-          t.setAttribute('class', 'divTableCell');
-          var tt = document.createTextNode(targilLevel.type);
-          t.appendChild(tt);
-          para.appendChild(t);
-          
-          var t = document.createElement('div');
-          t.setAttribute('class', 'divTableCell');
-          var tt = document.createTextNode(targilLevel.level);
-          t.appendChild(tt);
-          para.appendChild(t);
-          
-          var t = document.createElement('div');
-          t.setAttribute('class', 'divTableCell');
-          var tt = document.createTextNode(targilLevel.numberLength1);
-          t.appendChild(tt);
-          para.appendChild(t);
-          
-          var t = document.createElement('div');
-          t.setAttribute('class', 'divTableCell');
-          var tt = document.createTextNode(targilLevel.numberLength2);
-          t.appendChild(tt);
-          para.appendChild(t);
+  //         var t = document.createElement('div');
+  //         t.setAttribute('class', 'divTableCell');
+  //         var tt = document.createTextNode(user.email);
+  //         t.appendChild(tt);
+  //         para.appendChild(t);
 
-          var t = document.createElement('div');
-          t.setAttribute('class', 'divTableCell');
-          var a = document.createElement('a');
-          a.setAttribute('data-confirm', 'Are you sure?');
-          a.setAttribute('data-method', 'delete');
-          a.setAttribute('href', '../../api/targilLevel/delete/' + targilLevel._id);
-          a.setAttribute('rel', 'nofollow');
-          var span = document.createElement("SPAN");
-          span.setAttribute('style', 'color: Tomato;');
-          var i = document.createElement("i");
-          i.setAttribute('class', 'fas fa-times-circle');// the x of awsomefont
-          span.appendChild(i);
-          a.appendChild(span);
-          t.appendChild(a);
-          para.appendChild(t);
-          
-          document.getElementById("tablebody").appendChild(para);
-
-        });
-    }
-  };
-
-  request.send();
+  //         document.getElementById("tablebody").appendChild(para);
+  //       });
+  //   }
+  // };
 
 
 </script>
-
+<h3><%= "name:"+ user_info.username %></h3>
+<h3><%= "email:"+ user_info.email %></h3>
+<h3><%= "role:"+ user_info.role %></h3>
+<h3>ACTIVITY</h3>
 <div class="divTable blueTable">
     <div class="divTableHeading">
       <div class="divTableRow">
-          <div class="divTableHead">Type</div>
-          <div class="divTableHead">Level</div>
-          <div class="divTableHead">First number length</div>
-          <div class="divTableHead">Second number length</div>
-          <div class="divTableHead"></div>
+          <div class="divTableHead">date_creation</div>
+          <div class="divTableHead">targil</div>
+          <div class="divTableHead">duration (msec)</div>
+          <div class="divTableHead">number_of_errors</div>
+          <div class="divTableHead">finish</div>
       </div>
     </div>
     <div id=tablebody class="divTableBody">
     </div>
 </div>
-
+</body>
 
 
 <style>
@@ -347,4 +280,7 @@ div.blueTable {
 
 </style>
 
-<%- include('game-admin-footer') -%>
+
+
+</body>
+</html>

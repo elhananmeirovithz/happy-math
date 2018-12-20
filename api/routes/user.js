@@ -13,14 +13,17 @@ const generate_password = require('generate-password');
 /*Get all users information*/
 router.get('/user-list', (req, res, next) => 
     User.find()
-	.select(['email','password','googleInfo'])
+	.select(['username','email','password','googleInfo','role'])
 	.exec()
 	.then(docs => {
 		const response = {
 			count: docs.length,
 			users: docs.map( doc => {
 				return {
-					user: doc.email,
+					id: doc._id,
+					username: doc.username,
+					role: doc.role,
+					email: doc.email,
                     hash: doc.password,
                     delete: 'http://localhost:3000/api/user/' + doc._id,
                     googleInfo: doc.googleInfo
@@ -36,6 +39,60 @@ router.get('/user-list', (req, res, next) =>
 		});
 	})
 ); 
+
+/*Get all users information*/
+router.get('/user-info/:userID', (req, res, next) => {
+	const userID=req.params.userID;
+	User.find({ "_id": userID })
+	.select(['username','email','password','googleInfo','role'])
+	.exec()
+	.then(docs => {
+		const response = {
+			count: docs.length,
+			users: docs.map( doc => {
+				return {
+					id: doc._id,
+					username: doc.username,
+					role: doc.role,
+					email: doc.email,
+                    hash: doc.password,
+                    delete: 'http://localhost:3000/api/user/' + doc._id,
+                    googleInfo: doc.googleInfo
+				}
+			})
+		}
+		res.status(200).json(response);
+	})
+	.catch(err => {
+		console.log(err);
+		res.status(500).json({
+			error: err
+		});
+	})
+}); 
+
+router.post('/patch/:userId',(req, res, next) => {
+	var root = req.headers.referer;
+	const id=req.params.userId;
+	var input = req.body;
+	const updateOps = {};
+	for (const key of Object.keys(input)) {
+		updateOps[key] = input[key];
+	}
+	User.update({ _id: id }, { $set: updateOps })
+	.exec()
+	.then(result => {
+		res.redirect(root)
+	})
+	.catch(err => {
+		console.log(err);
+		res.status(500).json({
+			error: err
+		})
+	});
+	
+}); // handling a single product with the :
+
 
 // //sign-up
 // router.post('/signup-social', (req, res, next) => {
