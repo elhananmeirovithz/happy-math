@@ -12,38 +12,62 @@
 
 <!-- present the list of information -->
 <script>
-function funStart() {
-  var targil_info = "<%= targil_info %>";
-  console.log(JSON.parse(targil_info))
+function htmlDecode(input){
+  var e = document.createElement('div');
+  e.innerHTML = input;
+  return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
 }
+function funStart() {
+
+  var targil_info_all =  JSON.parse(htmlDecode("<%= JSON.stringify(targil_info) %>"));
+  
+  targil_info_all.forEach(targil_info => {
+
+    var para = document.createElement('div');
+    para.setAttribute('class', 'divTableRow');
+
+    var t = document.createElement('div');
+    t.setAttribute('class', 'divTableCell');
+    var tt = document.createTextNode(targil_info.date_creation);
+    t.appendChild(tt);
+    para.appendChild(t);
+
+    var t = document.createElement('div');
+    t.setAttribute('class', 'divTableCell');
+    var tt = document.createTextNode(targil_info.targil);
+    t.appendChild(tt);
+    para.appendChild(t);
+
+    var t = document.createElement('div');
+    t.setAttribute('class', 'divTableCell');
+    var tt = document.createTextNode(targil_info.targil_duration_msec);
+    t.appendChild(tt);
+    para.appendChild(t);
+            
+    var t = document.createElement('div');
+    t.setAttribute('class', 'divTableCell');
+    var tt = document.createTextNode(targil_info.targil_number_of_errors);
+    t.appendChild(tt);
+    para.appendChild(t);
+            
+    var t = document.createElement('div');
+    t.setAttribute('class', 'divTableCell');
+    var tt = document.createTextNode(targil_info.targil_flag_finish);
+    t.appendChild(tt);
+    para.appendChild(t);
+
+    document.getElementById("tablebody").appendChild(para);
+  });
+};
+
+
+
 // document.onload = function () {
 //   var targil_info = JSON.parse("<%= targil_info %>")
 //   console.log(targil_info)
     // var data = JSON.parse(targil_info);
     
-  //   if (request.status >= 200 && request.status < 400) {
-  //     data.users.forEach(user => {
-
-  //         var para = document.createElement('div');
-  //         para.setAttribute('class', 'divTableRow');
-
-
-  //         var t = document.createElement('div');
-  //         t.setAttribute('class', 'divTableCell');
-  //         var tt = document.createTextNode(user.username);
-  //         t.appendChild(tt);
-  //         para.appendChild(t);
-          
-  //         var t = document.createElement('div');
-  //         t.setAttribute('class', 'divTableCell');
-  //         var tt = document.createTextNode(user.email);
-  //         t.appendChild(tt);
-  //         para.appendChild(t);
-
-  //         document.getElementById("tablebody").appendChild(para);
-  //       });
-  //   }
-  // };
+  
 
 
 </script>
@@ -51,6 +75,9 @@ function funStart() {
 <h3><%= "email:"+ user_info.email %></h3>
 <h3><%= "role:"+ user_info.role %></h3>
 <h3>ACTIVITY</h3>
+
+<pre id="whereToPrint"></pre>
+
 <div class="divTable blueTable">
     <div class="divTableHeading">
       <div class="divTableRow">

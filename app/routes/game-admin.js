@@ -66,6 +66,7 @@ router.get('/game-admin-users-list-activity-disp/:userId',authCheck, (req, res) 
                     targil_flag_finish: doc.targil_flag_finish,
                 }
             })
+        //console.log({"targil_info":targil_info}); 
         res.render('admin/game-admin-users-list-activity-disp',{"user_info":user_info,"targil_info":targil_info})
         })
     })
